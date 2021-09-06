@@ -9,7 +9,7 @@ $g5['title'] = "세션파일 일괄삭제";
 include_once("./admin.head.php");
 ?>
 
-<div class="local_desc02 local_desc">
+<div class="local_desc02 local_desc content-box-desc">
     <p>
         완료 메세지가 나오기 전에 프로그램의 실행을 중지하지 마십시오.
     </p>
@@ -23,7 +23,7 @@ include_once("./admin.head.php");
     if (!$dir=@opendir(G5_DATA_PATH.'/session')) {
       echo "<p>세션 디렉토리를 열지못했습니다.</p>";
     } else {
-        $list_tag_st = "<ul class=\"session_del\">\n<li>완료됨</li>\n";
+        $list_tag_st = "<ul class=\"session_del\">\n";
         $list_tag_end = "</ul>\n";
     }
 
@@ -53,7 +53,7 @@ include_once("./admin.head.php");
         }
     }
     echo $list_tag_end;
-    echo '<div class="local_desc01 local_desc"><p><strong>세션데이터 '.$cnt.'건 삭제 완료됐습니다.</strong><br>프로그램의 실행을 끝마치셔도 좋습니다.</p></div>'.PHP_EOL;
+    echo '<div class="local_desc01 local_desc content-box-white"><p><strong>세션데이터 '.$cnt.'건 삭제 완료됐습니다.</strong><br>프로그램의 실행을 끝마치셔도 좋습니다.</p></div>'.PHP_EOL;
 ?>
 
 <?php

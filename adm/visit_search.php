@@ -18,7 +18,10 @@ if(isset($sfl) && $sfl && !in_array($sfl, array('vi_ip','vi_date','vi_time','vi_
 }
 ?>
 
-<div class="local_sch local_sch01">
+<link href="<?=G5_ADMIN_URL?>/css/scss/include/new_default.css" rel="stylesheet">
+<link href="<?=G5_ADMIN_URL?>/css/scss/page/visit_search.css" rel="stylesheet">
+
+<div class="local_sch local_sch01 content-box">
     <form name="fvisit" method="get" onsubmit="return fvisit_submit(this);">
     <?php echo $listall?>
     <label for="sch_sort" class="sound_only">검색분류</label>
@@ -29,11 +32,11 @@ if(isset($sfl) && $sfl && !in_array($sfl, array('vi_ip','vi_date','vi_time','vi_
     </select>
     <label for="sch_word" class="sound_only">검색어</label>
     <input type="text" name="stx" size="20" value="<?php echo stripslashes($stx); ?>" id="sch_word" class="frm_input">
-    <input type="submit" value="검색" class="btn_submit">
+    <input type="submit" value="" class="search_btn">
     </form>
 </div>
 
-<div class="tbl_wrap tbl_head01">
+<div class="tbl_wrap tbl_head01 content-box">
     <table>
     <thead>
     <tr>

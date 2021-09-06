@@ -1,0 +1,82 @@
+@charset "utf-8";
+@import "../include/_variable";
+@import "../include/mixin";
+
+.top_wrap {
+    .nav_wrap {
+        padding: 0;
+        
+
+        ul {
+            display: flex;
+            flex-flow: row;
+            justify-content: space-between;
+            width: 700px;
+            height: 40px;
+            line-height: 40px;
+
+            .menu {
+                background: #212936;
+                margin: 0;
+                color: #fff;
+                border-radius: 7px;
+
+                i {
+                    vertical-align: bottom;
+                    margin-right: 5px;
+                }
+            }
+
+            a {
+                padding: 0 15px;
+                color: #919eb4;
+            }
+        }
+    }
+}
+
+.mid_wrap  {
+    .nav_wrap {
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    form {
+        display: flex;
+        flex-flow: row;
+
+        select {
+            border-radius: 30px;
+            height: 32px;
+            line-height: 32px;
+            padding: 0 6px;
+        }
+
+        input[type='text'] {
+            background: #f7f7f7;
+            border: none;
+            height: 32px;
+            padding: 10px;
+        }
+
+        button {
+            background: #262d3a;
+            padding: 1px 0;
+            width: 50px;
+            border-radius: 15px;
+
+            i {
+                color: #fff;
+            }
+        }
+
+        input[type='submit'] {
+            background: #262d3a;
+            padding: 1px 0;
+            width: 50px;
+            border-radius: 15px;
+        }
+    }
+}

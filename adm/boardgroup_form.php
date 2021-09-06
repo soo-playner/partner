@@ -47,7 +47,7 @@ include_once('./admin.head.php');
 <input type="hidden" name="page" value="<?php echo $page ?>">
 <input type="hidden" name="token" value="">
 
-<div class="tbl_frm01 tbl_wrap">
+<div class="tbl_frm01 tbl_wrap content-box">
     <table>
     <caption><?php echo $g5['title']; ?></caption>
     <colgroup>
@@ -69,7 +69,7 @@ include_once('./admin.head.php');
     <tr>
         <th scope="row"><label for="gr_subject">그룹 제목<strong class="sound_only"> 필수</strong></label></th>
         <td>
-            <input type="text" name="gr_subject" value="<?php echo get_text($group['gr_subject']) ?>" id="gr_subject" required class="required frm_input" size="80">
+            <input type="text" name="gr_subject" value="<?php echo get_text($group['gr_subject']) ?>" id="gr_subject" required class="frm_input" size="80">
             <?php
             if ($w == 'u')
                 echo '<a href="./board_form.php?gr_id='.$gr_id.'" class="btn_frmline">게시판생성</a>';
@@ -139,7 +139,7 @@ include_once('./admin.head.php');
 
 </form>
 
-<div class="local_desc01 local_desc">
+<div class="local_desc01 local_desc content-box-desc">
     <p>
         게시판을 생성하시려면 1개 이상의 게시판그룹이 필요합니다.<br>
         게시판그룹을 이용하시면 더 효과적으로 게시판을 관리할 수 있습니다.

@@ -51,17 +51,17 @@ include_once('./admin.head.php');
 $colspan = 5;
 ?>
 
-<div class="local_ov01 local_ov">
+<div class="local_ov01 local_ov content-box">
     <?php echo $listall ?>
     <span class="btn_ov01"><span class="ov_txt">설정된 관리권한</span><span class="ov_num"><?php echo number_format($total_count) ?>건</span></span>
 </div>
 
-<form name="fsearch" id="fsearch" class="local_sch01 local_sch" method="get">
+<form name="fsearch" id="fsearch" class="local_sch01 local_sch content-box" method="get">
 <input type="hidden" name="sfl" value="a.mb_id" id="sfl">
 
 <label for="stx" class="sound_only">회원아이디<strong class="sound_only"> 필수</strong></label>
 <input type="text" name="stx" value="<?php echo $stx ?>" id="stx" required class="required frm_input">
-<input type="submit" value="검색" id="fsearch_submit" class="btn_submit">
+<input type="submit" value="" id="fsearch_submit" class="search_btn">
 
 </form>
 
@@ -73,7 +73,7 @@ $colspan = 5;
 <input type="hidden" name="page" value="<?php echo $page ?>">
 <input type="hidden" name="token" value="">
 
-<div class="tbl_head01 tbl_wrap">
+<div class="tbl_head01 tbl_wrap content-box">
     <table>
     <caption><?php echo $g5['title']; ?> 목록</caption>
     <thead>
@@ -168,10 +168,10 @@ echo $pagelist;
 <input type="hidden" name="page" value="<?php echo $page ?>">
 <input type="hidden" name="token" value="">
 
-<section id="add_admin">
+<section id="add_admin" class="content-box">
     <h2 class="h2_frm">관리권한 추가</h2>
 
-    <div class="local_desc01 local_desc">
+    <div class="local_desc01 local_desc content-box-desc">
         <p>
             다음 양식에서 회원에게 관리권한을 부여하실 수 있습니다.<br>
             권한 <strong>r</strong>은 읽기권한, <strong>w</strong>는 쓰기권한, <strong>d</strong>는 삭제권한입니다.
@@ -189,13 +189,13 @@ echo $pagelist;
             <th scope="row"><label for="mb_id">회원아이디<strong class="sound_only">필수</strong></label></th>
             <td>
                 <strong id="msg_mb_id" class="msg_sound_only"></strong>
-                <input type="text" name="mb_id" value="<?php echo $mb_id ?>" id="mb_id" required class="required frm_input">
+                <input type="text" name="mb_id" value="<?php echo $mb_id ?>" id="mb_id" required class="frm_input">
             </td>
         </tr>
         <tr>
             <th scope="row"><label for="au_menu">접근가능메뉴<strong class="sound_only">필수</strong></label></th>
             <td>
-                <select id="au_menu" name="au_menu" required class="required">
+                <select id="au_menu" name="au_menu" required class="">
                     <option value=''>선택하세요</option>
                     <?php
                     foreach($auth_menu as $key=>$value)

@@ -69,12 +69,12 @@ if($ev_id) {
 }
 ?>
 
-<div class="local_ov01 local_ov">
+<div class="local_ov01 local_ov content-box">
     <?php echo $listall; ?>
     <span class="btn_ov01"><span class="ov_txt">전체 이벤트</span><span class="ov_num"> <?php echo $total_count; ?>건</span></span>  
 </div>
 
-<form name="flist" class="local_sch01 local_sch" autocomplete="off">
+<form name="flist" class="local_sch01 local_sch content-box" autocomplete="off">
 <input type="hidden" name="page" value="<?php echo $page; ?>">
 <label for="ev_id" class="sound_only">이벤트</label>
 <select name="ev_id" id="ev_id" action="<?php echo $_SERVER['SCRIPT_NAME']; ?>">
@@ -88,11 +88,11 @@ if($ev_id) {
     echo $event_option;
     ?>
 </select>
-<input type="submit" value="이동" class="btn_submit">
+<input type="submit" value="이동" class="submit_btn">
 
 </form>
 
-<form name="flist" class="local_sch01 local_sch" autocomplete="off">
+<form name="flist" class="local_sch01 local_sch content-box" autocomplete="off">
 <input type="hidden" name="page" value="<?php echo $page; ?>">
 <input type="hidden" name="ev_id" value="<?php echo $ev_id; ?>">
 
@@ -120,11 +120,11 @@ if($ev_id) {
 
 <label for="search" class="sound_only">검색어<strong class="sound_only"> 필수</strong></label>
 <input type="text" name="search" value="<?php echo $search; ?>" id="search" required class="frm_input required">
-<input type="submit" value="검색" class="btn_submit">
+<input type="submit" value="" class="search_btn">
 
 </form>
 
-<div class="local_desc01 local_desc">
+<div class="local_desc01 local_desc content-box-desc">
     <p>상품을 이벤트별로 일괄 처리합니다. <?php echo ($ev_title ? '현재 선택된 이벤트는 '.$ev_title.'입니다.' : '이벤트를 선택해 주세요.'); ?></p>
 </div>
 
@@ -137,7 +137,7 @@ if($ev_id) {
 <input type="hidden" name="sort1" value="<?php echo $sort1; ?>">
 <input type="hidden" name="sort2" value="<?php echo $sort2; ?>">
 
-<div class="tbl_head01 tbl_wrap">
+<div class="tbl_head01 tbl_wrap content-box">
     <table>
     <caption><?php echo $g5['title']; ?> 목록</caption>
     <thead>
@@ -179,7 +179,7 @@ if($ev_id) {
     </table>
 </div>
 
-<div class="local_desc01 local_desc">
+<div class="local_desc01 local_desc content-box-desc">
     <p>
         <?php if ($ev_title) { ?>
          현재 선택된 이벤트는 <strong><?php echo $ev_title; ?></strong>입니다.<br>

@@ -51,7 +51,7 @@ $result = sql_query($sql);
 $colspan = 12;
 ?>
 
-<section>
+<!-- <section>
     <h2>신규가입회원 <?php echo $new_member_rows ?>건 목록</h2>
     <div class="local_desc02 local_desc">
         총회원수 <?php echo number_format($total_count) ?>명 중 차단 <?php echo number_format($intercept_count) ?>명, 탈퇴 : <?php echo number_format($leave_count) ?>명
@@ -309,7 +309,420 @@ $colspan = 7;
     <div class="btn_list03 btn_list">
         <a href="./point_list.php">포인트내역 전체보기</a>
     </div>
-</section>
+</section> -->
 
+<link href="<?=G5_ADMIN_URL?>/css/scss/include/new_default.css" rel="stylesheet">
+<link href="<?=G5_ADMIN_URL?>/css/scss/page/index.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/stove99/jquery-modal-sample@v1.4/css/animate.min.css" />
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/stove99/jquery-modal-sample@v1.4/css/jquery.modal.css" />
+<script src="//cdn.jsdelivr.net/gh/stove99/jquery-modal-sample@v1.4/js/jquery.modal.js"></script>
+<script src="//cdn.jsdelivr.net/gh/stove99/jquery-modal-sample@v1.4/js/modal.js"></script>
+<link href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" rel="stylesheet">
+<link href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" rel="stylesheet">
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<div class="adm_main_wrap">
+    <section class="top_wrap">
+        <div class="user_num_wrap content-box-nomargin">
+            <div class="title_wrap">
+                <p>이용자수 통계</p>
+                <div class="search_wrap">
+                    <ul>
+                        <li>방문자</li>
+                        <li>프로그램 사용</li>
+                        <li>
+                            <select name="" id="" class="form-control">
+                                <option value="">2020-12-01 ~ 2021-03-01</option>
+                            </select>
+                        </li>
+                        <li>
+                            <a href="" id="user_chart_submit" class="search_btn"></a>
+                        </li>
+                        <script>
+                            $(function() {
+                                $('#user_chart_submit').on('click',function(e) {
+                                    e.preventDefault();
+
+                                    $.popup({
+                                        url: './user_popup.php',
+                                        close: function(result) {
+                                            console.log(result);
+                                        }
+                                    });
+                                });
+                            });
+                        </script>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <?php include_once('./adm_user_chart.php'); ?>
+            </div>
+        </div>
+        <div>
+            <div class="total_member_wrap">
+                <div class="left_wrap">
+                    <p>총 회원수 <br> 1,000,000명</p>
+                </div>
+                <div class="right_wrap">
+                    <span>차단:0명</span>
+                    <span>탈퇴:0명</span>
+                </div>
+            </div>
+            <div class="new_sign_wrap content-box">
+                <div class="title_wrap">
+                    <p>신규가입회원</p>
+                </div>
+                <div class="content_wrap slick_sign">
+                    <div>
+                        <ul>
+                            <li class="img_wrap">
+                                <img src="<?=G5_ADMIN_URL?>/img/grade.png" width="34" alt="이미지">
+                                <span class="title">xkaizew</span>
+                            </li>
+                            <li class="date">2021/07/12</li>
+                        </ul>
+                        <ul>
+                            <li class="img_wrap">
+                                <img src="<?=G5_ADMIN_URL?>/img/grade.png" width="34" alt="이미지">
+                                <span class="title">xkaizew</span>
+                            </li>
+                            <li class="date">2021/07/12</li>
+                        </ul>
+                        <ul>
+                            <li class="img_wrap">
+                                <img src="<?=G5_ADMIN_URL?>/img/grade.png" width="34" alt="이미지">
+                                <span class="title">xkaizew</span>
+                            </li>
+                            <li class="date">2021/07/12</li>
+                        </ul>
+                        <ul>
+                            <li class="img_wrap">
+                                <img src="<?=G5_ADMIN_URL?>/img/grade.png" width="34" alt="이미지">
+                                <span class="title">xkaizew</span>
+                            </li>
+                            <li class="date">2021/07/12</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul>
+                            <li class="img_wrap">
+                                <img src="<?=G5_ADMIN_URL?>/img/grade.png" width="34" alt="이미지">
+                                <span class="title">xkaizew</span>
+                            </li>
+                            <li class="date">2021/07/12</li>
+                        </ul>
+                        <ul>
+                            <li class="img_wrap">
+                                <img src="<?=G5_ADMIN_URL?>/img/grade.png" width="34" alt="이미지">
+                                <span class="title">xkaizew</span>
+                            </li>
+                            <li class="date">2021/07/12</li>
+                        </ul>
+                        <ul>
+                            <li class="img_wrap">
+                                <img src="<?=G5_ADMIN_URL?>/img/grade.png" width="34" alt="이미지">
+                                <span class="title">xkaizew</span>
+                            </li>
+                            <li class="date">2021/07/12</li>
+                        </ul>
+                        <ul>
+                            <li class="img_wrap">
+                                <img src="<?=G5_ADMIN_URL?>/img/grade.png" width="34" alt="이미지">
+                                <span class="title">xkaizew</span>
+                            </li>
+                            <li class="date">2021/07/12</li>
+                        </ul>
+                    </div>
+                </div>
+                <script>
+                    $(function() {
+                        $('.slick_sign').slick({
+                            slide: 'div',
+                            dots: false,
+                            speed: 500,
+                            autoplay:true,
+                            slidesToShow: 1,
+                            arrows: true,
+                            prevArrow: "<button type='button' class='slick-prev' style='top:-12%;left:86%'><img src='<?=G5_ADMIN_URL?>/img/left.png' width='25' alt='이미지'></button>",
+                            nextArrow: "<button type='button' class='slick-next' style='top:-12%;right:0%'><img src='<?=G5_ADMIN_URL?>/img/right.png' width='25' alt='이미지'></button>"
+                        });
+                    })
+                </script>
+            </div>
+        </div>
+    </section>
+    <section class="mid_top_wrap">
+        <div class="card_wrap card_wrap1 content-box-nomargin">
+            <div class="title_wrap">
+                <img src="<?=G5_ADMIN_URL?>/img/deposit.png" width="34" alt="이미지">
+                <span>입금액</span>
+            </div>
+            <div class="content_wrap">
+                <div class="dot"></div>
+                <p>누적입금액 <br>₩860,000,000</p>
+            </div>
+            <div class="content_wrap">
+                <div class="dot"></div>
+                <p>당일입금액 <br>₩860,000,000</p>
+            </div>
+        </div>
+        <div class="card_wrap card_wrap2 content-box content-box-nomargin">
+            <div class="title_wrap">
+                <img src="<?=G5_ADMIN_URL?>/img/sell.png" width="34" alt="이미지">
+                <span>판매금액</span>
+            </div>
+            <div class="content_wrap">
+                <div class="dot"></div>
+                <p>누적판매금액 <br>₩860,000,000</p>
+            </div>
+            <div class="content_wrap">
+                <div class="dot"></div>
+                <p>당일판매금액 <br>₩860,000,000</p>
+            </div>
+        </div>
+        <div class="card_wrap card_wrap3 content-box-nomargin">
+            <div class="title_wrap">
+                <img src="<?=G5_ADMIN_URL?>/img/withdrawl.png" width="34" alt="이미지">
+                <span>출금액</span>
+            </div>
+            <div class="content_wrap">
+                <div class="dot"></div>
+                <p>누적출금액 <br>₩860,000</p>
+            </div>
+            <div class="content_wrap">
+                <div class="dot"></div>
+                <p>당일출금액 <br>₩860,000</p>
+            </div>
+        </div>
+        <div class="card_wrap card_wrap4 content-box-nomargin">
+            <div class="title_wrap">
+                <img src="<?=G5_ADMIN_URL?>/img/bonus.png" width="34" alt="이미지">
+                <span>보너스지급액</span>
+            </div>
+            <div class="content_wrap">
+                <div class="dot"></div>
+                <p>누적보너스지급액 <br>₩860,000</p>
+            </div>
+            <div class="content_wrap">
+                <div class="dot"></div>
+                <p>전일보너스지급액 <br>₩860,000</p>
+            </div>
+        </div>
+    </section>
+    <section class="mid_bottom_wrap">
+        <div class="card_wrap content-box-nomargin">
+            <div class="title_wrap">
+                <p>총 입출금 통계</p>
+                <div class="all_view">View All</div>
+            </div>
+            <div class="content_wrap money_statistics">
+                <?php include_once('./money_statistics_chart.php'); ?>
+                
+            </div>
+        </div>
+        <div class="card_wrap content-box-nomargin">
+            <div class="title_wrap">
+                <p>총 게시물 통계</p>
+                <div class="all_view">View All</div>
+            </div>
+            <div class="content_wrap statistics">
+                <div class="post_statistics">
+                    <?php include_once('./post_statistics_chart.php'); ?>
+                </div>
+                <div class="info_wrap">
+                    <div class="top_info">
+                        <p>공지사항</p>
+                        <p>Q&A</p>
+                        <p>자유게시판</p>
+                        <p>문의사항</p>
+                    </div>
+                    <div class="bottom_info">
+                        <P>공지사항<span class="num">14</span></P>
+                        <P>자유게시판<span class="num">52</span></P>
+                        <P>Q&A<span class="num">16</span></P>
+                        <P>문의사항<span class="num">33</span></P>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card_wrap content-box-nomargin">
+            <div class="title_wrap">
+                <p>이체요청내역</p>
+            </div>
+            <div class="content_wrap slick_transfer">
+                <div>
+                    <ul>
+                        <li class="state withdrawl">
+                            <p><i class="ri-arrow-left-line"></i></p>
+                            <p>출금</p>
+                        </li>
+                        <li class="name">
+                            <p>SJC8388</p>
+                            <p>김은혜</p>
+                        </li>
+                        <li class="date">2021-07-12 23:16:24</li>
+                        <li class="state_text state_ok">승인</li>
+                    </ul>
+                    <ul>
+                        <li class="state deposit">
+                            <p><i class="ri-arrow-right-line"></i></p>
+                            <p>입금</p>
+                        </li>
+                        <li class="name">
+                            <p>SJC8388</p>
+                            <p>김은혜</p>
+                        </li>
+                        <li class="date">2021-07-12 23:16:24</li>
+                        <li class="state_text state_waiting">확인중</li>
+                    </ul>
+                    <ul>
+                        <li class="state deposit">
+                            <p><i class="ri-arrow-right-line"></i></p>
+                            <p>입금</p>
+                        </li>
+                        <li class="name">
+                            <p>SJC8388</p>
+                            <p>김은혜</p>
+                        </li>
+                        <li class="date">2021-07-12 23:16:24</li>
+                        <li class="state_text">승인</li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li class="state withdrawl">
+                            <p><i class="ri-arrow-left-line"></i></p>
+                            <p>출금</p>
+                        </li>
+                        <li class="name">
+                            <p>SJC8388</p>
+                            <p>김은혜</p>
+                        </li>
+                        <li class="date">2021-07-12 23:16:24</li>
+                        <li class="state_text state_ok">승인</li>
+                    </ul>
+                    <ul>
+                        <li class="state deposit">
+                            <p><i class="ri-arrow-right-line"></i></p>
+                            <p>입금</p>
+                        </li>
+                        <li class="name">
+                            <p>SJC8388</p>
+                            <p>김은혜</p>
+                        </li>
+                        <li class="date">2021-07-12 23:16:24</li>
+                        <li class="state_text state_waiting">확인중</li>
+                    </ul>
+                    <ul>
+                        <li class="state deposit">
+                            <p><i class="ri-arrow-right-line"></i></p>
+                            <p>입금</p>
+                        </li>
+                        <li class="name">
+                            <p>SJC8388</p>
+                            <p>김은혜</p>
+                        </li>
+                        <li class="date">2021-07-12 23:16:24</li>
+                        <li class="state_text">승인</li>
+                    </ul>
+                </div>
+            </div>
+            <script>
+                $(function() {
+                    $('.slick_transfer').slick({
+                        slide: 'div',
+                        dots: false,
+                        speed: 500,
+                        autoplay:true,
+                        slidesToShow: 1,
+                        arrows: true,
+                        prevArrow: "<button type='button' class='slick-prev' style='top:-12%;left:87%'><img src='<?=G5_ADMIN_URL?>/img/left.png' width='25' alt='이미지'></button>",
+                        nextArrow: "<button type='button' class='slick-next' style='top:-12%;right:0%'><img src='<?=G5_ADMIN_URL?>/img/right.png' width='25' alt='이미지'></button>"
+                    });
+                })
+            </script>
+        </div>
+    </section>
+    <section class="bottom_wrap">
+        <div class="card_wrap content-box-nomargin recent">
+            <div class="title_wrap">
+                <p>최근게시물</p>
+                <div class="nav_wrap">
+                    <ul>
+                        <a href=""><li>공지사항</li></a>
+                        <a href=""><li>자유게시판</li></a>
+                    </ul>
+                </div>
+                <div class="all_view">View All</div>
+            </div>
+            <div class="content_wrap">
+                <div class="tbl_wrap tbl_head01">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col">작성자</th>
+                                <th scope="col">제목</th>
+                                <th scope="col">일자</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="">
+                                <td class="td_id">admin</td>
+                                <td class="td_left">No Data Available.</td>
+                                <td class="td_idsmall td_category1">2021-07-10</td>
+                            </tr>
+                            <tr class="">
+                                <td class="td_id">admin</td>
+                                <td class="td_left">No Data Available.</td>
+                                <td class="td_idsmall td_category1">2021-07-10</td>
+                            </tr>
+                            <tr class="">
+                                <td class="td_id">admin</td>
+                                <td class="td_left">No Data Available.</td>
+                                <td class="td_idsmall td_category1">2021-07-10</td>
+                            </tr>
+                            <tr class="">
+                                <td class="td_id">admin</td>
+                                <td class="td_left">No Data Available.</td>
+                                <td class="td_idsmall td_category1">2021-07-10</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="card_wrap">
+            <div class="title_wrap">
+                <p>문의사항</p>
+                <div class="all_view">View All</div>
+            </div>
+            <div class="content_wrap customer">
+                <div class="top_card_wrap">
+                    <div class="title">
+                        <p>입금내역은 어디서 볼수있을까요?</p>
+                        <p>2021-07-15 12:00 - wretr88***</p>
+                    </div>
+                    <div class="more">
+                        <a href=""><img src="<?=G5_ADMIN_URL?>/img/more.png" width="25" alt="이미지"></a>
+                    </div>
+                </div>
+                <div class="bottom_card_wrap">
+                    <div class="content">
+                        <p>입금내역은 어디서 볼수 있을까요? 내역조회가 안되요.</p>
+                    </div>
+                    <div class="grade_icon_wrap">
+                        <a href=""><img src="<?=G5_ADMIN_URL?>/img/grade.png" width="25" alt="이미지"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
 <?php
 include_once ('./admin.tail.php');

@@ -44,7 +44,7 @@ $od['mb_id'] = $od['mb_id'] ? $od['mb_id'] : "비회원";
 //------------------------------------------------------------------------------
 
 
-$pg_anchor = '<ul class="anchor">
+$pg_anchor = '<ul class="anchor content-box">
 <li><a href="#anc_sodr_list">주문상품 목록</a></li>
 <li><a href="#anc_sodr_pay">주문결제 내역</a></li>
 <li><a href="#anc_sodr_chk">결제상세정보 확인</a></li>
@@ -114,7 +114,7 @@ add_javascript(G5_POSTCODE_JS, 0);    //다음 주소 js
 <section id="anc_sodr_list">
     <h2 class="h2_frm">주문상품 목록</h2>
     <?php echo $pg_anchor; ?>
-    <div class="local_desc02 local_desc">
+    <div class="local_desc02 local_desc content-box-desc">
         <p>
             현재 주문상태 <strong><?php echo $od['od_status'] ?></strong>
             |
@@ -139,7 +139,7 @@ add_javascript(G5_POSTCODE_JS, 0);    //다음 주소 js
     <input type="hidden" name="page" value="<?php echo $page;?>">
     <input type="hidden" name="pg_cancel" value="0">
 
-    <div class="tbl_head01 tbl_wrap">
+    <div class="tbl_head01 tbl_wrap content-box">
         <table>
         <caption>주문 상품 목록</caption>
         <thead>
@@ -258,7 +258,7 @@ add_javascript(G5_POSTCODE_JS, 0);    //다음 주소 js
         </table>
     </div>
 
-    <div class="btn_list02 btn_list">
+    <div class="btn_list02 btn_list content-box">
         <p>
             <input type="hidden" name="chk_cnt" value="<?php echo $chk_cnt; ?>">
             <strong>주문 및 장바구니 상태 변경</strong>
@@ -273,7 +273,7 @@ add_javascript(G5_POSTCODE_JS, 0);    //다음 주소 js
         </p>
     </div>
 
-    <div class="local_desc01 local_desc">
+    <div class="local_desc01 local_desc content-box-desc">
         <p>주문, 입금, 준비, 배송, 완료는 장바구니와 주문서 상태를 모두 변경하지만, 취소, 반품, 품절은 장바구니의 상태만 변경하며, 주문서 상태는 변경하지 않습니다.</p>
         <p>개별적인(이곳에서의) 상태 변경은 모든 작업을 수동으로 처리합니다. 예를 들어 주문에서 입금으로 상태 변경시 입금액(결제금액)을 포함한 모든 정보는 수동 입력으로 처리하셔야 합니다.</p>
     </div>
@@ -382,7 +382,7 @@ add_javascript(G5_POSTCODE_JS, 0);    //다음 주소 js
     <input type="hidden" name="od_escrow" value="<?php echo $od['od_escrow']; ?>">
     <input type="hidden" name="od_pg" value="<?php echo $od['od_pg']; ?>">
 
-    <div class="compare_wrap">
+    <div class="compare_wrap content-box">
 
         <section id="anc_sodr_chk" class="compare_left">
             <h3>결제상세정보 확인</h3>
@@ -857,7 +857,7 @@ add_javascript(G5_POSTCODE_JS, 0);    //다음 주소 js
 <section id="anc_sodr_memo">
     <h2 class="h2_frm">상점메모</h2>
     <?php echo $pg_anchor; ?>
-    <div class="local_desc02 local_desc">
+    <div class="local_desc02 local_desc content-box-desc">
         <p>
             현재 열람 중인 주문에 대한 내용을 메모하는곳입니다.<br>
             입금, 배송 내역을 메일로 발송할 경우 함께 기록됩니다.
@@ -898,7 +898,7 @@ add_javascript(G5_POSTCODE_JS, 0);    //다음 주소 js
     <input type="hidden" name="page" value="<?php echo $page; ?>">
     <input type="hidden" name="mod_type" value="info">
 
-    <div class="compare_wrap">
+    <div class="compare_wrap content-box">
 
         <section id="anc_sodr_orderer" class="compare_left">
             <h3>주문하신 분</h3>
@@ -913,11 +913,11 @@ add_javascript(G5_POSTCODE_JS, 0);    //다음 주소 js
                 <tbody>
                 <tr>
                     <th scope="row"><label for="od_name"><span class="sound_only">주문하신 분 </span>이름</label></th>
-                    <td><input type="text" name="od_name" value="<?php echo get_text($od['od_name']); ?>" id="od_name" required class="frm_input required"></td>
+                    <td><input type="text" name="od_name" value="<?php echo get_text($od['od_name']); ?>" id="od_name" required class="frm_input"></td>
                 </tr>
                 <tr>
                     <th scope="row"><label for="od_tel"><span class="sound_only">주문하신 분 </span>전화번호</label></th>
-                    <td><input type="text" name="od_tel" value="<?php echo get_text($od['od_tel']); ?>" id="od_tel" required class="frm_input required"></td>
+                    <td><input type="text" name="od_tel" value="<?php echo get_text($od['od_tel']); ?>" id="od_tel" required class="frm_input"></td>
                 </tr>
                 <tr>
                     <th scope="row"><label for="od_hp"><span class="sound_only">주문하신 분 </span>핸드폰</label></th>
@@ -927,10 +927,10 @@ add_javascript(G5_POSTCODE_JS, 0);    //다음 주소 js
                     <th scope="row"><span class="sound_only">주문하시는 분 </span>주소</th>
                     <td>
                         <label for="od_zip" class="sound_only">우편번호</label>
-                        <input type="text" name="od_zip" value="<?php echo get_text($od['od_zip1']).get_text($od['od_zip2']); ?>" id="od_zip" required class="frm_input required" size="5">
+                        <input type="text" name="od_zip" value="<?php echo get_text($od['od_zip1']).get_text($od['od_zip2']); ?>" id="od_zip" required class="frm_input" size="5">
                         <button type="button" class="btn_frmline" onclick="win_zip('frmorderform3', 'od_zip', 'od_addr1', 'od_addr2', 'od_addr3', 'od_addr_jibeon');">주소 검색</button><br>
                         <span id="od_win_zip" style="display:block"></span>
-                        <input type="text" name="od_addr1" value="<?php echo get_text($od['od_addr1']); ?>" id="od_addr1" required class="frm_input required" size="35">
+                        <input type="text" name="od_addr1" value="<?php echo get_text($od['od_addr1']); ?>" id="od_addr1" required class="frm_input" size="35">
                         <label for="od_addr1">기본주소</label><br>
                         <input type="text" name="od_addr2" value="<?php echo get_text($od['od_addr2']); ?>" id="od_addr2" class="frm_input" size="35">
                         <label for="od_addr2">상세주소</label>
@@ -942,7 +942,7 @@ add_javascript(G5_POSTCODE_JS, 0);    //다음 주소 js
                 </tr>
                 <tr>
                     <th scope="row"><label for="od_email"><span class="sound_only">주문하신 분 </span>E-mail</label></th>
-                    <td><input type="text" name="od_email" value="<?php echo $od['od_email']; ?>" id="od_email" required class="frm_input required" size="30"></td>
+                    <td><input type="text" name="od_email" value="<?php echo $od['od_email']; ?>" id="od_email" required class="frm_input" size="30"></td>
                 </tr>
                 <tr>
                     <th scope="row"><span class="sound_only">주문하신 분 </span>IP Address</th>
@@ -966,23 +966,23 @@ add_javascript(G5_POSTCODE_JS, 0);    //다음 주소 js
                 <tbody>
                 <tr>
                     <th scope="row"><label for="od_b_name"><span class="sound_only">받으시는 분 </span>이름</label></th>
-                    <td><input type="text" name="od_b_name" value="<?php echo get_text($od['od_b_name']); ?>" id="od_b_name" required class="frm_input required"></td>
+                    <td><input type="text" name="od_b_name" value="<?php echo get_text($od['od_b_name']); ?>" id="od_b_name" required class="frm_input"></td>
                 </tr>
                 <tr>
                     <th scope="row"><label for="od_b_tel"><span class="sound_only">받으시는 분 </span>전화번호</label></th>
-                    <td><input type="text" name="od_b_tel" value="<?php echo get_text($od['od_b_tel']); ?>" id="od_b_tel" required class="frm_input required"></td>
+                    <td><input type="text" name="od_b_tel" value="<?php echo get_text($od['od_b_tel']); ?>" id="od_b_tel" required class="frm_input"></td>
                 </tr>
                 <tr>
                     <th scope="row"><label for="od_b_hp"><span class="sound_only">받으시는 분 </span>핸드폰</label></th>
-                    <td><input type="text" name="od_b_hp" value="<?php echo get_text($od['od_b_hp']); ?>" id="od_b_hp" class="frm_input required"></td>
+                    <td><input type="text" name="od_b_hp" value="<?php echo get_text($od['od_b_hp']); ?>" id="od_b_hp" class="frm_input"></td>
                 </tr>
                 <tr>
                     <th scope="row"><span class="sound_only">받으시는 분 </span>주소</th>
                     <td>
                         <label for="od_b_zip" class="sound_only">우편번호</label>
-                        <input type="text" name="od_b_zip" value="<?php echo get_text($od['od_b_zip1']).get_text($od['od_b_zip2']); ?>" id="od_b_zip" required class="frm_input required" size="5">
+                        <input type="text" name="od_b_zip" value="<?php echo get_text($od['od_b_zip1']).get_text($od['od_b_zip2']); ?>" id="od_b_zip" required class="frm_input" size="5">
                         <button type="button" class="btn_frmline" onclick="win_zip('frmorderform3', 'od_b_zip', 'od_b_addr1', 'od_b_addr2', 'od_b_addr3', 'od_b_addr_jibeon');">주소 검색</button><br>
-                        <input type="text" name="od_b_addr1" value="<?php echo get_text($od['od_b_addr1']); ?>" id="od_b_addr1" required class="frm_input required" size="35">
+                        <input type="text" name="od_b_addr1" value="<?php echo get_text($od['od_b_addr1']); ?>" id="od_b_addr1" required class="frm_input" size="35">
                         <label for="od_b_addr1">기본주소</label>
                         <input type="text" name="od_b_addr2" value="<?php echo get_text($od['od_b_addr2']); ?>" id="od_b_addr2" class="frm_input" size="35">
                         <label for="od_b_addr2">상세주소</label>

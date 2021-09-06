@@ -62,12 +62,12 @@ $qstr1 = $qstr.'&amp;fr_date='.$fr_date.'&amp;to_date='.$to_date.'&amp;sel_ca_id
 $listall = '<a href="'.$_SERVER['SCRIPT_NAME'].'" class="ov_listall">전체목록</a>';
 ?>
 
-<div class="local_ov01 local_ov">
+<div class="local_ov01 local_ov content-box">
     <?php echo $listall; ?>
     <span class="btn_ov01"><span class="ov_txt">등록상품 </span><span class="ov_num"> <?php echo $total_count; ?>건 </span></span> 
 </div>
 
-<form name="flist" class="local_sch01 local_sch">
+<form name="flist" class="local_sch01 local_sch content-box">
 <input type="hidden" name="doc" value="<?php echo $doc; ?>">
 <input type="hidden" name="sort1" value="<?php echo $sort1; ?>">
 <input type="hidden" name="sort2" value="<?php echo $sort2; ?>">
@@ -93,11 +93,11 @@ $listall = '<a href="'.$_SERVER['SCRIPT_NAME'].'" class="ov_listall">전체목�
 <input type="text" name="fr_date" value="<?php echo $fr_date; ?>" id="fr_date" required class="required frm_input" size="8" maxlength="8"> 에서
 <label for="to_date" class="sound_only">종료일</label>
 <input type="text" name="to_date" value="<?php echo $to_date; ?>" id="to_date" required class="required frm_input" size="8" maxlength="8"> 까지
-<input type="submit" value="검색" class="btn_submit">
+<input type="submit" value="" class="search_btn">
 
 </form>
 
-<div class="local_desc01 local_desc">
+<div class="local_desc01 local_desc content-box-desc">
     <p>판매량을 합산하여 상품판매순위를 집계합니다.</p>
 </div>
 
@@ -106,7 +106,7 @@ $listall = '<a href="'.$_SERVER['SCRIPT_NAME'].'" class="ov_listall">전체목�
     <a href="./itemlist.php" class="btn_01 btn">상품등록</a>
 </div>
 
-<div class="tbl_head01 tbl_wrap">
+<div class="tbl_head01 tbl_wrap content-box">
     <table>
     <caption><?php echo $g5['title']; ?> 목록</caption>
     <thead>

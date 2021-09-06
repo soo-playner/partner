@@ -18,7 +18,8 @@ if(isset($it['it_id']) && $it['it_id']) {
 }
 ?>
 
-<div class="tbl_frm01 tbl_wrap">
+<div class="tbl_frm01 tbl_wrap content-box">
+<h2 class="h2_frm">상품요약정보</h2>
     <table>
     <caption>상품요약정보 입력</caption>
     <colgroup>
@@ -52,8 +53,8 @@ if(isset($it['it_id']) && $it['it_id']) {
         <th scope="row"><label for="ii_article_<?php echo $el_name; ?>"><?php echo $el_title; ?></label></th>
         <td>
             <input type="hidden" name="ii_article[]" value="<?php echo $el_name; ?>">
+            <input type="text" name="ii_value[]" value="<?php echo get_text($el_value); ?>" id="ii_article_<?php echo $el_name; ?>" required class="frm_input" />
             <?php if ($el_example != "") echo help($el_example); ?>
-            <input type="text" name="ii_value[]" value="<?php echo get_text($el_value); ?>" id="ii_article_<?php echo $el_name; ?>" required class="frm_input required" />
         </td>
         <?php if ($el_no == 0) { ?>
         <td rowspan="<?php echo $el_length; ?>" class="td_grpset">

@@ -27,11 +27,11 @@ include_once(G5_PATH.'/head.sub.php');
             </tr>
             <tr>
                 <th scope="col"><label for="target_table">복사 테이블명<strong class="sound_only">필수</strong></label></th>
-                <td><input type="text" name="target_table" id="target_table" required class="required alnum_ frm_input" maxlength="20">영문자, 숫자, _ 만 가능 (공백없이)</td>
+                <td><input type="text" name="target_table" id="target_table" required class="alnum_ frm_input" maxlength="20">영문자, 숫자, _ 만 가능 (공백없이)</td>
             </tr>
             <tr>
                 <th scope="col"><label for="target_subject">게시판 제목<strong class="sound_only">필수</strong></label></th>
-                <td><input type="text" name="target_subject" value="[복사본] <?php echo get_sanitize_input($board['bo_subject']); ?>" id="target_subject" required class="required frm_input" maxlength="120"></td>
+                <td><input type="text" name="target_subject" value="[복사본] <?php echo get_sanitize_input($board['bo_subject']); ?>" id="target_subject" required class="frm_input" maxlength="120"></td>
             </tr>
             <tr>
                 <th scope="col">복사 유형</th>

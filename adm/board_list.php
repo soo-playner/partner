@@ -54,24 +54,40 @@ include_once('./admin.head.php');
 $colspan = 15;
 ?>
 
-<div class="local_ov01 local_ov">
+<!-- <div class="local_ov01 local_ov">
     <?php echo $listall ?>
     <span class="btn_ov01"><span class="ov_txt">생성된 게시판수</span><span class="ov_num"> <?php echo number_format($total_count) ?>개</span></span>
+</div> -->
+
+<?php 
+    include_once('./board.nav.php');
+?>
+<link href="<?=G5_ADMIN_URL?>/css/scss/page/board_list.css" rel="stylesheet">
+
+<div class="board_list_wrap content-box">
+
+<div class="search_wrap">
+    <?php if ($is_admin == 'super') { ?>
+    <div class="board_add_btn">
+        <a href="./board_form.php" id="bo_add" class="btn_01 btn">게시판 추가</a>
+    </div>
+    <?php } ?>
+    <form name="fsearch" id="fsearch" class="local_sch01 local_sch" method="get">
+
+        <label for="sfl" class="sound_only">검색대상</label>
+        <select name="sfl" id="sfl">
+            <option value="bo_table"<?php echo get_selected($sfl, "bo_table", true); ?>>TABLE</option>
+            <option value="bo_subject"<?php echo get_selected($sfl, "bo_subject"); ?>>제목</option>
+            <option value="a.gr_id"<?php echo get_selected($sfl, "a.gr_id"); ?>>그룹ID</option>
+        </select>
+        <label for="stx" class="sound_only">검색어<strong class="sound_only"> 필수</strong></label>
+        <input type="text" name="stx" value="<?php echo $stx ?>" id="stx" required class="frm_input">
+        <input type="submit" value="" class="search_btn">
+
+    </form>
 </div>
 
-<form name="fsearch" id="fsearch" class="local_sch01 local_sch" method="get">
 
-<label for="sfl" class="sound_only">검색대상</label>
-<select name="sfl" id="sfl">
-    <option value="bo_table"<?php echo get_selected($sfl, "bo_table", true); ?>>TABLE</option>
-    <option value="bo_subject"<?php echo get_selected($sfl, "bo_subject"); ?>>제목</option>
-    <option value="a.gr_id"<?php echo get_selected($sfl, "a.gr_id"); ?>>그룹ID</option>
-</select>
-<label for="stx" class="sound_only">검색어<strong class="sound_only"> 필수</strong></label>
-<input type="text" name="stx" value="<?php echo $stx ?>" id="stx" required class="required frm_input">
-<input type="submit" value="검색" class="btn_submit">
-
-</form>
 
 
 
@@ -200,13 +216,14 @@ $colspan = 15;
     <?php if ($is_admin == 'super') { ?>
     <input type="submit" name="act_button" value="선택삭제" onclick="document.pressed=this.value" class="btn_02 btn">
     <?php } ?>
-    <?php if ($is_admin == 'super') { ?>
+    <!-- <?php if ($is_admin == 'super') { ?>
     <a href="./board_form.php" id="bo_add" class="btn_01 btn">게시판 추가</a>
-    <?php } ?>
+    <?php } ?> -->
 </div>
 
 </form>
 
+</div>
 <?php echo get_paging(G5_IS_MOBILE ? $config['cf_mobile_pages'] : $config['cf_write_pages'], $page, $total_page, $_SERVER['SCRIPT_NAME'].'?'.$qstr.'&amp;page='); ?>
 
 <script>

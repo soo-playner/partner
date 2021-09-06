@@ -102,7 +102,7 @@ else if ($w == "u")
 $g5['title'] = $html_title;
 include_once (G5_ADMIN_PATH.'/admin.head.php');
 
-$pg_anchor ='<ul class="anchor">
+$pg_anchor ='<ul class="anchor content-box">
 <li><a href="#anc_scatefrm_basic">필수입력</a></li>
 <li><a href="#anc_scatefrm_optional">선택입력</a></li>
 <li><a href="#anc_scatefrm_extra">여분필드</a></li>';
@@ -170,7 +170,7 @@ else {
     <h2 class="h2_frm">필수입력</h2>
     <?php echo $pg_anchor; ?>
 
-    <div class="tbl_frm01 tbl_wrap">
+    <div class="tbl_frm01 tbl_wrap content-box">
         <table>
         <caption>분류 추가 필수입력</caption>
         <colgroup>
@@ -182,9 +182,10 @@ else {
             <th scope="row"><label for="ca_id">분류코드</label></th>
             <td>
             <?php if ($w == "") { ?>
-                <?php echo help("자동으로 보여지는 분류코드를 사용하시길 권해드리지만 직접 입력한 값으로도 사용할 수 있습니다.\n분류코드는 나중에 수정이 되지 않으므로 신중하게 결정하여 사용하십시오.\n\n분류코드는 2자리씩 10자리를 사용하여 5단계를 표현할 수 있습니다.\n0~z까지 입력이 가능하며 한 분류당 최대 1296가지를 표현할 수 있습니다.\n그러므로 총 3656158440062976가지의 분류를 사용할 수 있습니다."); ?>
-                <input type="text" name="ca_id" value="<?php echo $subid; ?>" id="ca_id" required class="required frm_input" size="<?php echo $sublen; ?>" maxlength="<?php echo $sublen; ?>">
+                
+                <input type="text" name="ca_id" value="<?php echo $subid; ?>" id="ca_id" required class="frm_input" size="<?php echo $sublen; ?>" maxlength="<?php echo $sublen; ?>">
                 <!-- <?php if ($default['de_code_dup_use']) { ?><a href="javascript:;" onclick="codedupcheck(document.getElementById('ca_id').value)">코드 중복검사</a><?php } ?> -->
+                <?php echo help("자동으로 보여지는 분류코드를 사용하시길 권해드리지만 직접 입력한 값으로도 사용할 수 있습니다.\n분류코드는 나중에 수정이 되지 않으므로 신중하게 결정하여 사용하십시오.\n\n분류코드는 2자리씩 10자리를 사용하여 5단계를 표현할 수 있습니다.\n0~z까지 입력이 가능하며 한 분류당 최대 1296가지를 표현할 수 있습니다.\n그러므로 총 3656158440062976가지의 분류를 사용할 수 있습니다."); ?>
             <?php } else { ?>
                 <input type="hidden" name="ca_id" value="<?php echo $ca['ca_id']; ?>">
                 <span class="frm_ca_id"><?php echo $ca['ca_id']; ?></span>
@@ -196,13 +197,13 @@ else {
         </tr>
         <tr>
             <th scope="row"><label for="ca_name">분류명</label></th>
-            <td><input type="text" name="ca_name" value="<?php echo $ca['ca_name']; ?>" id="ca_name" size="38" required class="required frm_input"></td>
+            <td><input type="text" name="ca_name" value="<?php echo $ca['ca_name']; ?>" id="ca_name" size="38" required class="frm_input"></td>
         </tr>
         <tr>
             <th scope="row"><label for="ca_order">출력순서</label></th>
             <td>
-                <?php echo help("숫자가 작을 수록 상위에 출력됩니다. 음수 입력도 가능하며 입력 가능 범위는 -2147483648 부터 2147483647 까지입니다.\n<b>입력하지 않으면 자동으로 출력됩니다.</b>"); ?>
                 <input type="text" name="ca_order" value="<?php echo $ca['ca_order']; ?>" id="ca_order" class="frm_input" size="12">
+                <?php echo help("숫자가 작을 수록 상위에 출력됩니다. 음수 입력도 가능하며 입력 가능 범위는 -2147483648 부터 2147483647 까지입니다.\n<b>입력하지 않으면 자동으로 출력됩니다.</b>"); ?>
             </td>
         </tr>
         <tr>
@@ -249,105 +250,105 @@ else {
         <tr>
             <th scope="row"><label for="ca_skin">출력스킨</label></th>
             <td>
-                <?php echo help('기본으로 제공하는 스킨은 '.str_replace(G5_PATH.'/', '', $g5_shop_skin_path).'/list.*.skin.php 입니다.'); ?>
-                <select id="ca_skin" name="ca_skin" required class="required">
+                <select id="ca_skin" name="ca_skin" required class="">
                     <?php echo get_list_skin_options("^list.[0-9]+\.skin\.php", $g5_shop_skin_path, $ca['ca_skin']); ?>
                 </select>
+                <?php echo help('기본으로 제공하는 스킨은 '.str_replace(G5_PATH.'/', '', $g5_shop_skin_path).'/list.*.skin.php 입니다.'); ?>
             </td>
         </tr>
         <tr>
             <th scope="row"><label for="ca_img_width">출력이미지 폭</label></th>
             <td>
+                <input type="text" name="ca_img_width" value="<?php echo $ca['ca_img_width']; ?>" id="ca_img_width" required class="frm_input" size="5" > 픽셀
                 <?php echo help("쇼핑몰환경설정 &gt; 이미지(소) 넓이가 기본값으로 설정됩니다.\n".G5_SHOP_URL."/list.php에서 출력되는 이미지의 폭입니다."); ?>
-                <input type="text" name="ca_img_width" value="<?php echo $ca['ca_img_width']; ?>" id="ca_img_width" required class="required frm_input" size="5" > 픽셀
             </td>
         </tr>
         <tr>
             <th scope="row"><label for="ca_img_height">출력이미지 높이</label></th>
             <td>
+                <input type="text" name="ca_img_height"  value="<?php echo $ca['ca_img_height']; ?>" id="ca_img_height" required class="frm_input" size="5" > 픽셀
                 <?php echo help("쇼핑몰환경설정 &gt; 이미지(소) 높이가 기본값으로 설정됩니다.\n".G5_SHOP_URL."/list.php에서 출력되는 이미지의 높이입니다."); ?>
-                <input type="text" name="ca_img_height"  value="<?php echo $ca['ca_img_height']; ?>" id="ca_img_height" required class="required frm_input" size="5" > 픽셀
             </td>
         </tr>
         <tr>
             <th scope="row"><label for="ca_list_mod">1줄당 이미지 수</label></th>
             <td>
+                <input type="text" name="ca_list_mod" size="3" value="<?php echo $ca['ca_list_mod']; ?>" id="ca_list_mod" required class="frm_input"> 개
                 <?php echo help("한 줄에 설정한 값만큼의 상품을 출력하지만 스킨에 따라 한 줄에 하나의 상품만 출력할 수도 있습니다."); ?>
-                <input type="text" name="ca_list_mod" size="3" value="<?php echo $ca['ca_list_mod']; ?>" id="ca_list_mod" required class="required frm_input"> 개
             </td>
         </tr>
         <tr>
             <th scope="row"><label for="ca_list_row">이미지 줄 수</label></th>
             <td>
+                <input type="text" name="ca_list_row" value='<?php echo $ca['ca_list_row']; ?>' id="ca_list_row" required class="frm_input" size="3"> 줄
                 <?php echo help("한 페이지에 출력할 이미지 줄 수를 설정합니다.\n한 페이지에서 표시하는 상품수는 (1줄당 이미지 수 x 줄 수) 입니다."); ?>
-                <input type="text" name="ca_list_row" value='<?php echo $ca['ca_list_row']; ?>' id="ca_list_row" required class="required frm_input" size="3"> 줄
             </td>
         </tr>
         <tr>
             <th scope="row"><label for="ca_mobile_skin">모바일 출력스킨</label></th>
             <td>
-                <?php echo help('기본으로 제공하는 스킨은 '.str_replace(G5_PATH.'/', '', $g5_mshop_skin_path).'/list.*.skin.php 입니다.'); ?>
-                <select id="ca_mobile_skin" name="ca_mobile_skin" required class="required">
+                <select id="ca_mobile_skin" name="ca_mobile_skin" required class="">
                     <?php echo get_list_skin_options("^list.[0-9]+\.skin\.php", $g5_mshop_skin_path, $ca['ca_mobile_skin']); ?>
                 </select>
+                <?php echo help('기본으로 제공하는 스킨은 '.str_replace(G5_PATH.'/', '', $g5_mshop_skin_path).'/list.*.skin.php 입니다.'); ?>
             </td>
         </tr>
         <tr>
             <th scope="row"><label for="ca_mobile_img_width">모바일 출력이미지 폭</label></th>
             <td>
+                <input type="text" name="ca_mobile_img_width" value="<?php echo $ca['ca_mobile_img_width']; ?>" id="ca_mobile_img_width" required class="frm_input" size="5" > 픽셀
                 <?php echo help("쇼핑몰환경설정 &gt; 이미지(소) 넓이가 기본값으로 설정됩니다.\n".G5_SHOP_URL."/list.php에서 출력되는 이미지의 폭입니다."); ?>
-                <input type="text" name="ca_mobile_img_width" value="<?php echo $ca['ca_mobile_img_width']; ?>" id="ca_mobile_img_width" required class="required frm_input" size="5" > 픽셀
             </td>
         </tr>
         <tr>
             <th scope="row"><label for="ca_mobile_img_height">모바일 출력이미지 높이</label></th>
             <td>
+                <input type="text" name="ca_mobile_img_height"  value="<?php echo $ca['ca_mobile_img_height']; ?>" id="ca_mobile_img_height" required class="frm_input" size="5" > 픽셀
                 <?php echo help("쇼핑몰환경설정 &gt; 이미지(소) 높이가 기본값으로 설정됩니다.\n".G5_SHOP_URL."/list.php에서 출력되는 이미지의 높이입니다."); ?>
-                <input type="text" name="ca_mobile_img_height"  value="<?php echo $ca['ca_mobile_img_height']; ?>" id="ca_mobile_img_height" required class="required frm_input" size="5" > 픽셀
             </td>
         </tr>
         <tr>
             <th scope="row"><label for="ca_mobile_list_mod">모바일 1줄당 이미지 수</label></th>
             <td>
+                <input type="text" name="ca_mobile_list_mod" value='<?php echo $ca['ca_mobile_list_mod']; ?>' id="ca_mobile_list_mod" required class="frm_input" size="3"> 개
                 <?php echo help("한 줄에 설정한 값만큼의 상품을 출력하지만 스킨에 따라 한 줄에 하나의 상품만 출력할 수도 있습니다."); ?>
-                <input type="text" name="ca_mobile_list_mod" value='<?php echo $ca['ca_mobile_list_mod']; ?>' id="ca_mobile_list_mod" required class="required frm_input" size="3"> 개
             </td>
         </tr>
         <tr>
             <th scope="row"><label for="ca_mobile_list_row">모바일 이미지 줄 수</label></th>
             <td>
+                <input type="text" name="ca_mobile_list_row" value='<?php echo $ca['ca_mobile_list_row']; ?>' id="ca_mobile_list_row" required class="frm_input" size="3"> 줄
                 <?php echo help("한 페이지에 출력할 이미지 줄 수를 설정합니다.\n한 페이지에서 표시하는 상품수는 (1줄당 이미지 수 x 줄 수) 입니다."); ?>
-                <input type="text" name="ca_mobile_list_row" value='<?php echo $ca['ca_mobile_list_row']; ?>' id="ca_mobile_list_row" required class="required frm_input" size="3"> 줄
             </td>
         </tr>
         <tr>
             <th scope="row"><label for="ca_stock_qty">재고수량</label></th>
             <td>
-                <?php echo help("상품의 기본재고 수량을 설정합니다.\n재고를 사용하지 않는다면 숫자를 크게 입력하여 주십시오. 예) 999999"); ?>
                 <input type="text" name="ca_stock_qty" size="10" value="<?php echo $ca['ca_stock_qty']; ?>" id="ca_stock_qty" class="frm_input"> 개
+                <?php echo help("상품의 기본재고 수량을 설정합니다.\n재고를 사용하지 않는다면 숫자를 크게 입력하여 주십시오. 예) 999999"); ?>
             </td>
         </tr>
         <tr>
             <th scope="row"><label for="ca_sell_email">판매자 E-mail</label></th>
             <td>
-                <?php echo help("운영자와 판매자가 다른 경우에 사용합니다.\n이 분류에 속한 상품을 등록할 경우에 기본값으로 입력됩니다."); ?>
                 <input type="text" name="ca_sell_email" size="40" value="<?php echo get_sanitize_input($ca['ca_sell_email']); ?>" id="ca_sell_email" class="frm_input">
+                <?php echo help("운영자와 판매자가 다른 경우에 사용합니다.\n이 분류에 속한 상품을 등록할 경우에 기본값으로 입력됩니다."); ?>
             </td>
         </tr>
         <tr>
             <th scope="row"><label for="ca_use">판매가능</label></th>
             <td>
-                <?php echo help("재고가 없거나 일시적으로 판매를 중단하시려면 체크 해제하십시오.\n체크 해제하시면 상품 출력을 하지 않으며, 주문도 받지 않습니다."); ?>
                 <input type="checkbox" name="ca_use" <?php echo ($ca['ca_use']) ? "checked" : ""; ?> value="1" id="ca_use">
                 예
+                <?php echo help("재고가 없거나 일시적으로 판매를 중단하시려면 체크 해제하십시오.\n체크 해제하시면 상품 출력을 하지 않으며, 주문도 받지 않습니다."); ?>
             </td>
         </tr>
         <tr>
             <th scope="row"><label for="ca_nocoupon">쿠폰적용안함</label></th>
             <td>
-                <?php echo help("설정에 체크하시면 쿠폰생성 때 분류 검색 결과에 노출되지 않습니다."); ?>
                 <input type="checkbox" name="ca_nocoupon" <?php echo ($ca['ca_nocoupon']) ? "checked" : ""; ?> value="1" id="ca_nocoupon">
                 예
+                <?php echo help("설정에 체크하시면 쿠폰생성 때 분류 검색 결과에 노출되지 않습니다."); ?>
             </td>
         </tr>
         </tbody>
@@ -358,10 +359,11 @@ else {
 
 
 <section id="anc_scatefrm_optional">
-    <h2 class="h2_frm">선택 입력</h2>
+    
     <?php echo $pg_anchor; ?>
 
-    <div class="tbl_frm01 tbl_wrap">
+    <div class="tbl_frm01 tbl_wrap content-box">
+        <h2 class="h2_frm">선택 입력</h2>
         <table>
         <caption>분류 추가 선택입력</caption>
         <colgroup>
@@ -372,15 +374,15 @@ else {
         <tr>
             <th scope="row"><label for="ca_include_head">상단파일경로</label></th>
             <td>
-                <?php echo help("입력하지 않으면 기본 상단 파일을 사용합니다.<br>상단 내용과 달리 PHP 코드를 사용할 수 있습니다."); ?>
                 <input type="text" name="ca_include_head" value="<?php echo $ca['ca_include_head']; ?>" id="ca_include_head" class="frm_input" size="60">
+                <?php echo help("입력하지 않으면 기본 상단 파일을 사용합니다.<br>상단 내용과 달리 PHP 코드를 사용할 수 있습니다."); ?>
             </td>
         </tr>
         <tr>
             <th scope="row"><label for="ca_include_tail">하단 파일 경로</label></th>
             <td>
-                <?php echo help("입력하지 않으면 기본 하단 파일을 사용합니다.<br>하단 내용과 달리 PHP 코드를 사용할 수 있습니다."); ?>
                 <input type="text" name="ca_include_tail" value="<?php echo $ca['ca_include_tail']; ?>" id="ca_include_tail" class="frm_input" size="60">
+                <?php echo help("입력하지 않으면 기본 하단 파일을 사용합니다.<br>하단 내용과 달리 PHP 코드를 사용할 수 있습니다."); ?>
             </td>
         </tr>
         <tr id="admin_captcha_box" style="display:none;">
@@ -434,10 +436,11 @@ else {
 
 
 <section id="anc_scatefrm_extra">
-    <h2>여분필드 설정</h2>
+    
     <?php echo $pg_anchor ?>
 
-    <div class="tbl_frm01 tbl_wrap">
+    <div class="tbl_frm01 tbl_wrap content-box">
+        <h2>여분필드 설정</h2>
         <table>
         <colgroup>
             <col class="grid_3">

@@ -16,18 +16,19 @@ $total_count = $row['cnt'];
 
 $sql = "select * $sql_common order by ev_id desc ";
 $result = sql_query($sql);
+
+$listall = '<a href="'.$_SERVER['SCRIPT_NAME'].'" class="ov_listall">전체목록</a>';
 ?>
 
-<div class="local_ov01 local_ov">
+<div class="local_ov01 local_ov content-box">
+    <?php echo $listall; ?>
        <span class="btn_ov01"><span class="ov_txt">전체 이벤트</span><span class="ov_num"> <?php echo $total_count; ?>건</span></span>  
 </div>
 
 
-<div class="btn_fixed_top">
-    <a href="./itemeventform.php" class="btn btn_01">이벤트 추가</a>
-</div>
 
-<div class="tbl_head01 tbl_wrap">
+
+<div class="tbl_head01 tbl_wrap content-box">
     <table>
     <caption><?php echo $g5['title']; ?> 목록</caption>
     <thead>
@@ -76,6 +77,10 @@ $result = sql_query($sql);
     ?>
     </tbody>
     </table>
+</div>
+
+<div class="btn_fixed_top">
+    <a href="./itemeventform.php" class="btn btn_01">이벤트 추가</a>
 </div>
 
 <script>

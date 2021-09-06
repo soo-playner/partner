@@ -54,12 +54,12 @@ $result = sql_query($sql);
 $listall = '<a href="'.$_SERVER['SCRIPT_NAME'].'" class="ov_listall">전체목록</a>';
 ?>
 
-<div class="local_ov01 local_ov">
+<div class="local_ov01 local_ov content-box">
     <?php echo $listall; ?>
     <span class="btn_ov01"><span class="ov_txt">생성된  분류 수</span><span class="ov_num">  <?php echo number_format($total_count); ?>개</span></span>
 </div>
 
-<form name="flist" class="local_sch01 local_sch">
+<form name="flist" class="local_sch01 local_sch content-box">
 <input type="hidden" name="page" value="<?php echo $page; ?>">
 <input type="hidden" name="save_stx" value="<?php echo $stx; ?>">
 
@@ -72,7 +72,7 @@ $listall = '<a href="'.$_SERVER['SCRIPT_NAME'].'" class="ov_listall">전체목�
 
 <label for="stx" class="sound_only">검색어<strong class="sound_only"> 필수</strong></label>
 <input type="text" name="stx" value="<?php echo $stx; ?>" id="stx" required class="required frm_input">
-<input type="submit" value="검색" class="btn_submit">
+<input type="submit" value="" class="search_btn">
 
 </form>
 
@@ -83,7 +83,7 @@ $listall = '<a href="'.$_SERVER['SCRIPT_NAME'].'" class="ov_listall">전체목�
 <input type="hidden" name="stx" value="<?php echo $stx; ?>">
 <input type="hidden" name="page" value="<?php echo $page; ?>">
 
-<div id="sct" class="tbl_head01 tbl_wrap">
+<div id="sct" class="tbl_head01 tbl_wrap content-box">
     <table>
     <caption><?php echo $g5['title']; ?> 목록</caption>
     <thead>
@@ -193,7 +193,7 @@ $listall = '<a href="'.$_SERVER['SCRIPT_NAME'].'" class="ov_listall">전체목�
             <label for="ca_skin_dir<?php echo $i; ?>" class="sound_only">PC스킨폴더</label>
             <?php echo get_skin_select('shop', 'ca_skin_dir'.$i, 'ca_skin_dir['.$i.']', $row['ca_skin_dir'], 'class="skin_dir"'); ?>
             <label for="ca_skin<?php echo $i; ?>" class="sound_only">PC스킨파일</label>
-            <select id="ca_skin<?php echo $i; ?>" name="ca_skin[<?php echo $i; ?>]" required class="required">
+            <select id="ca_skin<?php echo $i; ?>" name="ca_skin[<?php echo $i; ?>]" required class="">
                 <?php echo get_list_skin_options("^list.[0-9]+\.skin\.php", $g5_shop_skin_path, $row['ca_skin']); ?>
             </select>
         </td>
@@ -239,7 +239,7 @@ $listall = '<a href="'.$_SERVER['SCRIPT_NAME'].'" class="ov_listall">전체목�
             <label for="ca_mobile_skin_dir<?php echo $i; ?>" class="sound_only">모바일스킨폴더</label>
             <?php echo get_mobile_skin_select('shop', 'ca_mobile_skin_dir'.$i, 'ca_mobile_skin_dir['.$i.']', $row['ca_mobile_skin_dir'], 'class="skin_dir"'); ?>
             <label for="ca_mobile_skin<?php echo $i; ?>" class="sound_only">모바일스킨파일</label>
-            <select id="ca_mobile_skin<?php echo $i; ?>" name="ca_mobile_skin[<?php echo $i; ?>]" required class="required">
+            <select id="ca_mobile_skin<?php echo $i; ?>" name="ca_mobile_skin[<?php echo $i; ?>]" required class="">
                 <?php echo get_list_skin_options("^list.[0-9]+\.skin\.php", $g5_mshop_skin_path, $row['ca_mobile_skin']); ?>
             </select>
         </td>

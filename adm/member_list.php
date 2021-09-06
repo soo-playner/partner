@@ -51,7 +51,7 @@ $sql = " select count(*) as cnt {$sql_common} {$sql_search} and mb_leave_date <>
 $row = sql_fetch($sql);
 $leave_count = $row['cnt'];
 
-// 차단회원수
+// // 차단회원수
 $sql = " select count(*) as cnt {$sql_common} {$sql_search} and mb_intercept_date <> '' {$sql_order} ";
 $row = sql_fetch($sql);
 $intercept_count = $row['cnt'];
@@ -67,14 +67,14 @@ $result = sql_query($sql);
 $colspan = 16;
 ?>
 
-<div class="local_ov01 local_ov">
+<div class="local_ov01 local_ov content-box">
     <?php echo $listall ?>
     <span class="btn_ov01"><span class="ov_txt">총회원수 </span><span class="ov_num"> <?php echo number_format($total_count) ?>명 </span></span>
     <a href="?sst=mb_intercept_date&amp;sod=desc&amp;sfl=<?php echo $sfl ?>&amp;stx=<?php echo $stx ?>" class="btn_ov01" data-tooltip-text="차단된 순으로 정렬합니다.&#xa;전체 데이터를 출력합니다."> <span class="ov_txt">차단 </span><span class="ov_num"><?php echo number_format($intercept_count) ?>명</span></a>
     <a href="?sst=mb_leave_date&amp;sod=desc&amp;sfl=<?php echo $sfl ?>&amp;stx=<?php echo $stx ?>" class="btn_ov01" data-tooltip-text="탈퇴된 순으로 정렬합니다.&#xa;전체 데이터를 출력합니다."> <span class="ov_txt">탈퇴  </span><span class="ov_num"><?php echo number_format($leave_count) ?>명</span></a>
 </div>
 
-<form id="fsearch" name="fsearch" class="local_sch01 local_sch" method="get">
+<form id="fsearch" name="fsearch" class="local_sch01 local_sch content-box" method="get">
 
 <label for="sfl" class="sound_only">검색대상</label>
 <select name="sfl" id="sfl">
@@ -92,11 +92,11 @@ $colspan = 16;
 </select>
 <label for="stx" class="sound_only">검색어<strong class="sound_only"> 필수</strong></label>
 <input type="text" name="stx" value="<?php echo $stx ?>" id="stx" required class="required frm_input">
-<input type="submit" class="btn_submit" value="검색">
+<input type="submit" class="search_btn" value="">
 
 </form>
 
-<div class="local_desc01 local_desc">
+<div class="local_desc01 local_desc content-box-desc">
     <p>
         회원자료 삭제 시 다른 회원이 기존 회원아이디를 사용하지 못하도록 회원아이디, 이름, 닉네임은 삭제하지 않고 영구 보관합니다.
     </p>
@@ -111,7 +111,7 @@ $colspan = 16;
 <input type="hidden" name="page" value="<?php echo $page ?>">
 <input type="hidden" name="token" value="">
 
-<div class="tbl_head01 tbl_wrap">
+<div class="tbl_head01 tbl_wrap content-box">
     <table>
     <caption><?php echo $g5['title']; ?> 목록</caption>
     <thead>
@@ -334,6 +334,128 @@ function fmemberlist_submit(f)
     return true;
 }
 </script>
+
+<link href="<?=G5_ADMIN_URL?>/css/scss/include/new_default.css" rel="stylesheet">
+<link href="<?=G5_ADMIN_URL?>/css/scss/page/member_list.css" rel="stylesheet">
+
+<!-- <section class="mid_wrap content-box">
+    <div class="nav_wrap">
+        <ul>
+            <li>총회원수:110명</li>
+            <li>회원 총 자산 합계:12,500</li>
+            <li>회원 총 입금 합계:30,000</li>
+            <li>회원 총 수당 합계:1,260,000</li>
+        </ul>
+    </div>
+</section>
+<section class="bottom_wrap content-box">
+    <div class="search_wrap">
+        <div class="left_wrap">
+            <ul>
+                <li><a href="">수당한계푸쉬알림</a></li>
+                <li><a href="">추천관계검사</a></li>
+                <li><a href="">회원추천관계갱신</a></li>
+                <li><a href="">회원직접추가</a></li>
+                <li><a href="">회원엑셀다운로드</a></li>
+            </ul>
+        </div>
+        <div class="right_wrap">
+            <ul>
+                <form action="">
+                    <li>
+                        <select name="" id="" class="form-control">
+                            <option value="">회원아이디</option>
+                        </select>
+                    </li>
+                    <li>
+                        <input type="text" class="form-control">
+                    </li>
+                    <li>
+                        <button><i class="ri-search-line"></i></button>
+                    </li>
+                </form>
+            </ul>
+        </div>
+    </div>
+    <div class="table_wrap">
+        <div class="tbl_wrap tbl_head01">
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col"><input type="checkbox"></th>
+                        <th scope="col">회원등급</th>
+                        <th scope="col">아이디</th>
+                        <th scope="col">추천인</th>
+                        <th scope="col">입금액</th>
+                        <th scope="col">구매사용</th>
+                        <th scope="col">출금가능잔고</th>
+                        <th scope="col">출금금액</th>
+                        <th scope="col">보너스총액</th>
+                        <th scope="col">누적매출</th>
+                        <th scope="col">PV</th>
+                        <th scope="col">수당/한계<br>(100%)</th>
+                        <th scope="col">상태/회원레벨</th>
+                        <th scope="col">관리</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td><img src="<?=G5_ADMIN_URL?>/img/star.png" alt=""></td>
+                        <td>test2</td>
+                        <td>$0.00</td>
+                        <td>$0.00</td>
+                        <td>$0.00</td>
+                        <td>$0.00</td>
+                        <td>$0.00</td>
+                        <td>$0.00</td>
+                        <td>$0.00</td>
+                        <td>$0.00</td>
+                        <td>0%</td>
+                        <td>
+                            <select name="" id="">
+                                <option value="">일반회원</option>
+                            </select>
+                        </td>
+                        <td>
+                            <a href="./member_form.php"><img src="<?=G5_ADMIN_URL?>/img/pencil.png" alt=""></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td><img src="<?=G5_ADMIN_URL?>/img/star.png" alt=""></td>
+                        <td>test2</td>
+                        <td>$0.00</td>
+                        <td>$0.00</td>
+                        <td>$0.00</td>
+                        <td>$0.00</td>
+                        <td>$0.00</td>
+                        <td>$0.00</td>
+                        <td>$0.00</td>
+                        <td>$0.00</td>
+                        <td>0%</td>
+                        <td>
+                            <select name="" id="">
+                                <option value="">일반회원</option>
+                            </select>
+                        </td>
+                        <td>
+                            <img src="<?=G5_ADMIN_URL?>/img/pencil.png" alt="">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="page_wrap">
+        <div class="btn_wrap">
+            <a href="">선택수정</a>
+            <a href="">선택삭제</a>
+        </div>
+        <div></div>
+    </div>
+</section> -->
+
 
 <?php
 include_once ('./admin.tail.php');

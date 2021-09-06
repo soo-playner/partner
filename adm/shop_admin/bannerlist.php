@@ -46,7 +46,7 @@ if ($page < 1) { $page = 1; } // 페이지가 없으면 첫 페이지 (1 페이�
 $from_record = ($page - 1) * $rows; // 시작 열을 구함
 ?>
 
-<div class="local_ov01 local_ov">
+<div class="local_ov01 local_ov content-box">
     <span class="btn_ov01"><span class="ov_txt"> <?php echo ($sql_search) ? '검색' : '등록'; ?>된 배너 </span><span class="ov_num"> <?php echo $total_count; ?>개</span></span>
 
     <form name="flist" class="local_sch01 local_sch">
@@ -71,17 +71,13 @@ $from_record = ($page - 1) * $rows; // 시작 열을 구함
         <option value="end"<?php echo get_selected($bn_time, 'end'); ?>>종료된 배너</option>
     </select>
 
-    <input type="submit" value="검색" class="btn_submit">
+    <input type="submit" value="" class="search_btn">
 
     </form>
 
 </div>
 
-<div class="btn_fixed_top">
-    <a href="./bannerform.php" class="btn_01 btn">배너추가</a>
-</div>
-
-<div class="tbl_head01 tbl_wrap">
+<div class="tbl_head01 tbl_wrap content-box">
     <table>
     <caption><?php echo $g5['title']; ?> 목록</caption>
     <thead>
@@ -171,6 +167,10 @@ $from_record = ($page - 1) * $rows; // 시작 열을 구함
     </tbody>
     </table>
 
+</div>
+
+<div class="btn_fixed_top">
+    <a href="./bannerform.php" class="btn_01 btn">배너추가</a>
 </div>
 
 <?php echo get_paging(G5_IS_MOBILE ? $config['cf_mobile_pages'] : $config['cf_write_pages'], $page, $total_page, "{$_SERVER['SCRIPT_NAME']}?$qstr&amp;page="); ?>

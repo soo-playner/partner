@@ -33,13 +33,14 @@ include_once (G5_ADMIN_PATH.'/admin.head.php');
 ?>
 
 <section id="scp_list">
-    <h2>추가배송비 내역</h2>
+    
 
     <form name="fsendcost" id="fsendcost" method="post" action="./sendcostupdate.php" onsubmit="return fsendcost_submit(this);">
     <input type="hidden" name="w" value="d">
     <input type="hidden" name="page" value="<?php echo $page; ?>">
     <input type="hidden" name="token" value="">
-    <div class="tbl_head01 tbl_wrap">
+    <div class="tbl_head01 tbl_wrap content-box">
+    <h2>추가배송비 내역</h2>
         <table>
         <caption>추가배송비 내역</caption>
         <thead>
@@ -87,12 +88,13 @@ include_once (G5_ADMIN_PATH.'/admin.head.php');
 <?php echo get_paging(G5_IS_MOBILE ? $config['cf_mobile_pages'] : $config['cf_write_pages'], $page, $total_page, "{$_SERVER['SCRIPT_NAME']}?$qstr&amp;page="); ?>
 
 <section id="sendcost_postal">
-    <h2 class="h2_frm">추가배송비 등록</h2>
+    
 
     <form name="fsendcost2" method="post" id="fsendcost2" action="./sendcostupdate.php" autocomplete="off">
     <input type="hidden" name="token" value="">
 
-    <div class="tbl_frm01 tbl_wrap">
+    <div class="tbl_frm01 tbl_wrap content-box">
+        <h2 class="h2_frm">추가배송비 등록</h2>
         <table>
         <caption>추가배송비 등록</caption>
         <colgroup>
@@ -102,23 +104,23 @@ include_once (G5_ADMIN_PATH.'/admin.head.php');
         <tbody>
         <tr>
             <th scope="row"><label for="sc_name">지역명<strong class="sound_only">필수</strong></label></th>
-            <td><input type="text" name="sc_name" value="" id="sc_name" class="required frm_input" size="30" required></td>
+            <td><input type="text" name="sc_name" value="" id="sc_name" class="frm_input" size="30" required></td>
         </tr>
         <tr>
             <th scope="row"><label for="sc_zip1">우편번호 시작<strong class="sound_only">필수</strong></label></th>
             <td>
-                <input type="text" name="sc_zip1" id="sc_zip1" required class="required frm_input" size="10"> (입력 예 : 01234)
+                <input type="text" name="sc_zip1" id="sc_zip1" required class="frm_input" size="10"> (입력 예 : 01234)
             </td>
         </tr>
         <tr>
             <th scope="row"><label for="sc_zip2">우편번호 끝<strong class="sound_only">필수</strong></label></th>
             <td>
-                <input type="text" name="sc_zip2" id="sc_zip2" required class="required frm_input" size="10"> (입력 예 : 01234)
+                <input type="text" name="sc_zip2" id="sc_zip2" required class="frm_input" size="10"> (입력 예 : 01234)
             </td>
         </tr>
         <tr>
             <th scope="row"><label for="sc_price">추가배송비<strong class="sound_only">필수</strong></label></th>
-            <td><input type="text" name="sc_price" id="sc_price" size="8" required class="required frm_input"> 원</td>
+            <td><input type="text" name="sc_price" id="sc_price" size="8" required class="frm_input"> 원</td>
         </tr>
         </tbody>
         </table>

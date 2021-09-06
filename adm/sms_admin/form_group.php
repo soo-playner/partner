@@ -67,26 +67,26 @@ function grouplist_submit(f)
 
 </script>
 
-<form name="group<?php echo isset($res['fg_no']) ? $res['fg_no'] : ''; ?>" method="post" action="./form_group_update.php" class="local_sch03 local_sch">
+<form name="group<?php echo isset($res['fg_no']) ? $res['fg_no'] : ''; ?>" method="post" action="./form_group_update.php" class="local_sch03 local_sch content-box">
 <input type="hidden" name="fg_no" value="<?php echo isset($res['fg_no']) ? $res['fg_no'] : ''; ?>">
 <div>
     <label for="fg_name">그룹명<strong class="sound_only"> 필수</strong></label>
     <input type="text" id="fg_name" name="fg_name" required class="required frm_input">
-    <input type="submit" value="추가" class="btn_submit">
+    <input type="submit" value="추가" class="submit_btn">
 </div>
 <div class="sch_last">
     <span class="count_add01">건수 : <?php echo $total_count ?></span>
 </div>
 </form>
 
-<div class="local_desc01 local_desc">
+<div class="local_desc01 local_desc content-box-desc">
     <p>그룹명순으로 정렬됩니다.</p>
 </div>
 
 <form name="group<?php echo isset($group[$i]['fg_no']) ? $group[$i]['fg_no'] : ''; ?>" method="post" action="./form_group_update.php" onsubmit="return grouplist_submit(this);">
 <input type="hidden" name="w" value="u">
 
-<div class="tbl_head01 tbl_wrap">
+<div class="tbl_head01 tbl_wrap content-box">
     <table>
     <caption><?php echo $g5['title']; ?> 목록</caption>
     <thead>

@@ -57,12 +57,12 @@ $qstr .= ($qstr ? '&amp;' : '').'sca='.$sca.'&amp;save_stx='.$stx;
 $listall = '<a href="'.$_SERVER['SCRIPT_NAME'].'" class="ov_listall">전체목록</a>';
 ?>
 
-<div class="local_ov01 local_ov">
+<div class="local_ov01 local_ov content-box">
     <?php echo $listall; ?>
     <span class="btn_ov01"><span class="ov_txt"> 전체 후기내역</span><span class="ov_num">  <?php echo $total_count; ?>건</span></span>
 </div>
 
-<form name="flist" class="local_sch01 local_sch">
+<form name="flist" class="local_sch01 local_sch content-box">
 <input type="hidden" name="page" value="<?php echo $page; ?>">
 <input type="hidden" name="save_stx" value="<?php echo $stx; ?>">
 
@@ -91,7 +91,7 @@ $listall = '<a href="'.$_SERVER['SCRIPT_NAME'].'" class="ov_listall">전체목�
 
 <label for="stx" class="sound_only">검색어<strong class="sound_only"> 필수</strong></label>
 <input type="text" name="stx" id="stx" value="<?php echo $stx; ?>" required class="frm_input required">
-<input type="submit" value="검색" class="btn_submit">
+<input type="submit" value="" class="search_btn">
 
 </form>
 
@@ -103,7 +103,7 @@ $listall = '<a href="'.$_SERVER['SCRIPT_NAME'].'" class="ov_listall">전체목�
 <input type="hidden" name="stx" value="<?php echo $stx; ?>">
 <input type="hidden" name="page" value="<?php echo $page; ?>">
 
-<div class="tbl_head01 tbl_wrap" id="itemuselist">
+<div class="tbl_head01 tbl_wrap content-box" id="itemuselist">
     <table>
     <caption><?php echo $g5['title']; ?> 목록</caption>
     <thead>

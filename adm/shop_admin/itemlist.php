@@ -78,12 +78,12 @@ $qstr  = $qstr.'&amp;sca='.$sca.'&amp;page='.$page.'&amp;save_stx='.$stx;
 $listall = '<a href="'.$_SERVER['SCRIPT_NAME'].'" class="ov_listall">전체목록</a>';
 ?>
 
-<div class="local_ov01 local_ov">
+<div class="local_ov01 local_ov content-box">
     <?php echo $listall; ?>
     <span class="btn_ov01"><span class="ov_txt">등록된 상품</span><span class="ov_num"> <?php echo $total_count; ?>건</span></span>
 </div>
 
-<form name="flist" class="local_sch01 local_sch">
+<form name="flist" class="local_sch01 local_sch content-box">
 <input type="hidden" name="save_stx" value="<?php echo $stx; ?>">
 
 <label for="sca" class="sound_only">분류선택</label>
@@ -111,8 +111,8 @@ $listall = '<a href="'.$_SERVER['SCRIPT_NAME'].'" class="ov_listall">전체목�
 </select>
 
 <label for="stx" class="sound_only">검색어</label>
-<input type="text" name="stx" value="<?php echo $stx; ?>" id="stx" class="frm_input">
-<input type="submit" value="검색" class="btn_submit">
+<input type="text" name="stx" value="<?php echo $stx; ?>" id="stx" class="frm_input required">
+<input type="submit" value="" class="search_btn">
 
 </form>
 
@@ -124,7 +124,7 @@ $listall = '<a href="'.$_SERVER['SCRIPT_NAME'].'" class="ov_listall">전체목�
 <input type="hidden" name="stx" value="<?php echo $stx; ?>">
 <input type="hidden" name="page" value="<?php echo $page; ?>">
 
-<div class="tbl_head01 tbl_wrap">
+<div class="tbl_head01 tbl_wrap content-box">
     <table>
     <caption><?php echo $g5['title']; ?> 목록</caption>
     <thead>

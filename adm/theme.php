@@ -26,7 +26,7 @@ include_once('./admin.head.php');
 ?>
 
 <script src="<?php echo G5_ADMIN_URL; ?>/theme.js"></script>
-<div class="local_wr">
+<div class="local_wr content-box">
     <span class="btn_ov01"><span class="ov_txt">설치된 테마</span><span class="ov_num">  <?php echo number_format($total_count); ?></span></span>
 
 </div>

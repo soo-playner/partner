@@ -18,7 +18,7 @@ if (!$min_year) {
 }
 ?>
 
-<div class="local_ov01 local_ov">
+<!-- <div class="local_ov01 local_ov">
     접속자 로그를 삭제할 년도와 방법을 선택해주십시오.
 </div>
 
@@ -57,7 +57,7 @@ if (!$min_year) {
         <input type="password" name="pass" id="pass" class="frm_input required">
         <input type="submit" value="확인" class="btn_submit">
     </div>
-</form>
+</form> -->
 
 <script>
 function form_submit(f)
@@ -92,6 +92,58 @@ function form_submit(f)
     return confirm(msg);
 }
 </script>
+<link href="<?=G5_ADMIN_URL?>/css/scss/include/new_default.css" rel="stylesheet">
+<link href="<?=G5_ADMIN_URL?>/css/scss/page/visit_delete.css" rel="stylesheet">
+
+<section class="mid_wrap content-box">
+    <div class="nav_wrap">
+        <ul class="title_wrap">
+            <li>접속자 로그를 삭제할 년도와 방법을 선택해주십시오.</li>
+        </ul>
+        <ul>
+            <form name="fvisitdelete" class="visit_del" method="post" action="./visit_delete_update.php" onsubmit="return form_submit(this);">
+                <li>
+                    <select name="year" id="year">
+                        <option value="">년도선택</option>
+                        <?php
+                        for($year=$min_year; $year<=$now_year; $year++) {
+                        ?>
+                        <option value="<?php echo $year; ?>"><?php echo $year; ?></option>
+                        <?php
+                        }
+                        ?>
+                    </select>
+                </li>
+                <li>
+                    <select name="month" id="month">
+                        <option value="">월선택</option>
+                        <?php
+                        for($i=1; $i<=12; $i++) {
+                        ?>
+                        <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                        <?php
+                        }
+                        ?>
+                    </select>
+                </li>
+                <li>
+                    <select name="method" id="method">
+                        <option value="before">선택년월 이전 자료삭제</option>
+                        <option value="specific">선택년월의 자료삭제</option>
+                    </select>
+                </li>
+                <li>
+                    <input type="password" name="pass" id="pass" class="frm_input" placeholder="관리자 비밀번호">
+                    <input type="submit" value="확인" class="btn_submit">
+                </li>
+                <!-- <li>
+                    <button><i class="ri-search-line"></i></button>
+                </li> -->
+            </form>
+        </ul>
+    </div>
+</section>
+
 
 <?php
 include_once('./admin.tail.php');

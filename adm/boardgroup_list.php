@@ -58,12 +58,16 @@ include_once('./admin.head.php');
 $colspan = 10;
 ?>
 
-<div class="local_ov01 local_ov">
+<!-- <div class="local_ov01 local_ov">
     <?php echo $listall ?>
     <span class="btn_ov01"><span class="ov_txt">전체그룹</span><span class="ov_num">  <?php echo number_format($total_count) ?>개</span></span>
-</div>
+</div> -->
 
-<form name="fsearch" id="fsearch" class="local_sch01 local_sch" method="get">
+<?php 
+    include_once('./board.nav.php');
+?>
+
+<form name="fsearch" id="fsearch" class="local_sch01 local_sch content-box" method="get">
 <label for="sfl" class="sound_only">검색대상</label>
 <select name="sfl" id="sfl">
     <option value="gr_subject"<?php echo get_selected($sfl, "gr_subject"); ?>>제목</option>
@@ -72,7 +76,7 @@ $colspan = 10;
 </select>
 <label for="stx" class="sound_only">검색어<strong class="sound_only"> 필수</strong></label>
 <input type="text" name="stx" id="stx" value="<?php echo $stx ?>" required class="required frm_input">
-<input type="submit" value="검색" class="btn_submit">
+<input type="submit" value="" class="search_btn">
 </form>
 
 
@@ -84,7 +88,7 @@ $colspan = 10;
 <input type="hidden" name="page" value="<?php echo $page ?>">
 <input type="hidden" name="token" value="">
 
-<div class="tbl_head01 tbl_wrap">
+<div class="tbl_head01 tbl_wrap content-box">
     <table>
     <caption><?php echo $g5['title']; ?> 목록</caption>
     <thead>
@@ -176,7 +180,7 @@ $colspan = 10;
 </div>
 </form>
 
-<div class="local_desc01 local_desc">
+<div class="local_desc01 local_desc content-box">
     <p>
         접근사용 옵션을 설정하시면 관리자가 지정한 회원만 해당 그룹에 접근할 수 있습니다.<br>
         접근사용 옵션은 해당 그룹에 속한 모든 게시판에 적용됩니다.

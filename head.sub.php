@@ -41,6 +41,7 @@ header("Pragma: no-cache"); // HTTP/1.0
 <html lang="ko">
 <head>
 <meta charset="utf-8">
+
 <?php
 if (G5_IS_MOBILE) {
     echo '<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=0,maximum-scale=10">'.PHP_EOL;
@@ -65,6 +66,13 @@ if (defined('G5_IS_ADMIN')) {
     echo '<link rel="stylesheet" href="'.run_replace('head_css_url', G5_CSS_URL.'/'.(G5_IS_MOBILE?'mobile':'default').$shop_css.'.css?ver='.G5_CSS_VER, G5_URL).'">'.PHP_EOL;
 }
 ?>
+
+<!-- custom CSS 추가 -->
+
+<link rel="stylesheet" href="<?=G5_CSS_URL?>/scss/victor.css"/>
+<link rel="stylesheet" href="<?=G5_CSS_URL?>/bootstrap-grid.css"/>
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
 <!--[if lte IE 8]>
 <script src="<?php echo G5_JS_URL ?>/html5.js"></script>
 <![endif]-->

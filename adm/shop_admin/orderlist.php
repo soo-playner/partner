@@ -151,7 +151,7 @@ if( function_exists('pg_setting_check') ){
 }
 ?>
 
-<div class="local_ov01 local_ov">
+<div class="local_ov01 local_ov content-box">
     <?php echo $listall; ?>
     <span class="btn_ov01"><span class="ov_txt">전체 주문내역</span><span class="ov_num"> <?php echo number_format($total_count); ?>건</span></span>
     <?php if($od_status == '준비' && $total_count > 0) { ?>
@@ -159,7 +159,7 @@ if( function_exists('pg_setting_check') ){
     <?php } ?>
 </div>
 
-<form name="frmorderlist" class="local_sch01 local_sch">
+<form name="frmorderlist" class="local_sch01 local_sch content-box">
 <input type="hidden" name="doc" value="<?php echo $doc; ?>">
 <input type="hidden" name="sort1" value="<?php echo $sort1; ?>">
 <input type="hidden" name="sort2" value="<?php echo $sort2; ?>">
@@ -182,11 +182,11 @@ if( function_exists('pg_setting_check') ){
 
 <label for="search" class="sound_only">검색어<strong class="sound_only"> 필수</strong></label>
 <input type="text" name="search" value="<?php echo $search; ?>" id="search" required class="required frm_input" autocomplete="off">
-<input type="submit" value="검색" class="btn_submit">
+<input type="submit" value="" class="search_btn">
 
 </form>
 
-<form class="local_sch03 local_sch">
+<form class="local_sch03 local_sch content-box">
 <div>
     <strong>주문상태</strong>
     <input type="radio" name="od_status" value="" id="od_status_all"    <?php echo get_checked($od_status, '');     ?>>
@@ -256,14 +256,14 @@ if( function_exists('pg_setting_check') ){
     <button type="button" onclick="javascript:set_date('지난주');">지난주</button>
     <button type="button" onclick="javascript:set_date('지난달');">지난달</button>
     <button type="button" onclick="javascript:set_date('전체');">전체</button>
-    <input type="submit" value="검색" class="btn_submit">
+    <input type="submit" value="" class="search_btn">
 </div>
 </form>
 
 <form name="forderlist" id="forderlist" onsubmit="return forderlist_submit(this);" method="post" autocomplete="off">
 <input type="hidden" name="search_od_status" value="<?php echo $od_status; ?>">
 
-<div class="tbl_head01 tbl_wrap">
+<div class="tbl_head01 tbl_wrap content-box">
     <table id="sodr_list">
     <caption>주문 내역 목록</caption>
     <thead>
@@ -486,7 +486,7 @@ if( function_exists('pg_setting_check') ){
     <?php if ($od_status == '주문') { ?> <span>주문상태에서만 삭제가 가능합니다.</span> <input type="submit" value="선택삭제" class="btn_submit" onclick="document.pressed=this.value"><?php } ?>
 </div>
 
-<div class="local_desc02 local_desc">
+<div class="local_desc02 local_desc content-box-desc">
 <p>
     &lt;무통장&gt;인 경우에만 &lt;주문&gt;에서 &lt;입금&gt;으로 변경됩니다. 가상계좌는 입금시 자동으로 &lt;입금&gt;처리됩니다.<br>
     &lt;준비&gt;에서 &lt;배송&gt;으로 변경시 &lt;에스크로배송등록&gt;을 체크하시면 에스크로 주문에 한해 PG사에 배송정보가 자동 등록됩니다.<br>

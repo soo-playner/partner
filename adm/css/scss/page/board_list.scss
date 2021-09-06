@@ -1,0 +1,51 @@
+@charset "utf-8";
+@import "../include/_variable";
+@import "../include/mixin";
+
+.board_list_wrap {
+    font-size: inherit;
+    .tbl_head01 {
+        th {
+            a {
+                color: #000;
+            }
+        }
+    }
+}
+
+.search_wrap {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
+    
+
+    .board_add_btn {
+        a {
+            padding: 0 40px;
+        }
+    }
+
+    select {
+        border-radius: 30px;
+        height: 32px;
+        line-height: 32px;
+        padding: 0 6px;
+    }
+
+    input[type='text'] {
+        background: #f7f7f7;
+        border: none;
+        height: 32px;
+        padding: 10px;
+    }
+
+    input[type='submit'] {
+        background: #262d3a;
+        padding: 1px 0;
+        width: 50px;
+        border-radius: 15px !important;
+        background: url('../../../img/search.png') no-repeat 50% 50% #262d3a;
+    }
+    
+}

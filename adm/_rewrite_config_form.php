@@ -36,9 +36,9 @@ add_stylesheet('<link rel="stylesheet" href="'.G5_JS_URL.'/remodal/remodal-defau
 add_javascript('<script src="'.G5_JS_URL.'/remodal/remodal.js"></script>', 10);
 ?>
 <section id="anc_cf_url">
-    <h2 class="h2_frm">짧은 주소 설정</h2>
+    
     <?php echo $pg_anchor ?>
-    <div class="local_desc02 local_desc">
+    <div class="local_desc02 local_desc content-box-desc">
         <p>
             게시판과 컨텐츠 페이지에 짧은 URL 을 사용합니다. <a href="https://sir.kr/manual/g5/286" class="btn btn_03" target="_blank" style="margin-left:10px">설정 관련 메뉴얼 보기</a>
             <?php if( $is_use_apache && ! $is_use_nginx ){ ?>
@@ -60,7 +60,8 @@ add_javascript('<script src="'.G5_JS_URL.'/remodal/remodal.js"></script>', 10);
         <?php } ?>
     </div>
 
-    <div class="tbl_frm01 tbl_wrap">
+    <div class="tbl_frm01 tbl_wrap content-box">
+        <h2 class="h2_frm">짧은 주소 설정</h2>
         <table>
         <caption>짧은주소 설정</caption>
         <colgroup>

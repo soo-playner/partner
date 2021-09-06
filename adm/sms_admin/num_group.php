@@ -73,29 +73,29 @@ function num_group_submit(f)
 
 </script>
 
-<div class="sch_last">
+<div class="sch_last content-box">
     <span class="btn_ov01"><span class="ov_txt">건수</span><span class="ov_num"> <?php echo $total_count; ?>건 </span></span>
 </div>
 
-<form name="group<?php echo isset($res['bg_no']) ? $res['bg_no'] : ''; ?>" method="get" action="./num_group_update.php" class="local_sch02 local_sch">
+<form name="group<?php echo isset($res['bg_no']) ? $res['bg_no'] : ''; ?>" method="get" action="./num_group_update.php" class="local_sch02 local_sch content-box">
 <input type="hidden" name="bg_no" value="<?php echo isset($res['bg_no']) ? $res['bg_no'] : ''; ?>">
 
 <div>
     <label for="bg_name" class="sound_only">그룹추가<strong class="sound_only"> 필수</strong></label>
-    <input type="text" id="bg_name" name="bg_name" required class="required frm_input">
-    <input type="submit" value="그룹추가" class="btn_submit btn">
+    <input type="text" id="bg_name" name="bg_name" required class="frm_input">
+    <input type="submit" value="그룹추가" class="submit_btn">
 </div>
 
 </form>
 
-<div class="local_desc01 local_desc">
+<div class="local_desc01 local_desc content-box-desc">
     <p>그룹명순으로 정렬됩니다.</p>
 </div>
 
 <form name="group_hp_form" id="group_hp_form" method="post" action="./num_group_update.php" onsubmit="return num_group_submit(this);">
 <input type="hidden" name="w" value="u">
 
-<div class="tbl_head01 tbl_wrap">
+<div class="tbl_head01 tbl_wrap content-box">
     <table>
     <caption><?php echo $g5['title']; ?> 목록</caption>
     <thead>

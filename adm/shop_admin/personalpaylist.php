@@ -54,11 +54,11 @@ include_once (G5_ADMIN_PATH.'/admin.head.php');
 $colspan = 10;
 ?>
 
-<div class="local_ov01 local_ov">
+<div class="local_ov01 local_ov content-box">
    <span class="btn_ov01"><span class="ov_txt">전체 </span><span class="ov_num"> <?php echo number_format($total_count) ?>건 </span></span>
 </div>
 
-<form name="fsearch" id="fsearch" class="local_sch01 local_sch" method="get">
+<form name="fsearch" id="fsearch" class="local_sch01 local_sch content-box" method="get">
     <select name="sfl" title="검색대상">
         <option value="pp_id"<?php echo get_selected($sfl, "pp_id"); ?>>개인결제번호</option>
         <option value="pp_name"<?php echo get_selected($sfl, "pp_name"); ?>>이름</option>
@@ -66,7 +66,7 @@ $colspan = 10;
     </select>
     <label for="stx" class="sound_only">검색어<strong class="sound_only"> 필수</strong></label>
     <input type="text" name="stx" value="<?php echo $stx ?>" id="stx" required class="required frm_input">
-    <input type="submit" class="btn_submit" value="검색">
+    <input type="submit" class="search_btn" value="">
 </form>
 
 
@@ -79,7 +79,7 @@ $colspan = 10;
 <input type="hidden" name="page" value="<?php echo $page; ?>">
 <input type="hidden" name="token" value="">
 
-<div class="tbl_head01 tbl_wrap">
+<div class="tbl_head01 tbl_wrap content-box">
     <table>
     <caption><?php echo $g5['title']; ?> 목록</caption>
     <thead>

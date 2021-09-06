@@ -1,0 +1,38 @@
+@charset "utf-8";
+@import "./_variable";
+@import "./_mixin";
+
+div.top_wrap {
+    margin: 0 10px;
+    
+    .nav_wrap {
+        padding: 0;
+        
+
+        ul {
+            display: flex;
+            flex-flow: row;
+            justify-content: space-between;
+            width: 700px;
+            height: 40px;
+            line-height: 40px;
+
+            .menu {
+                background: #212936;
+                margin: 0;
+                color: #fff;
+                border-radius: 7px;
+
+                i {
+                    vertical-align: bottom;
+                    margin-right: 5px;
+                }
+            }
+
+            a {
+                padding: 0 15px;
+                color: #919eb4;
+            }
+        }
+    }
+}

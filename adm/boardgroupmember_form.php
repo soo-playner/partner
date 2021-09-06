@@ -19,12 +19,12 @@ $colspan = 4;
 <form name="fboardgroupmember_form" id="fboardgroupmember_form" action="./boardgroupmember_update.php" onsubmit="return boardgroupmember_form_check(this)" method="post">
 <input type="hidden" name="mb_id" value="<?php echo $mb['mb_id'] ?>" id="mb_id">
 <input type="hidden" name="token" value="" id="token">
-<div class="local_ov01 local_ov">
+<div class="local_ov01 local_ov content-box">
     <span class="btn_ov01"><span class="ov_txt"> 아이디</span><span class="ov_num"><?php echo $mb['mb_id'] ?></span></span>
     <span class="btn_ov01"><span class="ov_txt"> 이름</span><span class="ov_num"><?php echo get_text($mb['mb_name']); ?></span></span>
     <span class="btn_ov01"><span class="ov_txt"> 닉네임</span><span class="ov_num"><?php echo $mb['mb_nick'] ?></span></span>
 </div>    
-<div class="local_cmd01 local_cmd">
+<div class="local_cmd01 local_cmd content-box">
 
     <label for="gr_id">그룹지정</label>
     <select name="gr_id" id="gr_id">
@@ -57,7 +57,7 @@ $colspan = 4;
 <input type="hidden" name="mb_id" value="<?php echo $mb['mb_id'] ?>" id="mb_id">
 <input type="hidden" name="w" value="d" id="w">
 
-<div class="tbl_head01 tbl_wrap">
+<div class="tbl_head01 tbl_wrap content-box">
     <table>
     <caption><?php echo $g5['title']; ?> 목록</caption>
     <thead>

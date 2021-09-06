@@ -1,0 +1,95 @@
+@charset "utf-8";
+@import "./_variable";
+@import "./_mixin";
+
+
+// 메인 content box default form 
+.content-box {
+    @include content_box(0,1px,3px,0,$content-box-background,$content-box-color);
+    width:100%;
+    min-height:40px;
+    font-size:0.9rem;
+	padding: 15px;
+    margin: 10px 0;
+
+    .no_data {
+        @include content_box(0,0,0,0,$content-box-background,$content-box-color);
+        @include flexbox(center,center);
+        width: 100%;    
+    }
+}
+
+.content-box-desc {
+    @include content_box(0,1px,3px,0,$content-box-background-desc,$content-box-color);
+    width:100%;
+    min-height:40px;
+    font-size:0.9rem;
+	padding: 15px;
+    margin: 10px 0;
+
+    a {
+        font-size: 13px;
+    }
+
+    .no_data {
+        @include content_box(0,0,0,0,$content-box-background,$content-box-color);
+        @include flexbox(center,center);
+        width: 100%;    
+    }
+}
+
+.content-box-nopadding {
+    @include content_box(0,1px,3px,0,$content-box-background,$content-box-color);
+    width:100%;
+    min-height:40px;
+    font-size:0.9rem;
+    padding: 0;
+}
+
+.content-box-nomargin {
+    @include content_box(0,1px,3px,0,$content-box-background,$content-box-color);
+    width:100%;
+    min-height:40px;
+    font-size:0.9rem;
+    margin: 0;
+    padding: 15px;
+}
+
+.content-box-white {
+    @include content_box(0,1px,3px,0,#fff !important,$content-box-color);
+    width:100%;
+    min-height:40px;
+    font-size:1.8rem;
+    margin: 0 auto;
+    text-align: center;
+    padding: 250px 0 !important;
+}
+
+// 데이터 없을 시 content box
+.no_data {
+    @include content_box(0,2px,3px,0,$content-box-background,$content-box-color);
+    @include flexbox(center,center);
+    width: 100%;
+}
+
+.search_btn {
+    padding: 5px 25px;
+    background: #252d3a;
+    border-radius: 20px;
+    color: #fff;
+    background:  url('../../../img/search.png') #000 no-repeat center center;
+
+    i {
+        color: #fff;
+        font-size: 14px;
+    }
+}
+
+.submit_btn {
+    padding: 5px 15px;
+    background: #21e0a4;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+}

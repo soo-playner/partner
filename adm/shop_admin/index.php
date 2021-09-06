@@ -113,7 +113,7 @@ function get_max_value($arr)
 }
 ?>
 
-<div class="sidx">
+<div class="sidx content-box">
     <section id="anc_sidx_ord">
         <h2>주문현황</h2>
         <?php echo $pg_anchor; ?>
@@ -308,10 +308,11 @@ function get_max_value($arr)
 </div>
 
 <section id="anc_sidx_settle">
-    <h2>결제수단별 주문현황</h2>
+    
     <?php echo $pg_anchor; ?>
 
-    <div id="sidx_settle" class="tbl_head01 tbl_wrap">
+    <div id="sidx_settle" class="tbl_head01 tbl_wrap content-box">
+        <h2>결제수단별 주문현황</h2>
         <table>
         <thead>
         <tr>
@@ -369,7 +370,7 @@ function get_max_value($arr)
 </section>
 
 <div class="sidx sidx_cs">
-    <section id="anc_sidx_oneq">
+    <section id="anc_sidx_oneq" class="content-box">
         <h2>1:1문의</h2>
         <?php echo $pg_anchor; ?>
 
@@ -404,11 +405,11 @@ function get_max_value($arr)
         </div>
 
         <div class="btn_list03 btn_list">
-            <a href="<?php echo G5_BBS_URL; ?>/qalist.php" target="_blank">1:1문의 더보기</a>
+            <a href="<?php echo G5_BBS_URL; ?>/qalist.php" target="_blank" class="btn btn_01">1:1문의 더보기</a>
         </div>
     </section>
 
-    <section id="anc_sidx_qna">
+    <section id="anc_sidx_qna" class="content-box">
         <h2>상품문의</h2>
         <?php echo $pg_anchor; ?>
 
@@ -441,11 +442,11 @@ function get_max_value($arr)
         </div>
 
         <div class="btn_list03 btn_list">
-            <a href="./itemqalist.php?sort1=iq_answer&amp;sort2=asc">상품문의 더보기</a>
+            <a href="./itemqalist.php?sort1=iq_answer&amp;sort2=asc" class="btn btn_01">상품문의 더보기</a>
         </div>
     </section>
 
-    <section id="anc_sidx_ps">
+    <section id="anc_sidx_ps" class="content-box">
         <h2>사용후기</h2>
         <?php echo $pg_anchor; ?>
 
@@ -476,7 +477,7 @@ function get_max_value($arr)
         </div>
 
         <div class="btn_list03 btn_list">
-            <a href="./itemuselist.php?sort1=is_confirm&amp;sort2=asc">사용후기 더보기</a>
+            <a href="./itemuselist.php?sort1=is_confirm&amp;sort2=asc" class="btn btn_01">사용후기 더보기</a>
         </div>
     </section>
 </div>

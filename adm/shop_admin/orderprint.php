@@ -9,7 +9,7 @@ include_once (G5_ADMIN_PATH.'/admin.head.php');
 include_once(G5_PLUGIN_PATH.'/jquery-ui/datepicker.php');
 ?>
 
-<div class="local_sch03 local_sch">
+<div class="local_sch03 local_sch content-box">
 
     <div>
         <form name="forderprint" action="./orderprintresult.php" onsubmit="return forderprintcheck(this);" autocomplete="off">
@@ -37,7 +37,7 @@ include_once(G5_PLUGIN_PATH.'/jquery-ui/datepicker.php');
         ~
         <label for="to_date" class="sound_only">기간 종료일</label>
         <input type="text" name="to_date" value="<?php echo date("Ymd"); ?>" id="to_date" required class="required frm_input" size="10" maxlength="8">
-        <input type="submit" value="출력 (새창)" class="btn_submit">
+        <input type="submit" value="출력 (새창)" class="submit_btn">
 
         </form>
     </div>
@@ -69,7 +69,7 @@ include_once(G5_PLUGIN_PATH.'/jquery-ui/datepicker.php');
         ~
         <label for="fr_od_id" class="sound_only">주문번호 구간 종료</label>
         <input type="text" name="to_od_id" id="to_od_id" required class="required frm_input" size="10" maxlength="20">
-        <input type="submit" value="출력 (새창)" class="btn_submit">
+        <input type="submit" value="출력 (새창)" class="submit_btn">
 
         </form>
     </div>
@@ -80,7 +80,7 @@ include_once(G5_PLUGIN_PATH.'/jquery-ui/datepicker.php');
     <a href="./orderlist.php" class="btn_01 btn ">주문내역</a>
 </div>
 
-<div class="local_desc01 local_desc">
+<div class="local_desc01 local_desc content-box-desc">
     <p>기간별 혹은 주문번호구간별 주문내역을 새창으로 출력할 수 있습니다.</p>
 </div>
 

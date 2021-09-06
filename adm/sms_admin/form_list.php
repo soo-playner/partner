@@ -107,11 +107,11 @@ function multi_update(sel)
 }
 </script>
 
-<div class="local_ov01 local_ov">
+<div class="local_ov01 local_ov content-box">
     <span class="btn_ov01"><span class="ov_txt">건수</span><span class="ov_num"><?php echo number_format($total_count);?>건</span></span> 
 </div>
 
-<div class="local_sch01 local_sch sms_preset_sch">
+<div class="local_sch01 local_sch sms_preset_sch content-box">
     <form>
     <label for="fg_no" class="sound_only">그룹명</label>
     <select name="fg_no" id="fg_no" onchange="location.href='<?php echo $_SERVER['SCRIPT_NAME']?>?fg_no='+this.value;">
@@ -133,7 +133,7 @@ function multi_update(sel)
     </select>
     <label for="sv" class="sound_only">검색어<strong class="sound_only"> 필수</strong></label>
     <input type="text" name="sv" value="<?php echo get_text($sv) ;?>" id="sv" required class="frm_input required" >
-    <input type="submit" value="검색" class="btn_submit">
+    <input type="submit" value="" class="search_btn">
     </form>
 </div>
 

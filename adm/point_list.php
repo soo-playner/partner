@@ -68,7 +68,7 @@ else
     $mb_id = "";
 ?>
 
-<div class="local_ov01 local_ov">
+<div class="local_ov01 local_ov content-box">
     <?php echo $listall ?>
     <span class="btn_ov01"><span class="ov_txt">전체 </span><span class="ov_num"> <?php echo number_format($total_count) ?> 건 </span></span>
     <?php
@@ -81,7 +81,7 @@ else
     ?>
 </div>
 
-<form name="fsearch" id="fsearch" class="local_sch01 local_sch" method="get">
+<form name="fsearch" id="fsearch" class="local_sch01 local_sch content-box" method="get">
 <label for="sfl" class="sound_only">검색대상</label>
 <select name="sfl" id="sfl">
     <option value="mb_id"<?php echo get_selected($sfl, "mb_id"); ?>>회원아이디</option>
@@ -89,7 +89,7 @@ else
 </select>
 <label for="stx" class="sound_only">검색어<strong class="sound_only"> 필수</strong></label>
 <input type="text" name="stx" value="<?php echo $stx ?>" id="stx" required class="required frm_input">
-<input type="submit" class="btn_submit" value="검색">
+<input type="submit" class="search_btn" value="">
 </form>
 
 <form name="fpointlist" id="fpointlist" method="post" action="./point_list_delete.php" onsubmit="return fpointlist_submit(this);">
@@ -100,7 +100,7 @@ else
 <input type="hidden" name="page" value="<?php echo $page ?>">
 <input type="hidden" name="token" value="">
 
-<div class="tbl_head01 tbl_wrap">
+<div class="tbl_head01 tbl_wrap content-box">
     <table>
     <caption><?php echo $g5['title']; ?> 목록</caption>
     <thead>
@@ -181,7 +181,7 @@ else
 
 <?php echo get_paging(G5_IS_MOBILE ? $config['cf_mobile_pages'] : $config['cf_write_pages'], $page, $total_page, "{$_SERVER['SCRIPT_NAME']}?$qstr&amp;page="); ?>
 
-<section id="point_mng">
+<section id="point_mng" class="content-box">
     <h2 class="h2_frm">개별회원 포인트 증감 설정</h2>
 
     <form name="fpointlist2" method="post" id="fpointlist2" action="./point_update.php" autocomplete="off">
@@ -201,15 +201,15 @@ else
         <tbody>
         <tr>
             <th scope="row"><label for="mb_id">회원아이디<strong class="sound_only">필수</strong></label></th>
-            <td><input type="text" name="mb_id" value="<?php echo $mb_id ?>" id="mb_id" class="required frm_input" required></td>
+            <td><input type="text" name="mb_id" value="<?php echo $mb_id ?>" id="mb_id" class="frm_input" required></td>
         </tr>
         <tr>
             <th scope="row"><label for="po_content">포인트 내용<strong class="sound_only">필수</strong></label></th>
-            <td><input type="text" name="po_content" id="po_content" required class="required frm_input" size="80"></td>
+            <td><input type="text" name="po_content" id="po_content" required class="frm_input" size="80"></td>
         </tr>
         <tr>
             <th scope="row"><label for="po_point">포인트<strong class="sound_only">필수</strong></label></th>
-            <td><input type="text" name="po_point" id="po_point" required class="required frm_input"></td>
+            <td><input type="text" name="po_point" id="po_point" required class="frm_input"></td>
         </tr>
         <?php if($config['cf_point_term'] > 0) { ?>
         <tr>

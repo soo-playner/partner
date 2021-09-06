@@ -16,7 +16,7 @@ include_once(G5_ADMIN_PATH.'/admin.head.php');
 ?>
 
 <h2>파일 업로드</h2>
-<div class="local_desc01 local_desc">
+<div class="local_desc01 local_desc content-box-desc">
     <p>
         엑셀에 저장된 휴대폰번호 목록을 데이터베이스에 저장할 수 있습니다.
     </p>
@@ -36,7 +36,7 @@ include_once(G5_ADMIN_PATH.'/admin.head.php');
     </p>
 </div>
 
-<form name="upload_form" method="post" enctype="multipart/form-data" id="sms5_fileup_frm">
+<form name="upload_form" method="post" enctype="multipart/form-data" id="sms5_fileup_frm" class="content-box">
 <div>
     <label for="upload_bg_no">그룹선택</label>
     <select name="upload_bg_no" id="upload_bg_no">
@@ -66,14 +66,14 @@ include_once(G5_ADMIN_PATH.'/admin.head.php');
 </form>
 
 <h2>파일 다운로드</h2>
-<div class="local_desc01 local_desc">
+<div class="local_desc01 local_desc content-box-desc">
     <p>
         저장된 휴대폰번호 목록을 엑셀(xls) 파일로 다운로드 할 수 있습니다.<br>
         다운로드 할 휴대폰번호 그룹을 선택해주세요.
     </p>
 </div>
 
-<div class="local_sch01 local_sch">
+<div class="local_sch01 local_sch content-box">
     <p class="sms5_bkfile_p">
         <input type="checkbox" value="1" id="no_hp">
         <label for="no_hp">휴대폰 번호 없는 회원 포함</label><br>

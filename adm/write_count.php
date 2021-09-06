@@ -131,7 +131,7 @@ switch ($day) {
         break;
 }
 ?>
-<div id="wr_cont">
+<div id="wr_cont" class="local_sch01 local_sch content-box">
     <form>
     <select name="bo_table">
     <option value="">전체게시판</option>
@@ -163,7 +163,7 @@ switch ($day) {
     <option value="bar" <?php echo ($graph == 'bar' ? 'selected="selected"' : ''); ?>>막대그래프</option>
     </select>
 
-    <input type="submit" class="btn_submit" value="확인">
+    <input type="submit" class="submit_btn" value="확인">
     </form>
     <ul id="grp_color">
         <li><span></span>글 수</li>
@@ -171,7 +171,7 @@ switch ($day) {
     </ul>
 </div>
 <br>
-<div id="chart_wr">
+<div id="chart_wr" class="content-box">
 <?php
 if (empty($line1) || empty($line2)) {
     echo "<h5>그래프를 만들 데이터가 없습니다.</h5>\n";

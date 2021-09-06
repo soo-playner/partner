@@ -41,7 +41,7 @@ include_once (G5_ADMIN_PATH.'/admin.head.php');
 <input type="hidden" name="fm_id" value="<?php echo $fm_id; ?>">
 <input type="hidden" name="token" value="">
 
-<div class="tbl_frm01 tbl_wrap">
+<div class="tbl_frm01 tbl_wrap content-box">
     <table>
     <caption><?php echo $g5['title']; ?></caption>
     <colgroup>
@@ -52,14 +52,14 @@ include_once (G5_ADMIN_PATH.'/admin.head.php');
     <tr>
         <th scope="row"><label for="fm_order">출력순서</label></th>
         <td>
-            <?php echo help('숫자가 작을수록 FAQ 분류에서 먼저 출력됩니다.'); ?>
             <input type="text" name="fm_order" value="<?php echo $fm['fm_order']; ?>" id="fm_order" class="frm_input" maxlength="10" size="10">
+            <?php echo help('숫자가 작을수록 FAQ 분류에서 먼저 출력됩니다.'); ?>
         </td>
     </tr>
     <tr>
         <th scope="row"><label for="fm_subject">제목</label></th>
         <td>
-            <input type="text" value="<?php echo get_text($fm['fm_subject']); ?>" name="fm_subject" id="fm_subject" required class="frm_input required"  size="70">
+            <input type="text" value="<?php echo get_text($fm['fm_subject']); ?>" name="fm_subject" id="fm_subject" required class="frm_input"  size="70">
             <?php if ($w == 'u') { ?>
             <a href="<?php echo G5_BBS_URL; ?>/faq.php?fm_id=<?php echo $fm_id; ?>" class="btn_frmline">보기</a>
             <a href="./faqlist.php?fm_id=<?php echo $fm_id; ?>" class="btn_frmline">상세보기</a>

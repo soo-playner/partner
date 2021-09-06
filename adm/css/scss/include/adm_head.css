@@ -1,0 +1,62 @@
+@-webkit-keyframes slidein {
+  from {
+    margin-top: 50px;
+    opacity: 0.7;
+  }
+  to {
+    margin-top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes slidein {
+  from {
+    margin-top: 50px;
+    opacity: 0.7;
+  }
+  to {
+    margin-top: 0;
+    opacity: 1;
+  }
+}
+
+div.top_wrap {
+  margin: 0 10px;
+}
+
+div.top_wrap .nav_wrap {
+  padding: 0;
+}
+
+div.top_wrap .nav_wrap ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 700px;
+  height: 40px;
+  line-height: 40px;
+}
+
+div.top_wrap .nav_wrap ul .menu {
+  background: #212936;
+  margin: 0;
+  color: #fff;
+  border-radius: 7px;
+}
+
+div.top_wrap .nav_wrap ul .menu i {
+  vertical-align: bottom;
+  margin-right: 5px;
+}
+
+div.top_wrap .nav_wrap ul a {
+  padding: 0 15px;
+  color: #919eb4;
+}

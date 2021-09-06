@@ -37,7 +37,7 @@ while ($row=sql_fetch_array($result)) {
 }
 ?>
 
-<div class="tbl_head01 tbl_wrap">
+<div class="tbl_head01 tbl_wrap content-box">
     <table>
     <caption><?php echo $g5['title']; ?> 목록</caption>
     <thead>

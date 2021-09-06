@@ -74,7 +74,7 @@ include_once (G5_ADMIN_PATH.'/admin.head.php');
 <input type="hidden" name="co_html" value="1">
 <input type="hidden" name="token" value="">
 
-<div class="tbl_frm01 tbl_wrap">
+<div class="tbl_frm01 tbl_wrap content-box">
     <table>
     <caption><?php echo $g5['title']; ?> 목록</caption>
     <colgroup>
@@ -85,14 +85,15 @@ include_once (G5_ADMIN_PATH.'/admin.head.php');
     <tr>
         <th scope="row"><label for="co_id">ID</label></th>
         <td>
-            <?php echo help('20자 이내의 영문자, 숫자, _ 만 가능합니다.'); ?>
-            <input type="text" value="<?php echo $co['co_id']; ?>" name="co_id" id ="co_id" required <?php echo $readonly; ?> class="required <?php echo $readonly; ?> frm_input" size="20" maxlength="20">
+            
+            <input type="text" value="<?php echo $co['co_id']; ?>" name="co_id" id ="co_id" required <?php echo $readonly; ?> class="<?php echo $readonly; ?> frm_input" size="20" maxlength="20">
             <?php if ($w == 'u') { ?><a href="<?php echo get_pretty_url('content', $co_id); ?>" class="btn_frmline">내용확인</a><?php } ?>
+            <?php echo help('20자 이내의 영문자, 숫자, _ 만 가능합니다.'); ?>
         </td>
     </tr>
     <tr>
         <th scope="row"><label for="co_subject">제목</label></th>
-        <td><input type="text" name="co_subject" value="<?php echo htmlspecialchars2($co['co_subject']); ?>" id="co_subject" required class="frm_input required" size="90"></td>
+        <td><input type="text" name="co_subject" value="<?php echo htmlspecialchars2($co['co_subject']); ?>" id="co_subject" required class="frm_input" size="90"></td>
     </tr>
     <tr>
         <th scope="row">내용</th>

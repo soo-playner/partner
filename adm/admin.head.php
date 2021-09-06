@@ -107,9 +107,9 @@ function imageview(id, w, h)
     <h1><?php echo $config['cf_title'] ?></h1>
     <div id="hd_top">
         <button type="button" id="btn_gnb" class="btn_gnb_close <?php echo $adm_menu_cookie['btn_gnb'];?>">메뉴</button>
-       <div id="logo"><a href="<?php echo correct_goto_url(G5_ADMIN_URL); ?>"><img src="<?php echo G5_ADMIN_URL ?>/img/logo.png" alt="<?php echo get_text($config['cf_title']); ?> 관리자"></a></div>
+       <div id="logo"><a href="<?php echo correct_goto_url(G5_ADMIN_URL); ?>">ADMINISTRATOR</a></div>
 
-        <div id="tnb">
+        <!-- <div id="tnb">
             <ul>
                 <?php if (defined('G5_USE_SHOP') && G5_USE_SHOP) { ?>
                 <li class="tnb_li"><a href="<?php echo G5_SHOP_URL ?>/" class="tnb_shop" target="_blank" title="쇼핑몰 바로가기">쇼핑몰 바로가기</a></li>
@@ -122,6 +122,14 @@ function imageview(id, w, h)
                         <li id="tnb_logout"><a href="<?php echo G5_BBS_URL ?>/logout.php">로그아웃</a></li>
                     </ul>
                 </li>
+            </ul>
+        </div> -->
+        <div class="hd_info_wrap">
+            <ul>
+                <li>2021/07/16 10:24:10</li>
+                <li><img src="<?=G5_ADMIN_URL?>/img/bell.png" alt=""></li>
+                <li><img src="<?=G5_ADMIN_URL?>/img/setting.png" alt=""></li>
+                <li><img src="<?=G5_ADMIN_URL?>/img/logout.png" alt=""></li>
             </ul>
         </div>
     </div>
@@ -199,10 +207,28 @@ jQuery(function($){
 });
 </script>
 
-
+<link href="<?=G5_ADMIN_URL?>/css/scss/include/adm_head.css" rel="stylesheet">
+<link href="<?=G5_ADMIN_URL?>/css/scss/include/new_default.css" rel="stylesheet">
 <div id="wrapper">
 
     <div id="container" class="<?php echo $adm_menu_cookie['container']; ?>">
 
-        <h1 id="container_title"><?php echo $g5['title'] ?></h1>
+        <div id="container_title">
+            <h1><?php echo $g5['title'] ?></h1>
+            <div>
+                <div class="top_wrap">
+                    <div class="nav_wrap content-box">
+                        <ul>
+                            <a href="" class="menu"><li><i class="ri-menu-line"></i>Menu</li></a>
+                            <a href=""><li>회원관리</li></a>
+                            <a href=""><li>회원푸시알림발송</li></a>
+                            <a href=""><li>접속자집계</li></a>
+                            <a href=""><li>접속자검색</li></a>
+                            <a href=""><li>접속자로그삭제</li></a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <div class="container_wr">

@@ -48,7 +48,7 @@ $sql = " select od_id,
 $result = sql_query($sql);
 ?>
 
-<div class="tbl_head01 tbl_wrap">
+<div class="tbl_head01 tbl_wrap content-box">
     <table>
     <caption><?php echo $g5['title']; ?></caption>
     <thead>

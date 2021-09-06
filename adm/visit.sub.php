@@ -13,18 +13,18 @@ $query_string = $qstr ? '?'.$qstr : '';
 ?>
 
 <form name="fvisit" id="fvisit" class="local_sch03 local_sch" method="get">
-<div class="sch_last">
+<div class="sch_last content-box">
     <strong>기간별검색</strong>
     <input type="text" name="fr_date" value="<?php echo $fr_date ?>" id="fr_date" class="frm_input" size="11" maxlength="10">
     <label for="fr_date" class="sound_only">시작일</label>
     ~
     <input type="text" name="to_date" value="<?php echo $to_date ?>" id="to_date" class="frm_input" size="11" maxlength="10">
     <label for="to_date" class="sound_only">종료일</label>
-    <input type="submit" value="검색" class="btn_submit">
+    <input type="submit" value="" class="search_btn">
 </div>
 </form>
 
-<ul class="anchor">
+<ul class="anchor content-box">
     <li><a href="./visit_list.php<?php echo $query_string ?>">접속자</a></li>
     <li><a href="./visit_domain.php<?php echo $query_string ?>">도메인</a></li>
     <li><a href="./visit_browser.php<?php echo $query_string ?>">브라우저</a></li>

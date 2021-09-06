@@ -50,7 +50,7 @@ $qstr .= ($qstr ? '&amp;' : '').'sca='.$sca;
 <input type="hidden" name="page" value="<?php echo $page; ?>">
 
 
-<div class="tbl_frm01 tbl_wrap">
+<div class="tbl_frm01 tbl_wrap content-box">
     <table>
     <caption><?php echo $g5['title']; ?> 수정</caption>
     <colgroup>
@@ -72,7 +72,7 @@ $qstr .= ($qstr ? '&amp;' : '').'sca='.$sca;
     </tr>
     <tr>
         <th scope="row"><label for="is_subject">제목</label></th>
-        <td><input type="text" name="is_subject" required class="required frm_input" id="is_subject" size="100"
+        <td><input type="text" name="is_subject" required class="frm_input" id="is_subject" size="100"
         value="<?php echo get_text($is['is_subject']); ?>"></td>
     </tr>
     <tr>
