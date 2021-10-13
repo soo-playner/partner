@@ -2,37 +2,72 @@
 @import "./_variable";
 @import "./_mixin";
 
-div.top_wrap {
-    margin: 0 10px;
-    
-    .nav_wrap {
-        padding: 0;
-        
+#gnbs {
+    &.content-box {
+        width: auto;
+        margin: 0 0 0 10px;
+        position: relative;
+    }
 
-        ul {
+    .gnb_oparea {
+        display: none;
+    }
+
+    .on {
+        .gnb_oparea {
             display: flex;
-            flex-flow: row;
-            justify-content: space-between;
-            width: 700px;
-            height: 40px;
-            line-height: 40px;
 
-            .menu {
-                background: #212936;
-                margin: 0;
+            .menu_btn {
+                background: #000;
                 color: #fff;
-                border-radius: 7px;
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                border-top-left-radius: 10px;
+                border-bottom-left-radius: 10px;
+                padding: 0 10px;
+                display: flex;
+                align-items: center;
 
                 i {
+                    font-size: 20px;
                     vertical-align: bottom;
-                    margin-right: 5px;
+                    margin: 0 5px 0 0;
                 }
             }
+        }
+    }
 
-            a {
-                padding: 0 15px;
-                color: #919eb4;
+    .gnb_li {
+        display: none;
+    }
+
+    .gnb_li.on {
+        display: block;
+    } 
+
+    .gnbs_ul {
+        margin: 0 0 0 60px;
+    }
+    
+    li {
+        font-size: 14px;
+        margin: 0 10px;
+        line-height: 23px;
+        display: inline-block;
+
+        a {
+            color: #919eb4;
+
+            &:hover {
+                color: #212936;
             }
+        }
+
+        .on {
+            color: #212936;
+            font-weight: bold;
         }
     }
 }

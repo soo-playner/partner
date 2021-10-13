@@ -11,13 +11,13 @@ include_once(G5_ADMIN_PATH.'/admin.head.php');
 
 <div id="sms5_mbup">
     <form name="mb_update_form" id="mb_update_form" action="./member_update_run.php" >
-    <div class="local_desc02 local_desc content-box-desc">
+    <div class="local_desc02 local_desc content-box-desc-white">
         <p>
             새로운 회원정보로 업데이트 합니다.<br>
             실행 후 '완료' 메세지가 나오기 전에 프로그램의 실행을 중지하지 마십시오.
         </p>
     </div>
-    <div class="local_desc01 local_desc content-box-desc">
+    <div class="local_desc01 local_desc content-box-desc-white">
         <p>
             마지막 업데이트 일시 : <span id="datetime"><?php echo isset($sms5['cf_datetime']) ? get_sanitize_input($sms5['cf_datetime']) : ''; ?></span> <br>
         </p>

@@ -54,7 +54,7 @@ include_once(G5_PLUGIN_PATH.'/jquery-ui/datepicker.php');
 <input type="hidden" name="stx" value="<?php echo $stx; ?>">
 <input type="hidden" name="page" value="<?php echo $page;?>">
 
-<div class="tbl_frm01 tbl_wrap">
+<div class="tbl_frm01 tbl_wrap content-box">
     <table>
     <caption><?php echo $g5['title']; ?></caption>
     <colgroup>
@@ -65,25 +65,26 @@ include_once(G5_PLUGIN_PATH.'/jquery-ui/datepicker.php');
     <tr>
         <th scope="row"><label for="cp_subject">쿠폰이름</label></th>
         <td>
-            <input type="text" name="cp_subject" value="<?php echo get_sanitize_input($cp['cp_subject']); ?>" id="cp_subject" required class="required frm_input" size="50">
+            <input type="text" name="cp_subject" value="<?php echo get_sanitize_input($cp['cp_subject']); ?>" id="cp_subject" required class="frm_input" size="50">
         </td>
     </tr>
     <tr>
         <th scope="row"><label for="cp_method">쿠폰종류</label></th>
         <td>
-           <?php echo help("쿠폰 종류를 변경하시면 입력 서식도 일부 변경됩니다."); ?>
+           
            <select name="cp_method" id="cp_method">
                 <option value="0"<?php echo get_selected('0', $cp['cp_method']); ?>>개별상품할인</option>
                 <option value="1"<?php echo get_selected('1', $cp['cp_method']); ?>>카테고리할인</option>
                 <option value="2"<?php echo get_selected('2', $cp['cp_method']); ?>>주문금액할인</option>
                 <option value="3"<?php echo get_selected('3', $cp['cp_method']); ?>>배송비할인</option>
            </select>
+           <?php echo help("쿠폰 종류를 변경하시면 입력 서식도 일부 변경됩니다."); ?>
         </td>
     </tr>
     <tr id="tr_cp_target">
         <th scope="row"><label for="cp_target"><?php echo $cp_target_label; ?></label></th>
         <td>
-           <input type="text" name="cp_target" value="<?php echo stripslashes($cp['cp_target']); ?>" id="cp_target" required class="required frm_input">
+           <input type="text" name="cp_target" value="<?php echo stripslashes($cp['cp_target']); ?>" id="cp_target" required class="frm_input">
            <button type="button" id="sch_target" class="btn_frmline"><?php echo $cp_target_btn; ?></button>
         </td>
     </tr>
@@ -99,31 +100,34 @@ include_once(G5_PLUGIN_PATH.'/jquery-ui/datepicker.php');
     <tr>
         <th scope="row"><label for="cp_start">사용시작일</label></th>
         <td>
+            
+            <input type="text" name="cp_start" value="<?php echo stripslashes($cp['cp_start']); ?>" id="cp_start" required class="frm_input">
             <?php echo help('입력 예: '.date('Y-m-d')); ?>
-            <input type="text" name="cp_start" value="<?php echo stripslashes($cp['cp_start']); ?>" id="cp_start" required class="frm_input required">
         </td>
     </tr>
     <tr>
         <th scope="row"><label for="cp_end">사용종료일</label></th>
         <td>
+            
+            <input type="text" name="cp_end" value="<?php echo stripslashes($cp['cp_end']); ?>" id="cp_end" required class="required">
             <?php echo help('입력 예: '.date('Y-m-d')); ?>
-            <input type="text" name="cp_end" value="<?php echo stripslashes($cp['cp_end']); ?>" id="cp_end" required class="frm_input required">
         </td>
     </tr>
     <tr>
         <th scope="row"><label for="cp_type">쿠폰타입</label></th>
         <td>
-           <?php echo help("쿠폰 타입을 변경하시면 입력 서식도 일부 변경됩니다."); ?>
+           
            <select name="cp_type" id="cp_type">
                 <option value="0"<?php echo get_selected('0', $cp['cp_type']); ?>>정액할인(원)</option>
                 <option value="1"<?php echo get_selected('1', $cp['cp_type']); ?>>정률할인(%)</option>
            </select>
+           <?php echo help("쿠폰 타입을 변경하시면 입력 서식도 일부 변경됩니다."); ?>
         </td>
     </tr>
     <tr>
         <th scope="row"><label for="cp_price"><?php echo $cp['cp_type'] ? '할인비율' : '할인금액'; ?></label></th>
         <td>
-            <input type="text" name="cp_price" value="<?php echo stripslashes($cp['cp_price']); ?>" id="cp_price" required class="frm_input required"> <span id="cp_price_unit"><?php echo $cp['cp_type'] ? '%' : '원'; ?></span>
+            <input type="text" name="cp_price" value="<?php echo stripslashes($cp['cp_price']); ?>" id="cp_price" required class="frm_input"> <span id="cp_price_unit"><?php echo $cp['cp_type'] ? '%' : '원'; ?></span>
         </td>
     </tr>
     <tr id="tr_cp_trunc">

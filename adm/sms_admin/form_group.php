@@ -79,14 +79,11 @@ function grouplist_submit(f)
 </div>
 </form>
 
-<div class="local_desc01 local_desc content-box-desc">
-    <p>그룹명순으로 정렬됩니다.</p>
-</div>
-
 <form name="group<?php echo isset($group[$i]['fg_no']) ? $group[$i]['fg_no'] : ''; ?>" method="post" action="./form_group_update.php" onsubmit="return grouplist_submit(this);">
 <input type="hidden" name="w" value="u">
 
 <div class="tbl_head01 tbl_wrap content-box">
+    <p class="explain_text">그룹명순으로 정렬됩니다.</p>
     <table>
     <caption><?php echo $g5['title']; ?> 목록</caption>
     <thead>

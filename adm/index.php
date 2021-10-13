@@ -315,26 +315,23 @@ $colspan = 7;
 <link href="<?=G5_ADMIN_URL?>/css/scss/page/index.css" rel="stylesheet">
 
 
+<link href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" rel="stylesheet">
+<link href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/stove99/jquery-modal-sample@v1.4/css/animate.min.css" />
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/stove99/jquery-modal-sample@v1.4/css/jquery.modal.css" />
 <script src="//cdn.jsdelivr.net/gh/stove99/jquery-modal-sample@v1.4/js/jquery.modal.js"></script>
 <script src="//cdn.jsdelivr.net/gh/stove99/jquery-modal-sample@v1.4/js/modal.js"></script>
-<link href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" rel="stylesheet">
-<link href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" rel="stylesheet">
-<script
-  src="https://code.jquery.com/jquery-3.6.0.min.js"
-  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-  crossorigin="anonymous"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <div class="adm_main_wrap">
     <section class="top_wrap">
         <div class="user_num_wrap content-box-nomargin">
-            <div class="title_wrap">
-                <p>이용자수 통계</p>
+            <form action="">
+                <div>
+                    <?php include_once('./adm_user_chart.php'); ?>
+                </div>
                 <div class="search_wrap">
                     <ul>
-                        <li>방문자</li>
-                        <li>프로그램 사용</li>
                         <li>
                             <select name="" id="" class="form-control">
                                 <option value="">2020-12-01 ~ 2021-03-01</option>
@@ -343,35 +340,83 @@ $colspan = 7;
                         <li>
                             <a href="" id="user_chart_submit" class="search_btn"></a>
                         </li>
-                        <script>
-                            $(function() {
-                                $('#user_chart_submit').on('click',function(e) {
-                                    e.preventDefault();
-
-                                    $.popup({
-                                        url: './user_popup.php',
-                                        close: function(result) {
-                                            console.log(result);
-                                        }
-                                    });
-                                });
-                            });
-                        </script>
                     </ul>
                 </div>
-            </div>
-            <div>
-                <?php include_once('./adm_user_chart.php'); ?>
-            </div>
+                <script>
+                    $(function() {
+                        $('.blocker').css('display','none');
+                        $('#user_chart_submit').on('click',function(e) {
+                            e.preventDefault();
+                            // $('body').css('overflow','auto !important');
+                            $('.blocker').css('display','none !important');
+                            $.popup({
+                                url: './user_popup.php',
+                                close: function(result) {
+                                    console.log(result);
+                                }
+                            });
+                        });
+                    });
+                </script>
+            </form>
+            <?php echo $varl;?>
         </div>
         <div>
+            <?php
+                $sql_common = " from {$g5['member_table']} ";
+
+                $sql_search = " where (1) ";
+                if ($stx) {
+                    $sql_search .= " and ( ";
+                    switch ($sfl) {
+                        case 'mb_point' :
+                            $sql_search .= " ({$sfl} >= '{$stx}') ";
+                            break;
+                        case 'mb_level' :
+                            $sql_search .= " ({$sfl} = '{$stx}') ";
+                            break;
+                        case 'mb_tel' :
+                        case 'mb_hp' :
+                            $sql_search .= " ({$sfl} like '%{$stx}') ";
+                            break;
+                        default :
+                            $sql_search .= " ({$sfl} like '{$stx}%') ";
+                            break;
+                    }
+                    $sql_search .= " ) ";
+                }
+
+                if ($is_admin != 'super')
+                    $sql_search .= " and mb_level <= '{$member['mb_level']}' ";
+
+                if (!$sst) {
+                    $sst = "mb_datetime";
+                    $sod = "desc";
+                }
+
+                $sql_order = " order by {$sst} {$sod} ";
+
+                $sql = " select count(*) as cnt {$sql_common} {$sql_search} {$sql_order} ";
+                $row = sql_fetch($sql);
+                $total_count = $row['cnt'];
+
+                // 탈퇴회원수
+                $sql = " select count(*) as cnt {$sql_common} {$sql_search} and mb_leave_date <> '' {$sql_order} ";
+                $row = sql_fetch($sql);
+                $leave_count = $row['cnt'];
+
+                // // 차단회원수
+                $sql = " select count(*) as cnt {$sql_common} {$sql_search} and mb_intercept_date <> '' {$sql_order} ";
+                $row = sql_fetch($sql);
+                $intercept_count = $row['cnt'];
+            ?>
             <div class="total_member_wrap">
                 <div class="left_wrap">
-                    <p>총 회원수 <br> 1,000,000명</p>
+                    <p>총 회원수 <br> <?php echo number_format($total_count)?>명</p>
                 </div>
                 <div class="right_wrap">
-                    <span>차단:0명</span>
-                    <span>탈퇴:0명</span>
+                    <span>차단:<?php echo number_format($intercept_count)?>명</span>
+                    <span>탈퇴:<?php echo number_format($leave_count)?>명</span>
                 </div>
             </div>
             <div class="new_sign_wrap content-box">
@@ -449,7 +494,7 @@ $colspan = 7;
                             autoplay:true,
                             slidesToShow: 1,
                             arrows: true,
-                            prevArrow: "<button type='button' class='slick-prev' style='top:-12%;left:86%'><img src='<?=G5_ADMIN_URL?>/img/left.png' width='25' alt='이미지'></button>",
+                            prevArrow: "<button type='button' class='slick-prev' style='top:-12%;left:83%'><img src='<?=G5_ADMIN_URL?>/img/left.png' width='25' alt='이미지'></button>",
                             nextArrow: "<button type='button' class='slick-next' style='top:-12%;right:0%'><img src='<?=G5_ADMIN_URL?>/img/right.png' width='25' alt='이미지'></button>"
                         });
                     })
@@ -517,36 +562,48 @@ $colspan = 7;
     </section>
     <section class="mid_bottom_wrap">
         <div class="card_wrap content-box-nomargin">
-            <div class="title_wrap">
-                <p>총 입출금 통계</p>
-                <div class="all_view">View All</div>
-            </div>
             <div class="content_wrap money_statistics">
                 <?php include_once('./money_statistics_chart.php'); ?>
-                
+            </div>
+            <div class="title_wrap">
+                <div class="all_view"><a href="">View All</a></div>
             </div>
         </div>
         <div class="card_wrap content-box-nomargin">
-            <div class="title_wrap">
-                <p>총 게시물 통계</p>
-                <div class="all_view">View All</div>
-            </div>
             <div class="content_wrap statistics">
                 <div class="post_statistics">
+                    <?php
+                        $notice_sql = "select * from g5_write_notice";
+                        $notice_sql_query = sql_query($notice_sql);
+                        $notice_sql_sum = sql_num_rows($notice_sql_query);
+
+                        $free_sql = "select * from g5_write_qa";
+                        $free_sql_query = sql_query($free_sql);
+                        $free_sql_sum = sql_num_rows($free_sql_query);
+
+                        $qa_sql = "select * from g5_write_free";
+                        $qa_sql_query = sql_query($qa_sql);
+                        $qa_sql_sum = sql_num_rows($qa_sql_query);
+
+                    ?>
                     <?php include_once('./post_statistics_chart.php'); ?>
-                </div>
-                <div class="info_wrap">
-                    <div class="top_info">
-                        <p>공지사항</p>
-                        <p>Q&A</p>
-                        <p>자유게시판</p>
-                        <p>문의사항</p>
-                    </div>
-                    <div class="bottom_info">
-                        <P>공지사항<span class="num">14</span></P>
-                        <P>자유게시판<span class="num">52</span></P>
-                        <P>Q&A<span class="num">16</span></P>
-                        <P>문의사항<span class="num">33</span></P>
+                    <div class="statistics_sum">
+                        <div class="statistics_list">
+                            <span>공지사항</span>
+                            <span class="notice_val"></span>
+                        </div>
+                        <div class="statistics_list">
+                            <span>Q&A</span>
+                            <span class="qa_val"></span>
+                        </div>
+                        <div class="statistics_list">
+                            <span>자유게시판</span>
+                            <span class="free_val"></span>
+                        </div>
+                        <div class="statistics_list">
+                            <span>문의사항</span>
+                            <span class="reply_val"></span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -642,7 +699,7 @@ $colspan = 7;
                         autoplay:true,
                         slidesToShow: 1,
                         arrows: true,
-                        prevArrow: "<button type='button' class='slick-prev' style='top:-12%;left:87%'><img src='<?=G5_ADMIN_URL?>/img/left.png' width='25' alt='이미지'></button>",
+                        prevArrow: "<button type='button' class='slick-prev' style='top:-12%;left:83%'><img src='<?=G5_ADMIN_URL?>/img/left.png' width='25' alt='이미지'></button>",
                         nextArrow: "<button type='button' class='slick-next' style='top:-12%;right:0%'><img src='<?=G5_ADMIN_URL?>/img/right.png' width='25' alt='이미지'></button>"
                     });
                 })
@@ -659,7 +716,7 @@ $colspan = 7;
                         <a href=""><li>자유게시판</li></a>
                     </ul>
                 </div>
-                <div class="all_view">View All</div>
+                <div class="all_view"><a href="">View All</a></div>
             </div>
             <div class="content_wrap">
                 <div class="tbl_wrap tbl_head01">
@@ -700,7 +757,7 @@ $colspan = 7;
         <div class="card_wrap">
             <div class="title_wrap">
                 <p>문의사항</p>
-                <div class="all_view">View All</div>
+                <div class="all_view"><a href="">View All</a></div>
             </div>
             <div class="content_wrap customer">
                 <div class="top_card_wrap">

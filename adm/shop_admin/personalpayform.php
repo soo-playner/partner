@@ -48,7 +48,7 @@ if($popup == 'yes') { // 팝업창일 때
 else { // 현재페이지일 때
     include_once (G5_ADMIN_PATH.'/admin.head.php');
 }
-$pg_anchor = '<ul class="anchor">
+$pg_anchor = '<ul class="anchor content-box">
 <li><a href="#anc_spp_info">주문 정보</a></li>
 <li><a href="#anc_spp_pay">결제 정보</a></li>
 </ul>';
@@ -90,13 +90,14 @@ if(!sql_query(" select pp_cash from {$g5['g5_shop_personalpay_table']} limit 1 "
 <?php echo $wrp_tag_st; ?>
 
     <section id="anc_spp_info">
-        <h2 class="h2_frm">주문 정보</h2>
+        
         <?php if($popup != 'yes') echo $pg_anchor; ?>
-        <div class="local_desc">
+        <div class="local_desc content-box-desc">
             <p>주문 관련 기본 정보입니다.</p>
         </div>
 
-        <div class="tbl_frm01 tbl_wrap">
+        <div class="tbl_frm01 tbl_wrap content-box">
+        <h2 class="h2_frm">주문 정보</h2>
             <table>
             <caption>주문 정보 목록</caption>
             <colgroup>
@@ -106,11 +107,11 @@ if(!sql_query(" select pp_cash from {$g5['g5_shop_personalpay_table']} limit 1 "
             <tbody>
             <tr>
                 <th scope="row"><label for="pp_name">이름</label></th>
-                <td><input type="text" name="pp_name" value="<?php echo get_text($pp['pp_name']); ?>" id="pp_name" required class="required frm_input"></td>
+                <td><input type="text" name="pp_name" value="<?php echo get_text($pp['pp_name']); ?>" id="pp_name" required class="frm_input"></td>
             </tr>
             <tr>
                 <th scope="row"><label for="pp_price">주문금액</label></th>
-                <td><input type="text" name="pp_price" value="<?php echo $pp['pp_price']; ?>" id="pp_price" required class="required frm_input" size="15"> 원</td>
+                <td><input type="text" name="pp_price" value="<?php echo $pp['pp_price']; ?>" id="pp_price" required class="frm_input" size="15"> 원</td>
             </tr>
             <tr>
                 <th scope="row"><label for="od_id">주문번호</label></th>
@@ -129,13 +130,14 @@ if(!sql_query(" select pp_cash from {$g5['g5_shop_personalpay_table']} limit 1 "
 
     <?php if($popup != 'yes') { ?>
     <section id="anc_spp_pay" class="cbox">
-        <h2 class="h2_frm">결제 정보</h2>
+        
         <?php echo $pg_anchor; ?>
-        <div class="local_desc02 local_desc">
+        <div class="local_desc02 local_desc content-box-desc">
             <p>결제 관련 정보입니다.</p>
         </div>
 
-        <div class="tbl_frm01 tbl_wrap">
+        <div class="tbl_frm01 tbl_wrap content-box">
+        <h2 class="h2_frm">결제 정보</h2>
             <table>
             <caption>결제 정보 목록</caption>
             <colgroup>

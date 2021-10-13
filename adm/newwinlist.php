@@ -47,11 +47,10 @@ $result = sql_query($sql);
 
 <div class="local_ov01 local_ov content-box"><span class="btn_ov01"><span class="ov_txt">전체 </span><span class="ov_num">  <?php echo $total_count; ?>건</span></span></div>
 
-<div class="btn_fixed_top ">
-    <a href="./newwinform.php" class="btn btn_01">새창관리추가</a>
-</div>
-
 <div class="tbl_head01 tbl_wrap content-box">
+    <div class="btn_fixed_top ">
+        <a href="./newwinform.php" class="btn btn_01">새창관리추가</a>
+    </div>
     <table>
     <caption><?php echo $g5['title']; ?> 목록</caption>
     <thead>

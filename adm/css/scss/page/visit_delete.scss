@@ -5,7 +5,6 @@
 .top_wrap {
     .nav_wrap {
         padding: 0;
-        
 
         ul {
             display: flex;
@@ -78,5 +77,11 @@
             width: 50px;
             border-radius: 15px;
         }
+    }
+}
+
+.visit_del {
+    li {
+        margin: 0 5px;
     }
 }

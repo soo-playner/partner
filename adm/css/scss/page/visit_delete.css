@@ -114,3 +114,7 @@
   width: 50px;
   border-radius: 15px;
 }
+
+.visit_del li {
+  margin: 0 5px;
+}

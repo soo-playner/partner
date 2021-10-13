@@ -73,84 +73,85 @@ $listall = '<a href="'.$_SERVER['SCRIPT_NAME'].'" class="ov_listall">전체목�
      <span class="btn_ov01"><span class="ov_txt">미전송 </span><span class="ov_num"><?php echo number_format($unsend_count); ?>건</span></span>  
 </div>
 
-<form name="flist" class="local_sch01 local_sch content-box">
-<input type="hidden" name="doc" value="<?php echo $doc; ?>">
-<input type="hidden" name="sort1" value="<?php echo $sort1; ?>">
-<input type="hidden" name="sort2" value="<?php echo $sort2; ?>">
-<input type="hidden" name="page" value="<?php echo $page; ?>">
+<div class="content-box">
+    <form name="flist" class="local_sch01 local_sch">
+    <input type="hidden" name="doc" value="<?php echo $doc; ?>">
+    <input type="hidden" name="sort1" value="<?php echo $sort1; ?>">
+    <input type="hidden" name="sort2" value="<?php echo $sort2; ?>">
+    <input type="hidden" name="page" value="<?php echo $page; ?>">
 
-<label for="sel_field" class="sound_only">검색대상</label>
-<select name="sel_field" id="sel_field">
-    <option value="it_id" <?php echo get_selected($sel_field, 'it_id'); ?>>상품코드</option>
-    <option value="ss_hp" <?php echo get_selected($sel_field, 'ss_hp'); ?>>휴대폰번호</option>
-</select>
+    <label for="sel_field" class="sound_only">검색대상</label>
+    <select name="sel_field" id="sel_field">
+        <option value="it_id" <?php echo get_selected($sel_field, 'it_id'); ?>>상품코드</option>
+        <option value="ss_hp" <?php echo get_selected($sel_field, 'ss_hp'); ?>>휴대폰번호</option>
+    </select>
 
-<label for="search" class="sound_only">검색어<strong class="sound_only"> 필수</strong></label>
-<input type="text" name="search" id="search" value="<?php echo $search; ?>" required class="frm_input required">
-<input type="submit" value="" class="search_btn">
+    <label for="search" class="sound_only">검색어<strong class="sound_only"> 필수</strong></label>
+    <input type="text" name="search" id="search" value="<?php echo $search; ?>" required class="frm_input required">
+    <input type="submit" value="" class="search_btn">
 
-</form>
+    </form>
 
-<form name="fitemstocksms" action="./itemstocksmsupdate.php" method="post" onsubmit="return fitemstocksms_submit(this);">
-<input type="hidden" name="sort1" value="<?php echo $sort1; ?>">
-<input type="hidden" name="sort2" value="<?php echo $sort2; ?>">
-<input type="hidden" name="sel_field" value="<?php echo $sel_field; ?>">
-<input type="hidden" name="search" value="<?php echo $search; ?>">
-<input type="hidden" name="page" value="<?php echo $page; ?>">
+    <form name="fitemstocksms" action="./itemstocksmsupdate.php" method="post" onsubmit="return fitemstocksms_submit(this);">
+    <input type="hidden" name="sort1" value="<?php echo $sort1; ?>">
+    <input type="hidden" name="sort2" value="<?php echo $sort2; ?>">
+    <input type="hidden" name="sel_field" value="<?php echo $sel_field; ?>">
+    <input type="hidden" name="search" value="<?php echo $search; ?>">
+    <input type="hidden" name="page" value="<?php echo $page; ?>">
 
-<div class="tbl_head01 tbl_wrap content-box">
-    <table>
-    <caption><?php echo $g5['title']; ?> 목록</caption>
-    <thead>
-    <tr>
-        <th scope="col">
-            <label for="chkall" class="sound_only">알림요청 전체</label>
-            <input type="checkbox" name="chkall" value="1" id="chkall" onclick="check_all(this.form)">
-        </th>
-        <th scope="col">상품명</th>
-        <th scope="col">휴대폰번호</th>
-        <th scope="col">SMS전송</th>
-        <th scope="col">SMS전송일시</th>
-        <th scope="col">등록일시</th>
-    </tr>
-    </thead>
-    <tbody>
-    <?php
-    for ($i=0; $row=sql_fetch_array($result); $i++)
-    {
-        // 상품정보
-        $sql = " select it_name from {$g5['g5_shop_item_table']} where it_id = '{$row['it_id']}' ";
-        $it = sql_fetch($sql);
+    <div class="tbl_head01 tbl_wrap">
+        <table>
+        <caption><?php echo $g5['title']; ?> 목록</caption>
+        <thead>
+        <tr>
+            <th scope="col">
+                <label for="chkall" class="sound_only">알림요청 전체</label>
+                <input type="checkbox" name="chkall" value="1" id="chkall" onclick="check_all(this.form)">
+            </th>
+            <th scope="col">상품명</th>
+            <th scope="col">휴대폰번호</th>
+            <th scope="col">SMS전송</th>
+            <th scope="col">SMS전송일시</th>
+            <th scope="col">등록일시</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php
+        for ($i=0; $row=sql_fetch_array($result); $i++)
+        {
+            // 상품정보
+            $sql = " select it_name from {$g5['g5_shop_item_table']} where it_id = '{$row['it_id']}' ";
+            $it = sql_fetch($sql);
 
-        if($it['it_name'])
-            $it_name = get_text($it['it_name']);
-        else
-            $it_name = '상품정보 없음';
+            if($it['it_name'])
+                $it_name = get_text($it['it_name']);
+            else
+                $it_name = '상품정보 없음';
 
-        $bg = 'bg'.($i%2);
+            $bg = 'bg'.($i%2);
 
-    ?>
-    <tr class="<?php echo $bg; ?>">
-        <td class="td_chk">
-            <label for="chk_<?php echo $i; ?>" class="sound_only"><?php echo $it_name; ?> 알림요청</label>
-            <input type="checkbox" name="chk[]" value="<?php echo $i ?>" id="chk_<?php echo $i; ?>">
-            <input type="hidden" name="ss_id[<?php echo $i; ?>]" value="<?php echo $row['ss_id']; ?>">
-        </td>
-        <td class="td_left"><?php echo $it_name; ?></td>
-        <td class="td_telbig"><?php echo $row['ss_hp']; ?></td>
-        <td class="td_stat"><?php echo ($row['ss_send'] ? '전송완료' : '전송전'); ?></td>
-        <td class="td_datetime"><?php echo (is_null_time($row['ss_send_time']) ? '' : $row['ss_send_time']); ?></td>
-        <td class="td_datetime"><?php echo (is_null_time($row['ss_datetime']) ? '' : $row['ss_datetime']); ?></td>
-    </tr>
-    <?php
-    }
-    if (!$i)
-        echo '<tr><td colspan="6" class="empty_table"><span>자료가 없습니다.</span></td></tr>';
-    ?>
-    </tbody>
-    </table>
+        ?>
+        <tr class="<?php echo $bg; ?>">
+            <td class="td_chk">
+                <label for="chk_<?php echo $i; ?>" class="sound_only"><?php echo $it_name; ?> 알림요청</label>
+                <input type="checkbox" name="chk[]" value="<?php echo $i ?>" id="chk_<?php echo $i; ?>">
+                <input type="hidden" name="ss_id[<?php echo $i; ?>]" value="<?php echo $row['ss_id']; ?>">
+            </td>
+            <td class="td_left"><?php echo $it_name; ?></td>
+            <td class="td_telbig"><?php echo $row['ss_hp']; ?></td>
+            <td class="td_stat"><?php echo ($row['ss_send'] ? '전송완료' : '전송전'); ?></td>
+            <td class="td_datetime"><?php echo (is_null_time($row['ss_send_time']) ? '' : $row['ss_send_time']); ?></td>
+            <td class="td_datetime"><?php echo (is_null_time($row['ss_datetime']) ? '' : $row['ss_datetime']); ?></td>
+        </tr>
+        <?php
+        }
+        if (!$i)
+            echo '<tr><td colspan="6" class="empty_table"><span>자료가 없습니다.</span></td></tr>';
+        ?>
+        </tbody>
+        </table>
+    </div>
 </div>
-
     
 <div class="btn_fixed_top">
     <?php if ($is_admin == 'super') { ?>

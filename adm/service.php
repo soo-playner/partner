@@ -7,8 +7,8 @@ auth_check_menu($auth, $sub_menu, 'r');
 $g5['title'] = '부가서비스';
 include_once('./admin.head.php');
 ?>
-
-<div class="local_desc02 local_desc content-box-desc">
+<link href="<?=G5_ADMIN_URL?>/css/scss/page/service.css" rel="stylesheet">
+<div class="local_desc02 local_desc content-box-desc-white">
     <p>아래의 서비스들은 영카트에서 이미 지원하는 기능으로 별도의 개발이 필요 없으며 서비스 신청후 바로 사용 할수 있습니다.</p>
 </div>
 
@@ -40,7 +40,6 @@ include_once('./admin.head.php');
             </div>
             <div class="svc_btn2"><a href="http://icodekorea.com/res/join_company_fix_a.php?sellid=sir2" target="_blank"><img src="<?php echo G5_ADMIN_URL ?>/img/svc_btn_05.jpg" alt="아이코드 SMS 서비스 신청하기"></a></div>
         </div>
-
     </div>
 </div>
 

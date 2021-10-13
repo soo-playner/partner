@@ -18,6 +18,7 @@
 
         .user_num_wrap {
             width: 75%;
+            position: relative;
 
             .title_wrap {
                 font-size: 20px;
@@ -30,38 +31,17 @@
             .search_wrap {
                 font-size: 16px;
                 color: #403f48;
+                background: #fff;
+                position: absolute;
+                top: 8%;
+                right: 1%;
 
                 ul {
                     display: flex;
                     flex-flow: row;
                     justify-content: space-between;
                     align-items: center;
-                    width: 500px;
-
-                    li {
-                        &:nth-child(1) {
-                            &::before {
-                                content: "";
-                                width: 12px;
-                                height: 12px;
-                                border-radius: 10px;
-                                display: inline-block;
-                                background: #2a70e9;
-                                margin: 0 5px;
-                            }
-                        }
-                        &:nth-child(2) {
-                            &::before {
-                                content: "";
-                                width: 12px;
-                                height: 12px;
-                                border-radius: 10px;
-                                display: inline-block;
-                                background: #764eed;
-                                margin: 0 5px;
-                            }
-                        }
-                    }
+                    width: 300px;
                 }
             }
         }
@@ -166,6 +146,9 @@
                 .title_wrap {
                     color: #fff;
                     padding: 10px;
+                    font-weight: bold;
+                    border-top-left-radius: 10px;
+                    border-top-right-radius: 10px;
                     background: $background_0;
                 }
 
@@ -177,6 +160,9 @@
             &.card_wrap2 {
                 .title_wrap {
                     color: #fff;
+                    font-weight: bold;
+                    border-top-left-radius: 10px;
+                    border-top-right-radius: 10px;
                     padding: 10px;
                     background: $background_1;
                 }
@@ -189,6 +175,9 @@
             &.card_wrap3 {
                 .title_wrap {
                     color: #fff;
+                    font-weight: bold;
+                    border-top-left-radius: 10px;
+                    border-top-right-radius: 10px;
                     padding: 10px;
                     background: $background_2;
                 }
@@ -201,6 +190,9 @@
             &.card_wrap4 {
                 .title_wrap {
                     color: #fff;
+                    font-weight: bold;
+                    border-top-left-radius: 10px;
+                    border-top-right-radius: 10px;
                     padding: 10px;
                     background: $background_3;
                 }
@@ -238,6 +230,7 @@
         .card_wrap {
             display: flex;
             flex-flow: column;
+            position: relative;
             width: 36%;
             height: 300px;
 
@@ -248,11 +241,17 @@
             .title_wrap {
                 font-size: 20px;
                 font-weight: bold;
-                display: flex;
-                justify-content: space-between;
+                
 
                 .all_view {
-                    color: #bebfc1;
+                    position: absolute;
+                    top: 4%;
+                    right: 4%;
+                    cursor: pointer;
+
+                    a {
+                        color: #bebfc1;
+                    }
                 }
             }
 
@@ -264,9 +263,9 @@
                 // width: 200px;
 
                 &.statistics {
-                    flex-flow: row;
-                    justify-content: space-between;
-                    align-items: center;
+                    // flex-flow: row;
+                    // justify-content: space-between;
+                    // align-items: center;
 
                     .info_wrap {
                         flex-basis: 220px;
@@ -344,7 +343,21 @@
                 }
                 
                 .post_statistics {
+                    .statistics_sum {
+                        position: absolute;
+                        top:55%; 
+                        right: 3%; 
+                        width: 200px;
+                        height:100px;
+                        display:flex;
+                        justify-content:space-between;
+                        flex-flow:column;
 
+                        .statistics_list {
+                            display:flex;
+                            justify-content: space-between;
+                        }
+                    }
                 }
 
                 
@@ -468,7 +481,9 @@
             }
 
             .all_view {
-                color: #bebfc1;
+                a {
+                    color: #bebfc1;
+                }
             }
         }
         
@@ -522,6 +537,4 @@
 }
 
 #withdraw_doughnut, #deposit_doughnut {
-    width: 400px !important;
-    height: 190px !important;
 }

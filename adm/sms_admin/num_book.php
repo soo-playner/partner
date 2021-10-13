@@ -114,32 +114,34 @@ function no_hp_click(val)
     <span class="btn_ov01"><span class="ov_txt"> 수신  </span><span class="ov_num"> <?php echo number_format($receipt_count)?>명</span></span>
     <span class="btn_ov01"><span class="ov_txt"> 거부  </span><span class="ov_num"> <?php echo number_format($reject_count)?>명</span></span>
 </div>
+<div class="content-box">
+<div class="d_flex">
+    <form name="search_form" class="local_sch01 local_sch">
+    <label for="bg_no" class="sound_only">그룹명</label>
+    <select name="bg_no" id="bg_no" onchange="location.href='<?php echo $_SERVER['SCRIPT_NAME']?>?bg_no='+this.value;">
+        <option value=""<?php echo get_selected('', $bg_no); ?>> 전체 </option>
+        <option value="<?php echo $no_group['bg_no']?>"<?php echo get_selected($no_group['bg_no'], $bg_no); ?>> <?php echo $no_group['bg_name']?> (<?php echo number_format($no_group['bg_count'])?> 명) </option>
+        <?php for($i=0; $i<count($group); $i++) {?>
+        <option value="<?php echo $group[$i]['bg_no']?>"<?php echo get_selected($group[$i]['bg_no'], $bg_no);?>> <?php echo $group[$i]['bg_name']?> (<?php echo number_format($group[$i]['bg_count'])?> 명) </option>
+        <?php } ?>
+    </select>
+    <input type="checkbox" name="no_hp" id="no_hp" <?php echo $no_hp_checked?> onclick="no_hp_click(this.checked)">
+    <label for="no_hp">휴대폰 소유자만 보기</label>
+    </form>
 
-<form name="search_form" method="get" action="<?php echo $_SERVER['SCRIPT_NAME']?>" class="local_sch01 local_sch content-box">
-<input type="hidden" name="bg_no" value="<?php echo $bg_no?>" >
-<label for="st" class="sound_only">검색대상</label>
-<select name="st" id="st">
-    <option value="all"<?php echo get_selected('all', $st); ?>>이름 + 휴대폰번호</option>
-    <option value="name"<?php echo get_selected('name', $st); ?>>이름</option>
-    <option value="hp" <?php echo get_selected('hp', $st); ?>>휴대폰번호</option>
-</select>
-<label for="sv" class="sound_only">검색어<strong class="sound_only"> 필수</strong></label>
-<input type="text" name="sv" value="<?php echo $sv?>" id="sv" required class="frm_input required">
-<input type="submit" value="" class="search_btn">
-</form>
-
-<form name="search_form" class="local_sch01 local_sch content-box">
-<label for="bg_no" class="sound_only">그룹명</label>
-<select name="bg_no" id="bg_no" onchange="location.href='<?php echo $_SERVER['SCRIPT_NAME']?>?bg_no='+this.value;">
-    <option value=""<?php echo get_selected('', $bg_no); ?>> 전체 </option>
-    <option value="<?php echo $no_group['bg_no']?>"<?php echo get_selected($no_group['bg_no'], $bg_no); ?>> <?php echo $no_group['bg_name']?> (<?php echo number_format($no_group['bg_count'])?> 명) </option>
-    <?php for($i=0; $i<count($group); $i++) {?>
-    <option value="<?php echo $group[$i]['bg_no']?>"<?php echo get_selected($group[$i]['bg_no'], $bg_no);?>> <?php echo $group[$i]['bg_name']?> (<?php echo number_format($group[$i]['bg_count'])?> 명) </option>
-    <?php } ?>
-</select>
-<input type="checkbox" name="no_hp" id="no_hp" <?php echo $no_hp_checked?> onclick="no_hp_click(this.checked)">
-<label for="no_hp">휴대폰 소유자만 보기</label>
-</form>
+    <form name="search_form" method="get" action="<?php echo $_SERVER['SCRIPT_NAME']?>" class="local_sch01 local_sch">
+    <input type="hidden" name="bg_no" value="<?php echo $bg_no?>" >
+    <label for="st" class="sound_only">검색대상</label>
+    <select name="st" id="st">
+        <option value="all"<?php echo get_selected('all', $st); ?>>이름 + 휴대폰번호</option>
+        <option value="name"<?php echo get_selected('name', $st); ?>>이름</option>
+        <option value="hp" <?php echo get_selected('hp', $st); ?>>휴대폰번호</option>
+    </select>
+    <label for="sv" class="sound_only">검색어<strong class="sound_only"> 필수</strong></label>
+    <input type="text" name="sv" value="<?php echo $sv?>" id="sv" required class="frm_input required">
+    <input type="submit" value="" class="search_btn">
+    </form>
+</div>
 
 
 
@@ -150,7 +152,7 @@ function no_hp_click(val)
 <input type="hidden" name="atype" value="del">
 <input type="hidden" name="str_query" value="<?php echo clean_query_string($_SERVER['QUERY_STRING']); ?>" >
 
-<div class="tbl_head01 tbl_wrap content-box">
+<div class="tbl_head01 tbl_wrap">
     <table>
     <caption><?php echo $g5['title']; ?> 목록</caption>
     <thead>
@@ -207,6 +209,7 @@ function no_hp_click(val)
     <?php } ?>
     </tbody>
     </table>
+</div>
 </div>
 <div class="btn_fixed_top">
     <input type="submit" name="act_button" value="선택삭제" onclick="document.pressed=this.value" class="btn btn_02">

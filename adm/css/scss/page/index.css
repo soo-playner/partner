@@ -52,6 +52,7 @@
 
 .adm_main_wrap .top_wrap .user_num_wrap {
   width: 75%;
+  position: relative;
 }
 
 .adm_main_wrap .top_wrap .user_num_wrap .title_wrap {
@@ -68,6 +69,10 @@
 .adm_main_wrap .top_wrap .user_num_wrap .search_wrap {
   font-size: 16px;
   color: #403f48;
+  background: #fff;
+  position: absolute;
+  top: 8%;
+  right: 1%;
 }
 
 .adm_main_wrap .top_wrap .user_num_wrap .search_wrap ul {
@@ -84,27 +89,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 500px;
-}
-
-.adm_main_wrap .top_wrap .user_num_wrap .search_wrap ul li:nth-child(1)::before {
-  content: "";
-  width: 12px;
-  height: 12px;
-  border-radius: 10px;
-  display: inline-block;
-  background: #2a70e9;
-  margin: 0 5px;
-}
-
-.adm_main_wrap .top_wrap .user_num_wrap .search_wrap ul li:nth-child(2)::before {
-  content: "";
-  width: 12px;
-  height: 12px;
-  border-radius: 10px;
-  display: inline-block;
-  background: #764eed;
-  margin: 0 5px;
+  width: 300px;
 }
 
 .adm_main_wrap .top_wrap > div {
@@ -250,6 +235,9 @@
 .adm_main_wrap .mid_top_wrap .card_wrap.card_wrap1 .title_wrap {
   color: #fff;
   padding: 10px;
+  font-weight: bold;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   background: #4f6de7;
 }
 
@@ -259,6 +247,9 @@
 
 .adm_main_wrap .mid_top_wrap .card_wrap.card_wrap2 .title_wrap {
   color: #fff;
+  font-weight: bold;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   padding: 10px;
   background: #68c2f6;
 }
@@ -269,6 +260,9 @@
 
 .adm_main_wrap .mid_top_wrap .card_wrap.card_wrap3 .title_wrap {
   color: #fff;
+  font-weight: bold;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   padding: 10px;
   background: #1adbe0;
 }
@@ -279,6 +273,9 @@
 
 .adm_main_wrap .mid_top_wrap .card_wrap.card_wrap4 .title_wrap {
   color: #fff;
+  font-weight: bold;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   padding: 10px;
   background: #19d9b4;
 }
@@ -331,6 +328,7 @@
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
           flex-flow: column;
+  position: relative;
   width: 36%;
   height: 300px;
 }
@@ -342,15 +340,16 @@
 .adm_main_wrap .mid_bottom_wrap .card_wrap .title_wrap {
   font-size: 20px;
   font-weight: bold;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
 }
 
 .adm_main_wrap .mid_bottom_wrap .card_wrap .title_wrap .all_view {
+  position: absolute;
+  top: 4%;
+  right: 4%;
+  cursor: pointer;
+}
+
+.adm_main_wrap .mid_bottom_wrap .card_wrap .title_wrap .all_view a {
   color: #bebfc1;
 }
 
@@ -365,19 +364,6 @@
   -ms-flex-pack: distribute;
       justify-content: space-around;
   height: inherit;
-}
-
-.adm_main_wrap .mid_bottom_wrap .card_wrap .content_wrap.statistics {
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row;
-          flex-flow: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
 .adm_main_wrap .mid_bottom_wrap .card_wrap .content_wrap.statistics .info_wrap {
@@ -448,6 +434,33 @@
 
 .adm_main_wrap .mid_bottom_wrap .card_wrap .content_wrap .money_statistics {
   width: 200px;
+}
+
+.adm_main_wrap .mid_bottom_wrap .card_wrap .content_wrap .post_statistics .statistics_sum {
+  position: absolute;
+  top: 55%;
+  right: 3%;
+  width: 200px;
+  height: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+}
+
+.adm_main_wrap .mid_bottom_wrap .card_wrap .content_wrap .post_statistics .statistics_sum .statistics_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .adm_main_wrap .mid_bottom_wrap .card_wrap ul {
@@ -606,7 +619,7 @@
   text-decoration: underline;
 }
 
-.adm_main_wrap .bottom_wrap .title_wrap .all_view {
+.adm_main_wrap .bottom_wrap .title_wrap .all_view a {
   color: #bebfc1;
 }
 
@@ -675,9 +688,4 @@
 .adm_main_wrap .bottom_wrap .content_wrap.customer .bottom_card_wrap .content {
   color: #5085e9;
   width: 300px;
-}
-
-#withdraw_doughnut, #deposit_doughnut {
-  width: 400px !important;
-  height: 190px !important;
 }

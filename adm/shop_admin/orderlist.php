@@ -159,7 +159,7 @@ if( function_exists('pg_setting_check') ){
     <?php } ?>
 </div>
 
-<form name="frmorderlist" class="local_sch01 local_sch content-box">
+<form name="frmorderlist" class="local_sch01 local_sch content-box t_left">
 <input type="hidden" name="doc" value="<?php echo $doc; ?>">
 <input type="hidden" name="sort1" value="<?php echo $sort1; ?>">
 <input type="hidden" name="sort2" value="<?php echo $sort2; ?>">

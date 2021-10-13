@@ -10,31 +10,9 @@
         flex-flow: row;
 
         li:first-child {
-            // &::before {
-            //     content: "";
-            //     display: inline-block;
-            //     width: 8px;
-            //     height: 8px;
-            //     border-radius: 15px;
-            //     background: #000;
-            // }
-
-            // &::after {
-            //     content: "";
-            //     display: inline-block;
-            //     width: 1px;
-            //     height: 12px;
-            //     background: #000;
-            //     margin: 0 5px;
-            // }
-
             a {
                 color: #19d8b4;
             }
         }
-
-        // li:last-child {
-        //     font-weight: bold;
-        // }
     }
 }

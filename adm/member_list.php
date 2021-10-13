@@ -74,8 +74,12 @@ $colspan = 16;
     <a href="?sst=mb_leave_date&amp;sod=desc&amp;sfl=<?php echo $sfl ?>&amp;stx=<?php echo $stx ?>" class="btn_ov01" data-tooltip-text="탈퇴된 순으로 정렬합니다.&#xa;전체 데이터를 출력합니다."> <span class="ov_txt">탈퇴  </span><span class="ov_num"><?php echo number_format($leave_count) ?>명</span></a>
 </div>
 
-<form id="fsearch" name="fsearch" class="local_sch01 local_sch content-box" method="get">
-
+<div class="content-box">
+<div class="tbl_head01 tbl_wrap">
+<p class="explain_text">
+    회원자료 삭제 시 다른 회원이 기존 회원아이디를 사용하지 못하도록 회원아이디, 이름, 닉네임은 삭제하지 않고 영구 보관합니다.
+</p>
+<form id="fsearch" name="fsearch" class="local_sch01 local_sch" method="get">
 <label for="sfl" class="sound_only">검색대상</label>
 <select name="sfl" id="sfl">
     <option value="mb_id"<?php echo get_selected($sfl, "mb_id"); ?>>회원아이디</option>
@@ -96,11 +100,7 @@ $colspan = 16;
 
 </form>
 
-<div class="local_desc01 local_desc content-box-desc">
-    <p>
-        회원자료 삭제 시 다른 회원이 기존 회원아이디를 사용하지 못하도록 회원아이디, 이름, 닉네임은 삭제하지 않고 영구 보관합니다.
-    </p>
-</div>
+
 
 
 <form name="fmemberlist" id="fmemberlist" action="./member_list_update.php" onsubmit="return fmemberlist_submit(this);" method="post">
@@ -111,7 +111,7 @@ $colspan = 16;
 <input type="hidden" name="page" value="<?php echo $page ?>">
 <input type="hidden" name="token" value="">
 
-<div class="tbl_head01 tbl_wrap content-box">
+
     <table>
     <caption><?php echo $g5['title']; ?> 목록</caption>
     <thead>
@@ -302,7 +302,6 @@ $colspan = 16;
     </tbody>
     </table>
 </div>
-
 <div class="btn_fixed_top">
     <input type="submit" name="act_button" value="선택수정" onclick="document.pressed=this.value" class="btn btn_02">
     <input type="submit" name="act_button" value="선택삭제" onclick="document.pressed=this.value" class="btn btn_02">
@@ -311,8 +310,7 @@ $colspan = 16;
     <?php } ?>
 
 </div>
-
-
+</div>
 </form>
 
 <?php echo get_paging(G5_IS_MOBILE ? $config['cf_mobile_pages'] : $config['cf_write_pages'], $page, $total_page, '?'.$qstr.'&amp;page='); ?>
@@ -336,7 +334,6 @@ function fmemberlist_submit(f)
 </script>
 
 <link href="<?=G5_ADMIN_URL?>/css/scss/include/new_default.css" rel="stylesheet">
-<link href="<?=G5_ADMIN_URL?>/css/scss/page/member_list.css" rel="stylesheet">
 
 <!-- <section class="mid_wrap content-box">
     <div class="nav_wrap">

@@ -48,11 +48,11 @@ include_once (G5_ADMIN_PATH.'/admin.head.php');
 <input type="hidden" name="nw_id" value="<?php echo $nw_id; ?>">
 <input type="hidden" name="token" value="">
 
-<div class="local_desc01 local_desc">
+<div class="local_desc01 local_desc content-box-desc">
     <p>초기화면 접속 시 자동으로 뜰 팝업레이어를 설정합니다.</p>
 </div>
 
-<div class="tbl_frm01 tbl_wrap">
+<div class="tbl_frm01 tbl_wrap content-box">
     <table>
     <caption><?php echo $g5['title']; ?></caption>
     <colgroup>
@@ -63,7 +63,6 @@ include_once (G5_ADMIN_PATH.'/admin.head.php');
     <tr>
         <th scope="row"><label for="nw_division">구분</label></th>
         <td>
-            <?php echo help("커뮤니티에 표시될 것인지 쇼핑몰에 표시될 것인지를 설정합니다."); ?>
             <select name="nw_division" id="nw_division">
                 <option value="comm"<?php echo get_selected($nw['nw_division'], 'comm'); ?>>커뮤니티</option>
                 <?php if (defined('G5_USE_SHOP') && G5_USE_SHOP) { ?>
@@ -71,30 +70,31 @@ include_once (G5_ADMIN_PATH.'/admin.head.php');
                 <option value="shop"<?php echo get_selected($nw['nw_division'], 'shop'); ?>>쇼핑몰</option>
                 <?php } ?>
             </select>
+            <?php echo help("커뮤니티에 표시될 것인지 쇼핑몰에 표시될 것인지를 설정합니다."); ?>
         </td>
     </tr>
     <tr>
         <th scope="row"><label for="nw_device">접속기기</label></th>
         <td>
-            <?php echo help("팝업레이어가 표시될 접속기기를 설정합니다."); ?>
             <select name="nw_device" id="nw_device">
                 <option value="both"<?php echo get_selected($nw['nw_device'], 'both', true); ?>>PC와 모바일</option>
                 <option value="pc"<?php echo get_selected($nw['nw_device'], 'pc'); ?>>PC</option>
                 <option value="mobile"<?php echo get_selected($nw['nw_device'], 'mobile'); ?>>모바일</option>
             </select>
+            <?php echo help("팝업레이어가 표시될 접속기기를 설정합니다."); ?>
         </td>
     </tr>
     <tr>
         <th scope="row"><label for="nw_disable_hours">시간<strong class="sound_only"> 필수</strong></label></th>
         <td>
+            <input type="text" name="nw_disable_hours" value="<?php echo $nw['nw_disable_hours']; ?>" id="nw_disable_hours" required class="frm_input" size="5"> 시간
             <?php echo help("고객이 다시 보지 않음을 선택할 시 몇 시간동안 팝업레이어를 보여주지 않을지 설정합니다."); ?>
-            <input type="text" name="nw_disable_hours" value="<?php echo $nw['nw_disable_hours']; ?>" id="nw_disable_hours" required class="frm_input required" size="5"> 시간
         </td>
     </tr>
     <tr>
         <th scope="row"><label for="nw_begin_time">시작일시<strong class="sound_only"> 필수</strong></label></th>
         <td>
-            <input type="text" name="nw_begin_time" value="<?php echo $nw['nw_begin_time']; ?>" id="nw_begin_time" required class="frm_input required" size="21" maxlength="19">
+            <input type="text" name="nw_begin_time" value="<?php echo $nw['nw_begin_time']; ?>" id="nw_begin_time" required class="frm_input" size="21" maxlength="19">
             <input type="checkbox" name="nw_begin_chk" value="<?php echo date("Y-m-d 00:00:00", G5_SERVER_TIME); ?>" id="nw_begin_chk" onclick="if (this.checked == true) this.form.nw_begin_time.value=this.form.nw_begin_chk.value; else this.form.nw_begin_time.value = this.form.nw_begin_time.defaultValue;">
             <label for="nw_begin_chk">시작일시를 오늘로</label>
         </td>
@@ -102,7 +102,7 @@ include_once (G5_ADMIN_PATH.'/admin.head.php');
     <tr>
         <th scope="row"><label for="nw_end_time">종료일시<strong class="sound_only"> 필수</strong></label></th>
         <td>
-            <input type="text" name="nw_end_time" value="<?php echo $nw['nw_end_time']; ?>" id="nw_end_time" required class="frm_input required" size="21" maxlength="19">
+            <input type="text" name="nw_end_time" value="<?php echo $nw['nw_end_time']; ?>" id="nw_end_time" required class="frm_input" size="21" maxlength="19">
             <input type="checkbox" name="nw_end_chk" value="<?php echo date("Y-m-d 23:59:59", G5_SERVER_TIME+(60*60*24*7)); ?>" id="nw_end_chk" onclick="if (this.checked == true) this.form.nw_end_time.value=this.form.nw_end_chk.value; else this.form.nw_end_time.value = this.form.nw_end_time.defaultValue;">
             <label for="nw_end_chk">종료일시를 오늘로부터 7일 후로</label>
         </td>

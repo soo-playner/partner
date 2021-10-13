@@ -140,7 +140,7 @@ function imageview(id, w, h)
             $jj = 1;
             foreach($amenu as $key=>$value) {
                 $href1 = $href2 = '';
-
+                
                 if (isset($menu['menu'.$key][0][2]) && $menu['menu'.$key][0][2]) {
                     $href1 = '<a href="'.$menu['menu'.$key][0][2].'" class="gnb_1da">';
                     $href2 = '</a>';
@@ -215,20 +215,54 @@ jQuery(function($){
 
         <div id="container_title">
             <h1><?php echo $g5['title'] ?></h1>
-            <div>
-                <div class="top_wrap">
-                    <div class="nav_wrap content-box">
-                        <ul>
-                            <a href="" class="menu"><li><i class="ri-menu-line"></i>Menu</li></a>
-                            <a href=""><li>회원관리</li></a>
-                            <a href=""><li>회원푸시알림발송</li></a>
-                            <a href=""><li>접속자집계</li></a>
-                            <a href=""><li>접속자검색</li></a>
-                            <a href=""><li>접속자로그삭제</li></a>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            <nav id="gnbs" class="content-box gnb_large <?php echo $adm_menu_cookie['gnb']; ?>">
+                <ul class="gnb_ul">
+                    <?php
+                    $jj = 1;
+                    foreach($amenu as $key=>$value) {
+                        $href1 = $href2 = '';
+                        
+                        if (isset($menu['menu'.$key][0][2]) && $menu['menu'.$key][0][2]) {
+                            $href1 = '<a href="'.$menu['menu'.$key][0][2].'" class="gnb_1da">';
+                            $href2 = '</a>';
+                        } else {
+                            continue;
+                        }
+                        
+                        $current_class = "";
+                        if (isset($sub_menu) && (substr($sub_menu, 0, 3) == substr($menu['menu'.$key][0][0], 0, 3)))
+                            $current_class = " on";
+
+                        $button_title = $menu['menu'.$key][0][1];
+                    ?>
+                    
+                    <li class="gnb_li<?php echo $current_class;?>">
+                        <div class="gnb_oparea_wr">
+                            <div class="gnb_oparea">
+                                <div class="menu_btn"><i class="ri-menu-line"></i>Menu</div>
+                                <?php echo print_menu1('menu'.$key, 1); ?>
+                            </div>
+                        </div>
+                    </li>
+                    <?php
+                    $jj++;
+                    }     //end foreach
+                    ?>
+                </ul>
+            </nav>
         </div>
-        
         <div class="container_wr">
+
+        <!-- 대시보드에서만 nav제거 -->
+        <script>
+            $(function() {
+                if($('#container_title').find('h1').text() == '관리자메인') {
+                    $('#gnbs').hide();
+                }
+            });
+
+            $(function() {
+                $('#gnbs').find('div.gnb_oparea ul').addClass('gnbs_ul');
+            });
+            
+        </script>

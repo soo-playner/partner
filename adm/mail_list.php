@@ -22,7 +22,7 @@ include_once('./admin.head.php');
 $colspan = 7;
 ?>
 
-<div class="local_desc01 local_desc content-box-desc">
+<div class="local_desc01 local_desc content-box-desc-white">
     <p>
         <b>테스트</b>는 등록된 최고관리자의 이메일로 테스트 메일을 발송합니다.<br>
         현재 등록된 메일은 총 <?php echo $total_count ?>건입니다.<br>
@@ -76,11 +76,12 @@ $colspan = 7;
     ?>
     </tbody>
     </table>
+    <div class="btn_fixed_top">
+        <input type="submit" value="선택삭제" class="btn btn_02">
+        <a href="./mail_form.php" id="mail_add" class="btn btn_01">메일내용추가</a>
+    </div>
 </div>
-<div class="btn_fixed_top">
-    <input type="submit" value="선택삭제" class="btn btn_02">
-    <a href="./mail_form.php" id="mail_add" class="btn btn_01">메일내용추가</a>
-</div>
+
 </form>
 
 <script>

@@ -97,6 +97,7 @@ if(G5_IS_MOBILE) {
 if(!defined('G5_IS_ADMIN'))
     echo $config['cf_add_script'];
 ?>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0d70d83417879e1b5f635bf545e0ceda"></script>
 </head>
 <body<?php echo isset($g5['body_script']) ? $g5['body_script'] : ''; ?>>
 <?php

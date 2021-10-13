@@ -1,97 +1,102 @@
-<!-- Styles -->
-<style>
-#chartdiv {
-  width: 100%;
-  height: 300px;
-}
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
+<style>
+  #chart {
+    /* max-width: 1200px; */
+    margin: 10px auto;
+  }
+  .apexcharts-toolbar {
+    display: none
+    
+  }
 </style>
 
-<!-- Resources -->
-<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
-<script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
-<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
-
-<!-- Chart code -->
 <script>
-am4core.ready(function() {
+  $(function() {
+    var options = {
+      chart: {
+        height: 330,
+        type: "area",
+      },
+      dataLabels: {
+        enabled: false
+      },
+      title: {
+        text: '이용자수 통계',
+        style: {
+          fontSize: '20px',
+          fontWeight: 'bold',
+          fontFamily: 'Noto Sans KR'
+        }
+      },
+      series: [
+        {
+          type: 'area',
+          name: '방문자',
+          data: [40, 30, 28, 35, 20, 38, 50, 37, 18, 36, 17, 37]
+        },
+        {
+          type: 'area',
+          name: '프로그램 사용',
+          data: [35, 28, 34, 39, 46, 40, 33, 24, 26, 24, 22, 20]
+        }
+      ],
+      stroke: {
+        width:3
+      },
+      legend: {
+        position: 'top',
+        offsetX: 380,
+        offsetY: -50,
+        fontSize: '16px',
+        fontWeight: 'bold',
+        fontFamily: 'Noto Sans KR',
+        itemMargin: {
+          horizontal: 10
+        }
+      },
+      colors: ['#2a70e9','#764eed'],
+      fill: {
+        type: 'gradient',
+        gradient: {
+          shade: 'light',
+          shadeIntensity: 1,
+          opacityFrom: 0.8,
+          opacityTo: 0.9,
+          stops: [0, 90, 100],
+        }
+      },
+      stroke: {
+        curve : 'smooth'
+      },
+      xaxis: {
+        categories: [
+          "20.08",
+          "20.09",
+          "20.10",
+          "20.11",
+          "20.12",
+          "21.01",
+          "21.02",
+          "21.03",
+          "21.04",
+          "21.05",
+          "21.06",
+          "21.07"
+        ],
+        tickPlacement: 'on'
+      },
+      yaxis: {
+        show: false
+      }
+  };
 
-// Themes begin
-am4core.useTheme(am4themes_animated);
-// Themes end
+var chart = new ApexCharts(document.querySelector("#chart"), options);
 
-var chart = am4core.create("chartdiv", am4charts.XYChart);
-chart.hiddenState.properties.opacity = 0; // this makes initial fade in effect
-
-chart.data = [{
-  "country": "20.08",
-  "value": 3025
-}, {
-  "country": "20.09",
-  "value": 1882
-}, {
-  "country": "20.10",
-  "value": 1809
-}, {
-  "country": "20.11",
-  "value": 1322
-}, {
-  "country": "20.12",
-  "value": 1122
-}, {
-  "country": "21.01",
-  "value": -1114
-}, {
-  "country": "21.02",
-  "value": -984
-}, {
-  "country": "21.03",
-  "value": 711
-}, {
-  "country": "21.04",
-  "value": 665
-}, {
-  "country": "21.05",
-  "value": -580
-}, {
-  "country": "21.06",
-  "value": 443
-}, {
-  "country": "21.07",
-  "value": 441
-}];
-
-
-var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
-categoryAxis.renderer.grid.template.location = 0;
-categoryAxis.dataFields.category = "country";
-categoryAxis.renderer.minGridDistance = 40;
-
-var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-
-var series = chart.series.push(new am4charts.CurvedColumnSeries());
-series.dataFields.categoryX = "country";
-series.dataFields.valueY = "value";
-series.tooltipText = "{valueY.value}"
-series.columns.template.strokeOpacity = 0;
-
-series.columns.template.fillOpacity = 0.75;
-
-var hoverState = series.columns.template.states.create("hover");
-hoverState.properties.fillOpacity = 1;
-hoverState.properties.tension = 0.4;
-
-chart.cursor = new am4charts.XYCursor();
-
-// Add distinctive colors for each column using adapter
-series.columns.template.adapter.add("fill", function(fill, target) {
-  return chart.colors.getIndex(target.dataItem.index);
-});
-
-chart.scrollbarX = new am4core.Scrollbar();
-
-}); // end am4core.ready()
+chart.render();
+  });
+  
 </script>
 
-<!-- HTML -->
-<div id="chartdiv"></div>
+<div id="chart">
+</div>

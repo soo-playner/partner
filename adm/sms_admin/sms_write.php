@@ -824,7 +824,7 @@ var sms_obj={
 
 <section>
     <h2 class="h2_frm">SMS 문자전송 서비스를 사용할 수 없습니다.</h2>
-    <div class="local_desc01 local_desc content-box-desc">
+    <div class="local_desc01 local_desc content-box-desc-white">
         <p>
             SMS 를 사용하지 않고 있기 때문에, 문자 전송을 할 수 없습니다.<br>
             SMS 사용 설정은 <a href="../config_form.php#anc_cf_sms" class="btn_frmline">환경설정 &gt; 기본환경설정 &gt; SMS설정</a> 에서 SMS 사용을 아이코드로 변경해 주셔야 사용하실수 있습니다.

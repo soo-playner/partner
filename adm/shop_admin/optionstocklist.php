@@ -68,148 +68,153 @@ $listall = '<a href="'.$_SERVER['SCRIPT_NAME'].'" class="ov_listall">전체목�
     <span class="btn_ov01"><span class="ov_txt">전체 옵션</span><span class="ov_num">  <?php echo $total_count; ?>개</span></span>
 </div>
 
-<form name="flist" class="local_sch01 local_sch content-box">
-<input type="hidden" name="doc" value="<?php echo $doc; ?>">
-<input type="hidden" name="sort1" value="<?php echo $sort1; ?>">
-<input type="hidden" name="sort2" value="<?php echo $sort2; ?>">
-<input type="hidden" name="page" value="<?php echo $page; ?>">
+<div class="content-box">
+    <p class="explain_text">
+        재고수정의 수치를 수정하시면 창고재고의 수치가 변경됩니다.<br>
+        창고재고가 부족한 경우 재고수량 뒤에 <span class="sit_stock_qty_alert">!</span><span class="sound_only"> 혹은 재고부족</span>으로 표시됩니다.
+    </p>
+    <form name="flist" class="local_sch01 local_sch">
+    <input type="hidden" name="doc" value="<?php echo $doc; ?>">
+    <input type="hidden" name="sort1" value="<?php echo $sort1; ?>">
+    <input type="hidden" name="sort2" value="<?php echo $sort2; ?>">
+    <input type="hidden" name="page" value="<?php echo $page; ?>">
 
-<label for="sel_ca_id" class="sound_only">분류선택</label>
-<select name="sel_ca_id" id="sel_ca_id">
-    <option value=''>전체분류</option>
-    <?php
-    $sql1 = " select ca_id, ca_name from {$g5['g5_shop_category_table']} order by ca_order, ca_id ";
-    $result1 = sql_query($sql1);
-    for ($i=0; $row1=sql_fetch_array($result1); $i++) {
-        $len = strlen($row1['ca_id']) / 2 - 1;
-        $nbsp = "";
-        for ($i=0; $i<$len; $i++) $nbsp .= "&nbsp;&nbsp;&nbsp;";
-        echo '<option value="'.$row1['ca_id'].'" '.get_selected($sel_ca_id, $row1['ca_id']).'>'.$nbsp.$row1['ca_name'].'</option>'.PHP_EOL;
-    }
-    ?>
-</select>
+    <label for="sel_ca_id" class="sound_only">분류선택</label>
+    <select name="sel_ca_id" id="sel_ca_id">
+        <option value=''>전체분류</option>
+        <?php
+        $sql1 = " select ca_id, ca_name from {$g5['g5_shop_category_table']} order by ca_order, ca_id ";
+        $result1 = sql_query($sql1);
+        for ($i=0; $row1=sql_fetch_array($result1); $i++) {
+            $len = strlen($row1['ca_id']) / 2 - 1;
+            $nbsp = "";
+            for ($i=0; $i<$len; $i++) $nbsp .= "&nbsp;&nbsp;&nbsp;";
+            echo '<option value="'.$row1['ca_id'].'" '.get_selected($sel_ca_id, $row1['ca_id']).'>'.$nbsp.$row1['ca_name'].'</option>'.PHP_EOL;
+        }
+        ?>
+    </select>
 
-<label for="sel_field" class="sound_only">검색대상</label>
-<select name="sel_field" id="sel_field">
-    <option value="b.it_name" <?php echo get_selected($sel_field, 'b.it_name'); ?>>상품명</option>
-    <option value="a.it_id" <?php echo get_selected($sel_field, 'a.it_id'); ?>>상품코드</option>
-</select>
+    <label for="sel_field" class="sound_only">검색대상</label>
+    <select name="sel_field" id="sel_field">
+        <option value="b.it_name" <?php echo get_selected($sel_field, 'b.it_name'); ?>>상품명</option>
+        <option value="a.it_id" <?php echo get_selected($sel_field, 'a.it_id'); ?>>상품코드</option>
+    </select>
 
-<label for="search" class="sound_only">검색어<strong class="sound_only"> 필수</strong></label>
-<input type="text" name="search" id="search" value="<?php echo $search; ?>" required class="frm_input required">
-<input type="submit" value="" class="search_btn">
+    <label for="search" class="sound_only">검색어<strong class="sound_only"> 필수</strong></label>
+    <input type="text" name="search" id="search" value="<?php echo $search; ?>" required class="frm_input required">
+    <input type="submit" value="" class="search_btn">
 
-</form>
+    </form>
 
-<form name="fitemstocklist" action="./optionstocklistupdate.php" method="post">
-<input type="hidden" name="sort1" value="<?php echo $sort1; ?>">
-<input type="hidden" name="sort2" value="<?php echo $sort2; ?>">
-<input type="hidden" name="sel_ca_id" value="<?php echo $sel_ca_id; ?>">
-<input type="hidden" name="sel_field" value="<?php echo $sel_field; ?>">
-<input type="hidden" name="search" value="<?php echo $search; ?>">
-<input type="hidden" name="page" value="<?php echo $page; ?>">
+    <form name="fitemstocklist" action="./optionstocklistupdate.php" method="post">
+    <input type="hidden" name="sort1" value="<?php echo $sort1; ?>">
+    <input type="hidden" name="sort2" value="<?php echo $sort2; ?>">
+    <input type="hidden" name="sel_ca_id" value="<?php echo $sel_ca_id; ?>">
+    <input type="hidden" name="sel_field" value="<?php echo $sel_field; ?>">
+    <input type="hidden" name="search" value="<?php echo $search; ?>">
+    <input type="hidden" name="page" value="<?php echo $page; ?>">
 
-<div class="tbl_head01 tbl_wrap content-box">
-    <table>
-    <caption><?php echo $g5['title']; ?> 목록</caption>
-    <thead>
-    <tr>
-        <th scope="col"><a href="<?php echo title_sort("b.it_name") . "&amp;$qstr1"; ?>">상품명</a></th>
-        <th scope="col">옵션항목</th>
-        <th scope="col">옵션타입</th>
-        <th scope="col"><a href="<?php echo title_sort("a.io_stock_qty") . "&amp;$qstr1"; ?>">창고재고</a></th>
-        <th scope="col">주문대기</th>
-        <th scope="col">가재고</th>
-        <th scope="col">재고수정</th>
-        <th scope="col">통보수량</th>
-        <th scope="col"><a href="<?php echo title_sort("a.io_use") . "&amp;$qstr1"; ?>">판매</a></th>
-        <th scope="col">관리</th>
-    </tr>
-    </thead>
-    <tbody>
-    <?php
-    for ($i=0; $row=sql_fetch_array($result); $i++)
-    {
-        $href = shop_item_url($row['it_id']);
+    <div class="tbl_head01 tbl_wrap">
+        <table>
+        <caption><?php echo $g5['title']; ?> 목록</caption>
+        <thead>
+        <tr>
+            <th scope="col"><a href="<?php echo title_sort("b.it_name") . "&amp;$qstr1"; ?>">상품명</a></th>
+            <th scope="col">옵션항목</th>
+            <th scope="col">옵션타입</th>
+            <th scope="col"><a href="<?php echo title_sort("a.io_stock_qty") . "&amp;$qstr1"; ?>">창고재고</a></th>
+            <th scope="col">주문대기</th>
+            <th scope="col">가재고</th>
+            <th scope="col">재고수정</th>
+            <th scope="col">통보수량</th>
+            <th scope="col"><a href="<?php echo title_sort("a.io_use") . "&amp;$qstr1"; ?>">판매</a></th>
+            <th scope="col">관리</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php
+        for ($i=0; $row=sql_fetch_array($result); $i++)
+        {
+            $href = shop_item_url($row['it_id']);
 
-        $sql1 = " select SUM(ct_qty) as sum_qty
-                    from {$g5['g5_shop_cart_table']}
-                   where it_id = '{$row['it_id']}'
-                     and io_id = '{$row['io_id']}'
-                     and ct_stock_use = '0'
-                     and ct_status in ('쇼핑', '주문', '입금', '준비') ";
-        $row1 = sql_fetch($sql1);
-        $wait_qty = $row1['sum_qty'];
+            $sql1 = " select SUM(ct_qty) as sum_qty
+                        from {$g5['g5_shop_cart_table']}
+                    where it_id = '{$row['it_id']}'
+                        and io_id = '{$row['io_id']}'
+                        and ct_stock_use = '0'
+                        and ct_status in ('쇼핑', '주문', '입금', '준비') ";
+            $row1 = sql_fetch($sql1);
+            $wait_qty = $row1['sum_qty'];
 
-        // 가재고 (미래재고)
-        $temporary_qty = $row['io_stock_qty'] - $wait_qty;
+            // 가재고 (미래재고)
+            $temporary_qty = $row['io_stock_qty'] - $wait_qty;
 
-        $option = '';
-        $option_br = '';
-        if($row['io_type']) {
-            $opt = explode(chr(30), $row['io_id']);
-            if($opt[0] && $opt[1])
-                $option .= $opt[0].' : '.$opt[1];
-        } else {
-            $subj = explode(',', $row['it_option_subject']);
-            $opt = explode(chr(30), $row['io_id']);
-            for($k=0; $k<count($subj); $k++) {
-                if($subj[$k] && $opt[$k]) {
-                    $option .= $option_br.$subj[$k].' : '.$opt[$k];
-                    $option_br = '<br>';
+            $option = '';
+            $option_br = '';
+            if($row['io_type']) {
+                $opt = explode(chr(30), $row['io_id']);
+                if($opt[0] && $opt[1])
+                    $option .= $opt[0].' : '.$opt[1];
+            } else {
+                $subj = explode(',', $row['it_option_subject']);
+                $opt = explode(chr(30), $row['io_id']);
+                for($k=0; $k<count($subj); $k++) {
+                    if($subj[$k] && $opt[$k]) {
+                        $option .= $option_br.$subj[$k].' : '.$opt[$k];
+                        $option_br = '<br>';
+                    }
                 }
             }
+
+            $type = '선택옵션';
+            if($row['io_type'])
+                $type = '추가옵션';
+
+            // 통보수량보다 재고수량이 작을 때
+            $io_stock_qty = number_format($row['io_stock_qty']);
+            $io_stock_qty_st = ''; // 스타일 정의
+            if($row['io_stock_qty'] <= $row['io_noti_qty']) {
+                $io_stock_qty_st = ' sit_stock_qty_alert';
+                $io_stock_qty = ''.$io_stock_qty.' !<span class="sound_only"> 재고부족 </span>';
+            }
+
+            $bg = 'bg'.($i%2);
+        ?>
+        <tr class="<?php echo $bg; ?>">
+            <td class="td_left">
+                <input type="hidden" name="it_id[<?php echo $i; ?>]" value="<?php echo $row['it_id']; ?>">
+                <input type="hidden" name="io_id[<?php echo $i; ?>]" value="<?php echo $row['io_id']; ?>">
+                <input type="hidden" name="io_type[<?php echo $i; ?>]" value="<?php echo $row['io_type']; ?>">
+                <a href="<?php echo $href; ?>"><?php echo get_it_image($row['it_id'], 50, 50); ?> <?php echo cut_str(stripslashes($row['it_name']), 60, "&#133"); ?></a>
+            </td>
+            <td class="td_left"><?php echo $option; ?></td>
+            <td class="td_mng"><?php echo $type; ?></td>
+            <td class="td_num<?php echo $io_stock_qty_st; ?>"><?php echo $io_stock_qty; ?></td>
+            <td class="td_num"><?php echo number_format($wait_qty); ?></td>
+            <td class="td_num"><?php echo number_format($temporary_qty); ?></td>
+            <td class="td_num">
+                <label for="stock_qty_<?php echo $i; ?>" class="sound_only">재고수정</label>
+                <input type="text" name="io_stock_qty[<?php echo $i; ?>]" value="<?php echo $row['io_stock_qty']; ?>" id="stock_qty_<?php echo $i; ?>" class="frm_input" size="8" autocomplete="off">
+            </td>
+            <td class="td_num">
+                <label for="noti_qty_<?php echo $i; ?>" class="sound_only">통보수량</label>
+                <input type="text" name="io_noti_qty[<?php echo $i; ?>]" value="<?php echo $row['io_noti_qty']; ?>" id="noti_qty_<?php echo $i; ?>" class="frm_input" size="8" autocomplete="off">
+            </td>
+            <td class="td_chk2">
+                <label for="use_<?php echo $i; ?>" class="sound_only">판매</label>
+                <input type="checkbox" name="io_use[<?php echo $i; ?>]" value="1" id="use_<?php echo $i; ?>" <?php echo ($row['io_use'] ? "checked" : ""); ?>>
+            </td>
+            <td class="td_mng td_mng_s"><a href="./itemform.php?w=u&amp;it_id=<?php echo $row['it_id']; ?>&amp;ca_id=<?php echo $row['ca_id']; ?>&amp;<?php echo $qstr; ?>" class="btn btn_03">수정</a></td>
+        </tr>
+        <?php
         }
-
-        $type = '선택옵션';
-        if($row['io_type'])
-            $type = '추가옵션';
-
-        // 통보수량보다 재고수량이 작을 때
-        $io_stock_qty = number_format($row['io_stock_qty']);
-        $io_stock_qty_st = ''; // 스타일 정의
-        if($row['io_stock_qty'] <= $row['io_noti_qty']) {
-            $io_stock_qty_st = ' sit_stock_qty_alert';
-            $io_stock_qty = ''.$io_stock_qty.' !<span class="sound_only"> 재고부족 </span>';
-        }
-
-        $bg = 'bg'.($i%2);
-    ?>
-    <tr class="<?php echo $bg; ?>">
-        <td class="td_left">
-            <input type="hidden" name="it_id[<?php echo $i; ?>]" value="<?php echo $row['it_id']; ?>">
-            <input type="hidden" name="io_id[<?php echo $i; ?>]" value="<?php echo $row['io_id']; ?>">
-            <input type="hidden" name="io_type[<?php echo $i; ?>]" value="<?php echo $row['io_type']; ?>">
-            <a href="<?php echo $href; ?>"><?php echo get_it_image($row['it_id'], 50, 50); ?> <?php echo cut_str(stripslashes($row['it_name']), 60, "&#133"); ?></a>
-        </td>
-        <td class="td_left"><?php echo $option; ?></td>
-        <td class="td_mng"><?php echo $type; ?></td>
-        <td class="td_num<?php echo $io_stock_qty_st; ?>"><?php echo $io_stock_qty; ?></td>
-        <td class="td_num"><?php echo number_format($wait_qty); ?></td>
-        <td class="td_num"><?php echo number_format($temporary_qty); ?></td>
-        <td class="td_num">
-            <label for="stock_qty_<?php echo $i; ?>" class="sound_only">재고수정</label>
-            <input type="text" name="io_stock_qty[<?php echo $i; ?>]" value="<?php echo $row['io_stock_qty']; ?>" id="stock_qty_<?php echo $i; ?>" class="frm_input" size="8" autocomplete="off">
-        </td>
-        <td class="td_num">
-            <label for="noti_qty_<?php echo $i; ?>" class="sound_only">통보수량</label>
-            <input type="text" name="io_noti_qty[<?php echo $i; ?>]" value="<?php echo $row['io_noti_qty']; ?>" id="noti_qty_<?php echo $i; ?>" class="frm_input" size="8" autocomplete="off">
-        </td>
-        <td class="td_chk2">
-            <label for="use_<?php echo $i; ?>" class="sound_only">판매</label>
-            <input type="checkbox" name="io_use[<?php echo $i; ?>]" value="1" id="use_<?php echo $i; ?>" <?php echo ($row['io_use'] ? "checked" : ""); ?>>
-        </td>
-        <td class="td_mng td_mng_s"><a href="./itemform.php?w=u&amp;it_id=<?php echo $row['it_id']; ?>&amp;ca_id=<?php echo $row['ca_id']; ?>&amp;<?php echo $qstr; ?>" class="btn btn_03">수정</a></td>
-    </tr>
-    <?php
-    }
-    if (!$i)
-        echo '<tr><td colspan="10" class="empty_table"><span>자료가 없습니다.</span></td></tr>';
-    ?>
-    </tbody>
-    </table>
+        if (!$i)
+            echo '<tr><td colspan="10" class="empty_table"><span>자료가 없습니다.</span></td></tr>';
+        ?>
+        </tbody>
+        </table>
+    </div>
 </div>
-
 <div class="btn_fixed_top">
     <a href="./itemstocklist.php" class="btn btn_02">상품재고관리</a>
     <a href="./itemsellrank.php" class="btn btn_02">상품판매순위</a>
@@ -217,13 +222,6 @@ $listall = '<a href="'.$_SERVER['SCRIPT_NAME'].'" class="ov_listall">전체목�
 </div>
 
 </form>
-
-<div class="local_desc01 local_desc content-box-desc">
-    <p>
-        재고수정의 수치를 수정하시면 창고재고의 수치가 변경됩니다.<br>
-        창고재고가 부족한 경우 재고수량 뒤에 <span class="sit_stock_qty_alert">!</span><span class="sound_only"> 혹은 재고부족</span>으로 표시됩니다.
-    </p>
-</div>
 
 <?php echo get_paging(G5_IS_MOBILE ? $config['cf_mobile_pages'] : $config['cf_write_pages'], $page, $total_page, "{$_SERVER['SCRIPT_NAME']}?$qstr&amp;page="); ?>
 

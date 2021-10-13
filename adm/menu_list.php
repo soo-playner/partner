@@ -34,7 +34,7 @@ $colspan = 7;
 $sub_menu_info = '';
 ?>
 
-<div class="local_desc01 local_desc content-box-desc">
+<div class="local_desc01 local_desc content-box-desc-white">
     <p><strong>주의!</strong> 메뉴설정 작업 후 반드시 <strong>확인</strong>을 누르셔야 저장됩니다.</p>
 </div>
 

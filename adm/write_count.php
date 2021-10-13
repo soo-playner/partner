@@ -131,7 +131,7 @@ switch ($day) {
         break;
 }
 ?>
-<div id="wr_cont" class="local_sch01 local_sch content-box">
+<div id="wr_cont" class="local_sch01 local_sch content-box t_left">
     <form>
     <select name="bo_table">
     <option value="">전체게시판</option>

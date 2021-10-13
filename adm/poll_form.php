@@ -36,7 +36,7 @@ include_once('./admin.head.php');
 <input type="hidden" name="page" value="<?php echo $page ?>">
 <input type="hidden" name="token" value="">
 
-<div class="tbl_frm01 tbl_wrap">
+<div class="tbl_frm01 tbl_wrap content-box">
 
     <table>
     <caption><?php echo $g5['title']; ?></caption>
@@ -61,7 +61,7 @@ include_once('./admin.head.php');
     <tr>
         <th scope="row"><label for="po_poll<?php echo $i ?>">항목 <?php echo $i ?><?php echo $sound_only ?></label></th>
         <td>
-            <input type="text" name="po_poll<?php echo $i ?>" value="<?php echo $po_poll ?>" id="po_poll<?php echo $i ?>" <?php echo $required ?> class="frm_input <?php echo $required ?>" maxlength="125">
+            <input type="text" name="po_poll<?php echo $i ?>" value="<?php echo $po_poll ?>" id="po_poll<?php echo $i ?>" <?php echo $required ?> class="frm_input" maxlength="125">
             <label for="po_cnt<?php echo $i ?>">항목 <?php echo $i ?> 투표수</label>
             <input type="text" name="po_cnt<?php echo $i ?>" value="<?php echo $po_cnt; ?>" id="po_cnt<?php echo $i ?>" class="frm_input" size="3">
        </td>

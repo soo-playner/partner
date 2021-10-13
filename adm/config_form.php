@@ -330,12 +330,10 @@ if ($config['cf_sms_use'] && $config['cf_icode_id'] && $config['cf_icode_pw']) {
     $userinfo = get_icode_userinfo($config['cf_icode_id'], $config['cf_icode_pw']);
 }
 ?>
-
 <form name="fconfigform" id="fconfigform" method="post" onsubmit="return fconfigform_submit(this);">
 <input type="hidden" name="token" value="" id="token">
 
 <section id="anc_cf_basic">
-    
     <?php echo $pg_anchor ?>
 
     <div class="tbl_frm01 tbl_wrap content-box">

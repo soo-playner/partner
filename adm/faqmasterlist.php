@@ -68,7 +68,7 @@ $result = sql_query($sql);
     <span class="btn_ov01"><span class="ov_txt"> 전체 FAQ </span><span class="ov_num"> <?php echo $total_count; ?>건</span></span>
 </div>
 
-<div class="local_desc01 local_desc content-box">
+<div class="local_desc01 local_desc content-box-desc-white">
     <ol>
         <li>FAQ는 무제한으로 등록할 수 있습니다</li>
         <li><strong>FAQ추가</strong>를 눌러 FAQ Master를 생성합니다. (하나의 FAQ 타이틀 생성 : 자주하시는 질문, 이용안내..등 )</li>
@@ -76,52 +76,52 @@ $result = sql_query($sql);
     </ol>
 </div>
 
+<div class="content-box">
+    <div class="tbl_head01 tbl_wrap">
+        <table>
+        <caption><?php echo $g5['title']; ?> 목록</caption>
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">제목</th>
+            <th scope="col">FAQ수</th>
+            <th scope="col">순서</th>
+            <th scope="col">관리</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php for ($i=0; $row=sql_fetch_array($result); $i++) {
+            $sql1 = " select COUNT(*) as cnt from {$g5['faq_table']} where fm_id = '{$row['fm_id']}' ";
+            $row1 = sql_fetch($sql1);
+            $cnt = $row1['cnt'];
+            $bg = 'bg'.($i%2);
+        ?>
+        <tr class="<?php echo $bg; ?>">
+            <td class="td_num"><?php echo $row['fm_id']; ?></td>
+            <td class="td_left"><a href="./faqlist.php?fm_id=<?php echo $row['fm_id']; ?>&amp;fm_subject=<?php echo $row['fm_subject']; ?>"><?php echo stripslashes($row['fm_subject']); ?></a></td>
+            <td class="td_num"><?php echo $cnt; ?></td>
+            <td class="td_num"><?php echo $row['fm_order']?></td>
+            <td class="td_mng td_mng_l">
+                <a href="./faqmasterform.php?w=u&amp;fm_id=<?php echo $row['fm_id']; ?>" class="btn btn_03"><span class="sound_only"><?php echo stripslashes($row['fm_subject']); ?> </span>수정</a>
+                <a href="<?php echo G5_BBS_URL; ?>/faq.php?fm_id=<?php echo $row['fm_id']; ?>" class="btn btn_02"><span class="sound_only"><?php echo stripslashes($row['fm_subject']); ?> </span>보기</a>
+                <a href="./faqmasterformupdate.php?w=d&amp;fm_id=<?php echo $row['fm_id']; ?>" onclick="return delete_confirm(this);" class="btn btn_02"><span class="sound_only"><?php echo stripslashes($row['fm_subject']); ?> </span>삭제</a>
+            </td>
+        </tr>
+        <?php
+        }
 
-
-<div class="tbl_head01 tbl_wrap content-box">
-    <table>
-    <caption><?php echo $g5['title']; ?> 목록</caption>
-    <thead>
-    <tr>
-        <th scope="col">ID</th>
-        <th scope="col">제목</th>
-        <th scope="col">FAQ수</th>
-        <th scope="col">순서</th>
-        <th scope="col">관리</th>
-    </tr>
-    </thead>
-    <tbody>
-    <?php for ($i=0; $row=sql_fetch_array($result); $i++) {
-        $sql1 = " select COUNT(*) as cnt from {$g5['faq_table']} where fm_id = '{$row['fm_id']}' ";
-        $row1 = sql_fetch($sql1);
-        $cnt = $row1['cnt'];
-        $bg = 'bg'.($i%2);
-    ?>
-    <tr class="<?php echo $bg; ?>">
-        <td class="td_num"><?php echo $row['fm_id']; ?></td>
-        <td class="td_left"><a href="./faqlist.php?fm_id=<?php echo $row['fm_id']; ?>&amp;fm_subject=<?php echo $row['fm_subject']; ?>"><?php echo stripslashes($row['fm_subject']); ?></a></td>
-        <td class="td_num"><?php echo $cnt; ?></td>
-        <td class="td_num"><?php echo $row['fm_order']?></td>
-        <td class="td_mng td_mng_l">
-            <a href="./faqmasterform.php?w=u&amp;fm_id=<?php echo $row['fm_id']; ?>" class="btn btn_03"><span class="sound_only"><?php echo stripslashes($row['fm_subject']); ?> </span>수정</a>
-            <a href="<?php echo G5_BBS_URL; ?>/faq.php?fm_id=<?php echo $row['fm_id']; ?>" class="btn btn_02"><span class="sound_only"><?php echo stripslashes($row['fm_subject']); ?> </span>보기</a>
-            <a href="./faqmasterformupdate.php?w=d&amp;fm_id=<?php echo $row['fm_id']; ?>" onclick="return delete_confirm(this);" class="btn btn_02"><span class="sound_only"><?php echo stripslashes($row['fm_subject']); ?> </span>삭제</a>
-        </td>
-    </tr>
-    <?php
-    }
-
-    if ($i == 0){
-        echo '<tr><td colspan="5" class="empty_table"><span>자료가 한건도 없습니다.</span></td></tr>';
-    }
-    ?>
-    </tbody>
-    </table>
+        if ($i == 0){
+            echo '<tr><td colspan="5" class="empty_table"><span>자료가 한건도 없습니다.</span></td></tr>';
+        }
+        ?>
+        </tbody>
+        </table>
+    </div>
+    <div class="btn_fixed_top">
+        <a href="./faqmasterform.php" class="btn_01 btn">FAQ추가</a>
+    </div>
+    <?php echo get_paging(G5_IS_MOBILE ? $config['cf_mobile_pages'] : $config['cf_write_pages'], $page, $total_page, "{$_SERVER['SCRIPT_NAME']}?$qstr&amp;page="); ?>
 </div>
-<div class="btn_fixed_top">
-    <a href="./faqmasterform.php" class="btn_01 btn">FAQ추가</a>
-</div>
-<?php echo get_paging(G5_IS_MOBILE ? $config['cf_mobile_pages'] : $config['cf_write_pages'], $page, $total_page, "{$_SERVER['SCRIPT_NAME']}?$qstr&amp;page="); ?>
 
 <?php
 include_once (G5_ADMIN_PATH.'/admin.tail.php');
