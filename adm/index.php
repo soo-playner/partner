@@ -7,6 +7,9 @@ if(function_exists('social_log_file_delete')){
     social_log_file_delete(86400);      //소셜로그인 디버그 파일 24시간 지난것은 삭제
 }
 
+Header("Location:./license_list.php");
+
+
 $g5['title'] = '관리자메인';
 include_once ('./admin.head.php');
 
